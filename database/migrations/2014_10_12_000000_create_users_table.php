@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('type');
+            $table->integer('type_id')->references('id')->on('user_types')
+                  ->onDelete('restrict');
             $table->string('facebook');
             $table->string('tittwer');
             $table->string('instragram');
