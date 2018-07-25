@@ -15,11 +15,14 @@ class CreateGeneralRegistersTable extends Migration
     {
         Schema::create('general_registers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id');
+            $table->integer('product_id')->references('id')->on('products')
+                ->onDelete('restrict');
             $table->string('product_state');
             $table->integer('quantity');
-            $table->integer('seller_id');
-            $table->integer('buyer_id');
+            $table->integer('seller_id')->references('id')->on('users')
+                ->onDelete('restrict');
+            $table->integer('buyer_id')->references('id')->on('users')
+                ->onDelete('restrict');;
             $table->dateTime('delivery_date');
             $table->dateTime('order_date');
             $table->timestamps();

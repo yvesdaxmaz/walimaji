@@ -15,7 +15,8 @@ class CreateActorAdressesTable extends Migration
     {
         Schema::create('actor_adresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('actor_id');
+            $table->integer('actor_id')->references('id')->on('users')
+                  ->onDelete('restrict');
             $table->timestamps();
         });
     }
