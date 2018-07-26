@@ -16,10 +16,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('description');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('type_id')->references('id')->on('user_types')
-                  ->onDelete('restrict');
+            $table->integer('type_id')->references('id')->on('user_types')->onDelete('restrict');
+            $table->string('profil_image');
+            $table->string('cover_image');
             $table->string('facebook');
             $table->string('tittwer');
             $table->string('instragram');

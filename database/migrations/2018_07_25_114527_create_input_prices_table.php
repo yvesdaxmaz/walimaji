@@ -15,10 +15,8 @@ class CreateInputPricesTable extends Migration
     {
         Schema::create('input_prices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('input_id')->references('id')->on('product_inputs')
-                ->onDelete('restrict');
-            $table->integer('provider_id')->references('id')->on('users')
-                ->onDelete('restrict');
+            $table->integer('input_id')->references('id')->on('product_inputs')->onDelete('restrict');
+            $table->integer('provider_id')->references('id')->on('users')->onDelete('restrict');
             $table->double('price_with_tax');
             $table->double('price_without_tax');
             $table->dateTime('date_time');

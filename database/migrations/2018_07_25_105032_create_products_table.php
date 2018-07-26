@@ -17,8 +17,9 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('designation');
             $table->string('description');
-            $table->integer('producer_id')->references('id')->on('users')
-                  ->onDelete('restrict');
+            $table->string('image1');
+            $table->string('image2');
+            $table->integer('producer_id')->references('id')->on('users')->onDelete('restrict');
             $table->string('state');
             $table->integer('initial_quantity');
             $table->integer('current_quantity');

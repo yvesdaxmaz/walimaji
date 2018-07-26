@@ -15,8 +15,7 @@ class CreateInputOperationsTable extends Migration
     {
         Schema::create('input_operations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('input_id')->references('id')->on('product_inputs')
-                ->onDelete('restrict');
+            $table->integer('input_id')->references('id')->on('product_inputs')->onDelete('restrict');
             $table->integer('provider_id')->references('id')->on('users')
                 ->onDelete('restrict');
             $table->integer('producer_id')->references('id')->on('users')
