@@ -15,7 +15,7 @@ class CreateGeneralRegistersTable extends Migration
     {
         Schema::create('general_registers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->references('id')->on('products')
+            $table->integer('product_id')->references('id')->on('productions')
                 ->onDelete('restrict');
             $table->string('product_state');
             $table->integer('quantity');

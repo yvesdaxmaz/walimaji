@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateToTransformProductsTable extends Migration
+class CreateProductionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateToTransformProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('to_transform_products', function (Blueprint $table) {
+        Schema::create('productions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->references('id')->on('productions')
-                ->onDelete('restrict');
-            $table->integer('transformer_id')->references('id')->on('users')
-                ->onDelete('restrict');
-            $table->string('product_state');
+            $table->string('description');
+            $table->string('image');
+            $table->integer('product_id')->references('id')->on('products')->onDelete('restrict');
+            $table->integer('producer_id')->references('id')->on('users')->onDelete('restrict');
+            $table->string('state');
             $table->integer('initial_quantity');
             $table->integer('current_quantity');
-            $table->dateTime('entry_date');
+            $table->date('date_production');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateToTransformProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('to_transform_products');
+        Schema::dropIfExists('productions');
     }
 }

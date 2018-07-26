@@ -15,13 +15,12 @@ class CreateTransformedProductsTable extends Migration
     {
         Schema::create('transformed_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('produc_id')->references('id')->on('products')
+            $table->integer('produc_id')->references('id')->on('productions')
                 ->onDelete('restrict');
             $table->integer('transformer_id')->references('id')->on('users')
                 ->onDelete('restrict');
             $table->string('product_state');
-            $table->string('new_image1');
-            $table->string('new_image2');
+            $table->string('new_image');
             $table->integer('initial_quantity');
             $table->integer('current_quantity');
             $table->string('entry_date');

@@ -18,8 +18,8 @@ class CreateProductInputsTable extends Migration
             $table->string('type');
             $table->string('designation');
             $table->string('description');
-            $table->string('image1');
-            $table->string('image2');
+            $table->integer('type_id')->references('id')->on('input_types')->onDelete('restrict');
+            $table->string('image');
             $table->integer('provider_id')->references('id')->on('users')->onDelete('restrict');
             $table->integer('initial_quantity');
             $table->integer('current_quantity');

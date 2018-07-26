@@ -15,7 +15,7 @@ class CreateTradersTable extends Migration
     {
         Schema::create('traders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->references('id')->on('products')
+            $table->integer('product_id')->references('id')->on('productions')
                 ->onDelete('restrict');
             $table->integer('trader_id')->references('id')->on('users')
                 ->onDelete('restrict');
