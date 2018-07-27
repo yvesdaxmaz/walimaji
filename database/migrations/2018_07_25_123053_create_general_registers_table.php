@@ -14,6 +14,10 @@ class CreateGeneralRegistersTable extends Migration
     public function up()
     {
         Schema::create('general_registers', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_general_ci';
+
             $table->increments('id');
             $table->integer('product_id')->references('id')->on('products')
                 ->onDelete('restrict');
@@ -22,7 +26,7 @@ class CreateGeneralRegistersTable extends Migration
             $table->integer('seller_id')->references('id')->on('users')
                 ->onDelete('restrict');
             $table->integer('buyer_id')->references('id')->on('users')
-                ->onDelete('restrict');;
+                ->onDelete('restrict');
             $table->dateTime('delivery_date');
             $table->dateTime('order_date');
             $table->timestamps();

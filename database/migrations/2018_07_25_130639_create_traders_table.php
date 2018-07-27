@@ -14,6 +14,10 @@ class CreateTradersTable extends Migration
     public function up()
     {
         Schema::create('traders', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_general_ci';
+
             $table->increments('id');
             $table->integer('product_id')->references('id')->on('products')
                 ->onDelete('restrict');

@@ -14,8 +14,12 @@ class CreateTransformedProductsTable extends Migration
     public function up()
     {
         Schema::create('transformed_products', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_general_ci';
+
             $table->increments('id');
-            $table->integer('produc_id')->references('id')->on('products')
+            $table->integer('product_id')->references('id')->on('products')
                 ->onDelete('restrict');
             $table->integer('transformer_id')->references('id')->on('users')
                 ->onDelete('restrict');

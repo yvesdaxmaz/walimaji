@@ -14,6 +14,10 @@ class CreateInputPricesTable extends Migration
     public function up()
     {
         Schema::create('input_prices', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_general_ci';
+
             $table->increments('id');
             $table->integer('input_id')->references('id')->on('product_inputs')->onDelete('restrict');
             $table->integer('provider_id')->references('id')->on('users')->onDelete('restrict');
