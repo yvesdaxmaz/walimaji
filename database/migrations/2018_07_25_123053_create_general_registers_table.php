@@ -19,7 +19,7 @@ class CreateGeneralRegistersTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('product_id')->references('id')->on('products')
+            $table->integer('product_id')->references('id')->on('productions')
                 ->onDelete('restrict');
             $table->string('product_state');
             $table->integer('quantity');

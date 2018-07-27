@@ -21,13 +21,9 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('designation');
             $table->string('description');
-            $table->string('image1');
-            $table->string('image2');
+            $table->integer('type_id')->references('id')->on('product_types')->onDelete('restrict');
+            $table->string('image');
             $table->integer('producer_id')->references('id')->on('users')->onDelete('restrict');
-            $table->string('state');
-            $table->integer('initial_quantity');
-            $table->integer('current_quantity');
-            $table->date('date_production');
             $table->timestamps();
         });
     }

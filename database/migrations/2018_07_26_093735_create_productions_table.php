@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductInputsTable extends Migration
+class CreateProductionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,16 @@ class CreateProductInputsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_inputs', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->charset = 'utf8';
-            $table->collation = 'utf8_general_ci';
-
+        Schema::create('productions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
-            $table->string('designation');
             $table->string('description');
-            $table->integer('type_id')->references('id')->on('input_types')->onDelete('restrict');
             $table->string('image');
-            $table->integer('provider_id')->references('id')->on('users')->onDelete('restrict');
+            $table->integer('product_id')->references('id')->on('products')->onDelete('restrict');
+            $table->integer('producer_id')->references('id')->on('users')->onDelete('restrict');
+            $table->string('state');
             $table->integer('initial_quantity');
             $table->integer('current_quantity');
-            $table->date('entry_date');
+            $table->date('date_production');
             $table->timestamps();
         });
     }
@@ -39,6 +34,6 @@ class CreateProductInputsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_inputs');
+        Schema::dropIfExists('productions');
     }
 }
