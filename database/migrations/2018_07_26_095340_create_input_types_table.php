@@ -16,7 +16,7 @@ class CreateInputTypesTable extends Migration
         Schema::create('input_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('designation');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('icon');
             $table->timestamps();
         });

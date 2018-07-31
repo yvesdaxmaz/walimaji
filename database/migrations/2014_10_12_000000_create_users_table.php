@@ -20,15 +20,16 @@ class CreateUsersTable extends Migration
 
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('email')->unique();
+            $table->string('phone')->unique()->nullable();
             $table->string('password');
             $table->integer('type_id')->references('id')->on('user_types')->onDelete('restrict');
-            $table->string('profil_image');
-            $table->string('cover_image');
-            $table->string('facebook');
-            $table->string('tittwer');
-            $table->string('instragram');
+            $table->string('profil_image')->nullable();
+            $table->string('cover_image')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('tittwer')->nullable();
+            $table->string('instragram')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
 
             $table->increments('id');
             $table->string('designation');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->integer('type_id')->references('id')->on('product_types')->onDelete('restrict');
             $table->string('image');
             $table->integer('producer_id')->references('id')->on('users')->onDelete('restrict');

@@ -21,9 +21,9 @@ class CreateProductInputsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->string('designation');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->integer('type_id')->references('id')->on('input_types')->onDelete('restrict');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('provider_id')->references('id')->on('users')->onDelete('restrict');
             $table->integer('initial_quantity');
             $table->integer('current_quantity');

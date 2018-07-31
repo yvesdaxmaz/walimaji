@@ -19,7 +19,7 @@ class CreateUserTypesTable extends Migration
 
             $table->increments('id');
             $table->string('designation');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('icon');
             $table->timestamps();
         });

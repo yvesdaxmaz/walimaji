@@ -22,7 +22,7 @@ class CreateTransformedProductsTable extends Migration
             $table->integer('product_id')->references('id')->on('productions')->onDelete('restrict');
             $table->integer('transformer_id')->references('id')->on('users')->onDelete('restrict');
             $table->string('product_state');
-            $table->string('new_image');
+            $table->string('new_image')->nullable();
             $table->integer('initial_quantity');
             $table->integer('current_quantity');
             $table->string('entry_date');

@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        DB::table('user_types')->insert([
+            'designation' => "fournisseur",
+            'description' =>'niefwrefqwf',
+            'icon' => 'icomnnnnnnnn',
+        ]);
     }
 }

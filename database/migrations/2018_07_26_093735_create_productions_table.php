@@ -15,8 +15,8 @@ class CreateProductionsTable extends Migration
     {
         Schema::create('productions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
-            $table->string('image');
+            $table->string('description')->nullable();
+            $table->string('image')->nullable();
             $table->integer('product_id')->references('id')->on('products')->onDelete('restrict');
             $table->integer('producer_id')->references('id')->on('users')->onDelete('restrict');
             $table->string('state');
