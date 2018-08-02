@@ -44,7 +44,7 @@ class UserTypeController extends Controller
         $type = UserType::find($id);
         $type->designation = $data['designation'];
         $type->description = $request->description;
-        $type->icon =  file($data['icon'])->store('icons');;
+        $type->icon =  file($data['icon'])->store('icons');
         $type->save();
     }
 
@@ -52,6 +52,7 @@ class UserTypeController extends Controller
     {
         UserType::find($id)->delete();
     }
+
     public function myValidation($request)
     {
         $data=$this->validate($request,[
