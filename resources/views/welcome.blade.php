@@ -1,95 +1,100 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Walimaji | Walimaji.org</title>
+</head>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+<body>
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+<main>
+    <div class="hero-container grey darken-4">
+        <div class="parallax-container section no-pad-bot valign-wrapper">
+            <div class="container">
+                <h1 class="header center white-text hero-title">Walimaji</h1>
+                <div class="row center">
+                    <h5 class="header col l6 offset-l3 s12 m12 light white-text">
+                        Plateforme qui optimise la chaine de valeur agroalimentaire en résolvant l’asymétrie
+                        d’information entre ses différents acteurs.</h5>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="row center">
+                    <a href="#" id="download-button"
+                       class="btn-floating btn-large waves-effect waves-light teal">
+                        <i class="material-icons">location_on</i>
+                    </a>
                 </div>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</main>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+
+<footer class="page-footer transparent">
+    <div class="valign-wrapper map-banner" style="background: url({{ asset("images/walimaji.jpg")  }});">
+        <div class="container map-banner-content">
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 m4 center-align">
+                        <div class="icon-block">
+                            <h2 class="white-text">
+                                <i class="material-icons medium">shopping_cart</i>
+                            </h2>
+                            <h5 class="white-text">Speeds up development</h5>
+                            <p class="light white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Adipisci aperiam consequuntur cum
+                                cupiditate dolores ducimus earum eligendi, est, in labore molestiae nostrum officiis
+                                perspiciatis possimus quis rem reprehenderit sed ullam!</p>
+                        </div>
+                    </div>
+                    <div class="col s12 m4 center-align">
+                        <div class="icon-block">
+                            <h2 class="white-text">
+                                <i class="material-icons medium">maps</i>
+                            </h2>
+                            <h5 class="center white-text">User Experience Focused</h5>
+
+                            <p class="light white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Accusamus, aut consequatur distinctio
+                                dolore dolorem earum explicabo facere facilis, inventore ipsa itaque nam omnis pariatur
+                                possimus rerum sequi similique sunt voluptatibus.</p>
+                        </div>
+                    </div>
+                    <div class="col s12 m4 center-align">
+                        <div class="icon-block">
+                            <h2 class="center white-text">
+                                <i class="material-icons medium">location_on</i>
+                            </h2>
+                            <h5 class="center white-text">Easy to work with</h5>
+
+                            <p class="light white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
+                                aperiam architecto aspernatur
+                                consequuntur cumque dolor enim excepturi, exercitationem id itaque labore laboriosam
+                                minus non numquam quis sint tempore, unde voluptatem?</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
+        <div class="map-banner-overlay"></div>
+    </div>
+    <div class="footer-copyright grey darken-4">
+        <div class="container">
+            © 2018 Copyright walimaji.org
+            <a class="grey-text text-lighten-4 right" href="https://github.com/itotafrica/walimaji">code source</a>
+        </div>
+    </div>
+</footer>
+<script src="{{ asset("assets/js/bin/jquery.min.js") }}"></script>
+<script src="{{ asset("assets/js/bin/materialize.min.js") }} "></script>
+<script src="{{ asset("assets/js/bin/app.init.js") }}"></script>
+</body>
+
 </html>
