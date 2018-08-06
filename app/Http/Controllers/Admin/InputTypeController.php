@@ -14,7 +14,7 @@ class InputTypeController extends Controller
      */
     public function index()
     {
-        //
+        $types=InputType::all()->toArray();
     }
 
     /**
@@ -35,7 +35,10 @@ class InputTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->myValidation($request);
+        $type = new InputType();
+        $type->designation = $data['designation'];
+        $type->save();
     }
 
     /**
@@ -44,9 +47,9 @@ class InputTypeController extends Controller
      * @param  \App\Models\InputType  $inputType
      * @return \Illuminate\Http\Response
      */
-    public function show(InputType $inputType)
+    public function show($id)
     {
-        //
+        $type=InputType::find(id);
     }
 
     /**
@@ -55,9 +58,9 @@ class InputTypeController extends Controller
      * @param  \App\Models\InputType  $inputType
      * @return \Illuminate\Http\Response
      */
-    public function edit(InputType $inputType)
+    public function edit($id)
     {
-        //
+        $types=InputType::find($id);
     }
 
     /**
@@ -67,9 +70,12 @@ class InputTypeController extends Controller
      * @param  \App\Models\InputType  $inputType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InputType $inputType)
+    public function update(Request $request, $id)
     {
-        //
+        $data=$this->myValidation($request);
+        $type = InputType::find($id);
+        $type->designation = $data['designation'];
+        $type->save();
     }
 
     /**
@@ -78,8 +84,16 @@ class InputTypeController extends Controller
      * @param  \App\Models\InputType  $inputType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InputType $inputType)
+    public function destroy($id)
     {
-        //
+        InputType::find($id)->delete();
+    }
+
+    public function myValidation($request)
+    {
+        $data=$this->validate($request,[
+            'designation'=>'required'
+         ]);
+        return $data;
     }
 }

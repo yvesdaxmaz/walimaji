@@ -14,7 +14,7 @@ class ProducerProctuctTypeController extends Controller
      */
     public function index()
     {
-        //
+        $producerProctuctTypes=ProducerProctuctType::all()->toArray();
     }
 
     /**
@@ -24,7 +24,7 @@ class ProducerProctuctTypeController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,10 @@ class ProducerProctuctTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$this->myValidation($request);
+        $type =new ProductType;
+        $type->designation = $data['designation'];
+        $type->save();
     }
 
     /**
@@ -44,9 +47,9 @@ class ProducerProctuctTypeController extends Controller
      * @param  \App\Models\ProducerProctuctType  $producerProctuctType
      * @return \Illuminate\Http\Response
      */
-    public function show(ProducerProctuctType $producerProctuctType)
+    public function show($id)
     {
-        //
+        $producerProctuctType=ProducerProctuctType::find($id);
     }
 
     /**
@@ -55,9 +58,9 @@ class ProducerProctuctTypeController extends Controller
      * @param  \App\Models\ProducerProctuctType  $producerProctuctType
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProducerProctuctType $producerProctuctType)
+    public function edit($id)
     {
-        //
+        $producerProctuctType=ProducerProctuctType::find($id);
     }
 
     /**
@@ -67,9 +70,12 @@ class ProducerProctuctTypeController extends Controller
      * @param  \App\Models\ProducerProctuctType  $producerProctuctType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProducerProctuctType $producerProctuctType)
+    public function update(Request $request, $id)
     {
-        //
+        $data=$this->myValidation($request);
+        $type = ProducerProctuctType::find($id);
+        $type->designation = $data['designation'];
+        $type->save();
     }
 
     /**
@@ -78,8 +84,17 @@ class ProducerProctuctTypeController extends Controller
      * @param  \App\Models\ProducerProctuctType  $producerProctuctType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProducerProctuctType $producerProctuctType)
+    public function destroy($id)
     {
-        //
+        ProducerProctuctType::find($id)->delete();
+    }
+
+    public function myValidation($request)
+    {
+        $data=$this->validate($request,[
+            'designation'=>'bail|required|max:20',
+            'icon'=>'bail|dimensions:min_width=200,min_height=200',
+        ]);
+        return $data;
     }
 }
