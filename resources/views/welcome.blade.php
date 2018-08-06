@@ -3,81 +3,174 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>walimaji maps</title>
 
-    <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Walimaji | Walimaji.org</title>
+    <link rel="stylesheet" href="{{ asset("assets/css/style.css")  }}">
 </head>
 
 <body>
+<!--/////////////////////////////// map header here ///////////////////////////////-->
+<header id="map-header" class="map-header">
+    <div class="navbar-fixed">
+        <nav class="nav-extended">
+            <div class="nav-wrapper teal z-depth-3">
+                <div class="container">
+                    <a href="index.html" class="brand-logo">WalimajI</a>
 
-<main>
-    <div class="hero-container grey darken-4">
-        <div class="parallax-container section no-pad-bot valign-wrapper">
-            <div class="container">
-                <h1 class="header center white-text hero-title">Walimaji</h1>
-                <div class="row center">
-                    <h5 class="header col l6 offset-l3 s12 m12 light white-text">
-                        Plateforme qui optimise la chaine de valeur agroalimentaire en résolvant l’asymétrie
-                        d’information entre ses différents acteurs.</h5>
-                </div>
-                <div class="row center">
-                    <a href="#" id="download-button"
-                       class="btn-floating btn-large waves-effect waves-light teal">
-                        <i class="material-icons">location_on</i>
+                {{--<!--@if(user.connected === true)-->--}}
+                    <a href="#" data-activates="slide-out" class="button-collapse show-on-large">
+                        <i class="material-icons">menu</i>
                     </a>
+                {{--<!--@endif-->--}}
+
+                {{--<!--@if(!user.connected === true)-->--}}
+                    <ul class="right">
+                        <li><a class="dropdown-button" href="#!" data-activates="dropdown-login">
+                                <i class="material-icons right">person_pin</i></a></li>
+                    </ul>
+                    <ul id="dropdown-login" class="dropdown-content">
+                        <li><a href="../modules.auth/login.html">Connexion</a></li>
+                        <li><a href="../modules.auth/sign.html">Inscription</a></li>
+                    </ul>
+                {{--<!--@endif-->--}}
                 </div>
-                <br>
-                <br>
+            </div>
+        </nav>
+    </div>
+    <!--/////////////////////////////// map header here ///////////////////////////////-->
+
+
+    <!--////////////////////////////////////// maps tab /////////////////////////////////////////////-->
+    <div class="row col s12" style="margin-bottom: 0;">
+        <ul class="tabs grey darken-4">
+            <div class="container">
+                <li class="tab col s3"><a href="#tab-map1" class="active">Traders</a></li>
+                <li class="tab col s3"><a href="#tab-map2"> Producteurs</a></li>
+                <li class="tab col s3"><a href="#tab-map3">Fournisseurs</a></li>
+                <li class="tab col s3"><a href="#tab-map4">Transformateur</a></li>
+            </div>
+        </ul>
+    </div>
+    <!--////////////////////////////////////// maps tab /////////////////////////////////////////////-->
+
+
+    <!--////////////////////////////////////// sidebar /////////////////////////////////////////////-->
+{{--<!--@if(user.connected === true)-->--}}
+    <ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="../../images/default-cover.jpg" class="responsive-img">
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="../../images/profile.png">
+                </a>
+                <a href="#!name">
+                    <span class="white-text name">username</span>
+                </a>
+                <a href="#!email">
+                    <span class="white-text email">user@mail.com</span>
+                </a>
+            </div>
+        </li>
+        <li>
+            <a href="#!">
+                <i class="material-icons">person</i>mon profile</a>
+        </li>
+        <li>
+            <a href="#!">
+                <i class="material-icons">show_chart</i> Mes activités</a>
+        </li>
+        <li>
+            <a href="#!">
+                <i class="material-icons">maps</i> Carte</a>
+        </li>
+        <li>
+            <a href="#!">
+                <i class="material-icons">settings</i>Paramètres
+            </a>
+        </li>
+    </ul>
+    <!--////////////////////////////////////// sidebar /////////////////////////////////////////////-->
+</header>
+<main>
+    <!--//////////////////////////////////////////  maps should be generated here///////////////////////////////-->
+    <div id="tab-map1">
+        <div class="map-container z-depth-3">
+            <iframe class="map-container-content" id="map1"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
+                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-search-btn toolbar">
+                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
+                   href="#search-modal">
+                    <i class="material-icons">search</i>
+                </a>
             </div>
         </div>
     </div>
+    <div id="tab-map2" class="col s12">
+        <div class="map-container z-depth-3">
+            <iframe class="map-container-content" id="map2"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
+                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-search-btn toolbar">
+                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
+                   href="#search-modal">
+                    <i class="material-icons">search</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="tab-map3" class="col s12">
+        <div class="map-container z-depth-3">
+            <iframe class="map-container-content" id="map3"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
+                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-search-btn toolbar">
+                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
+                   href="#search-modal">
+                    <i class="material-icons">search</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="tab-map4" class="col s12">
+        <div class="map-container z-depth-3">
+            <iframe class="map-container-content" id="map4"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
+                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-search-btn toolbar">
+                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
+                   href="#search-modal">
+                    <i class="material-icons">search</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--//////////////////////////////////////////  maps should be generated here///////////////////////////////-->
 </main>
-
-
+<!-- //////////////////////////////////// footer here //////////////////////////////////////////// -->
 <footer class="page-footer transparent">
-    <div class="valign-wrapper map-banner" style="background: url({{ asset("images/walimaji.jpg")  }});">
+    <div class="parallax-container valign-wrapper map-banner" style="background: url('../../images/walimaji.jpg');">
         <div class="container map-banner-content">
             <div class="section">
                 <div class="row">
-                    <div class="col s12 m4 center-align">
+                    <div class="col s12 m12">
                         <div class="icon-block">
-                            <h2 class="white-text">
-                                <i class="material-icons medium">shopping_cart</i>
-                            </h2>
-                            <h5 class="white-text">Speeds up development</h5>
+                            <h4 class="white-text hero-title">A propos</h4>
                             <p class="light white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                 Adipisci aperiam consequuntur cum
                                 cupiditate dolores ducimus earum eligendi, est, in labore molestiae nostrum officiis
-                                perspiciatis possimus quis rem reprehenderit sed ullam!</p>
-                        </div>
-                    </div>
-                    <div class="col s12 m4 center-align">
-                        <div class="icon-block">
-                            <h2 class="white-text">
-                                <i class="material-icons medium">maps</i>
-                            </h2>
-                            <h5 class="center white-text">User Experience Focused</h5>
-
-                            <p class="light white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus, aut consequatur distinctio
-                                dolore dolorem earum explicabo facere facilis, inventore ipsa itaque nam omnis pariatur
-                                possimus rerum sequi similique sunt voluptatibus.</p>
-                        </div>
-                    </div>
-                    <div class="col s12 m4 center-align">
-                        <div class="icon-block">
-                            <h2 class="center white-text">
-                                <i class="material-icons medium">location_on</i>
-                            </h2>
-                            <h5 class="center white-text">Easy to work with</h5>
-
-                            <p class="light white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-                                aperiam architecto aspernatur
-                                consequuntur cumque dolor enim excepturi, exercitationem id itaque labore laboriosam
-                                minus non numquam quis sint tempore, unde voluptatem?</p>
+                                perspiciatis possimus quis rem reprehenderit sed ullam! Lorem ipsum dolor sit amet
+                                consectetur
+                                adipisicing elit. Eaque inventore tempore assumenda deleniti, ea alias blanditiis
+                                delectus,
+                                fugiat asperiores a cumque neque nobis labore officia eveniet nihil, possimus libero
+                                explicabo? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, suscipit!
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -93,7 +186,7 @@
     </div>
 </footer>
 <script src="{{ asset("assets/js/bin/jquery.min.js") }}"></script>
-<script src="{{ asset("assets/js/bin/materialize.min.js") }} "></script>
+<script src="{{ asset("assets/js/bin/materialize.min.js")  }}"></script>
 <script src="{{ asset("assets/js/bin/app.init.js") }}"></script>
 </body>
 
