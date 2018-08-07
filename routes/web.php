@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/userType',function (){
+    return view('admin.userType.add');
+});
+Route::post('/userType','Admin\UserTypeController@store');

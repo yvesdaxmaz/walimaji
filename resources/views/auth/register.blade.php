@@ -13,21 +13,25 @@
             </div>
 
             <div class="card-panel z-depth-2 hoverable animated slideInLeft" id="loginBox">
-                <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}"
-                      autocomplete="off">
+                <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                     @csrf
 
                     <div class="row">
+                        <label>Qui êtes vous ?</label>
                         <div class="input-field col s12 ">
-                            <select class="icons" autofocus>
-                                <option value="" disabled selected>Choose your option</option>
-                                <option value="" data-icon="images/sample-1.jpg" class="left circle">example 1</option>
-                                <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
-                                <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
+                            <select name="type" class="icons"  autofocus>
+                                <option value="" disabled selected>Faites votre choix</option>
+                                @foreach($typeList as $typeListElement)
+                                    <option value="{{$typeListElement['id']}}" data-icon="{{url('storage/public/'.$typeListElement['icon'])}}" class="left circle">{{$typeListElement['designation']}}</option>
+                                @endforeach
                             </select>
-                            <label>Qui êtes vous ?</label>
-                        </div>
 
+                            <span class="helper-text red-text">
+                                @if($errors->has('type'))
+                                    <strong>{{ $errors->first('type') }}</strong>
+                                @endif
+                            </span>
+                        </div>
 
                         <div class="input-field col s12">
                             <label for="name">name</label>

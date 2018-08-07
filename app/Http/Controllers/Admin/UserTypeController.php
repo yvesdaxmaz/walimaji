@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\UserType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -28,10 +29,11 @@ class UserTypeController extends Controller
     public function store(Request $request)
     {
         $data=$this->myValidation($request);
-        $type = new UserType;
+        //dd($request);
+        $type = new UserType();
         $type->designation = $data['designation'];
         $type->description = $request->description;
-        $type->icon =  file($data['icon'])->store('icons');;
+        $type->icon =  $request->file('icon')->store('icons');
         $type->save();
     }
 
@@ -52,8 +54,9 @@ class UserTypeController extends Controller
         $type = UserType::find($id);
         $type->designation = $data['designation'];
         $type->description = $request->description;
-        $type->icon =  file($data['icon'])->store('icons');
+        $type->icon = $request->file('icon')->store('icons');
         $type->save();
+
     }
 
     public function destroy($id)
@@ -65,7 +68,7 @@ class UserTypeController extends Controller
     {
         $data=$this->validate($request,[
             'designation'=>'bail|required|max:20',
-            'icon'=>'bail|dimensions:min_width=200,min_height=200',
+            'icon'=>'bail|dimensions:max_width=200,max_height=200',
         ]);
         return $data;
     }
