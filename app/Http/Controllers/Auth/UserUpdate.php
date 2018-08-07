@@ -48,6 +48,7 @@ class UserUpdate extends Controller
         $user->description=$data['description'];
         $user->phone=$data['phone'];
         $user->save();
+
     }
 
 
@@ -59,7 +60,7 @@ class UserUpdate extends Controller
 
     public function myValidation($request)
     {
-        $data=$this->validate($request, [
+        $data=$this->validate($request,[
             'name'=>'bail|required|max:20',
             'description'=>'max:250',
             'phone'=>'bail|required',

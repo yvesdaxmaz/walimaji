@@ -1,66 +1,65 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Reset Password') }}</div>
 
-    <div class="container">
-        <div class="row col l4 m4 s12">
-            <div class="form-title center-align">
-                <h2 class="hero-title">
-                    <a href="{{ url("/") }}" class="white-text">Walimaji</a>
-                </h2>
-                <p class="white-text light">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                </p>
-            </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}">
+                        @csrf
 
-            <div class="card-panel z-depth-2 hoverable animated slideInLeft" id="loginBox">
-                <form method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}"
-                      autocomplete="off">
-                    @csrf
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="email">email</label>
-                            <input type="email" name="email" id="email"
-                                   class="validate {{ $errors->has('email')? 'invalid' : '' }} "
-                                   value="{{ $email ?? old('email') }}">
-                            <span class="helper-text red-txt">
-                                @if($errors("email"))
-                                    <strong>{{ $errors->first("email") }}</strong>
+                        <input type="hidden" name="token" value="{{ $token }}">
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
                                 @endif
-                             </span>
+                            </div>
                         </div>
 
-                        <div class="input-field col s12">
-                            <label for="name">password</label>
-                            <input type="text" name="name" id="name" class="validate {{$errors->first('password')? 'invalid' : '' }}">
-                            <span class="helper-text red-txt">
-                                @if($errors('password'))
-                                    <strong>{{ $errors->first('password') }}</strong>
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
                                 @endif
-                            </span>
+                            </div>
                         </div>
 
-                        <div class="input-field col s12">
-                            <label for="password">password (confirmed)</label>
-                            <input type="password" name="password" id="password"
-                                   class="validate {{ $errors->has("password_confirmation")? 'invalid' : '' }}"
-                            >
-                            <span class="helper-text red-txt">
-                                @if($errors('password_confirmation'))
-                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                @endif
-                            </span>
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12" id="connectOptions">
-                            <button type="submit" class="btn btn-flat waves-effect teal white-text" id="connect">
-                                Confirmer
-                            </button>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Reset Password') }}
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
