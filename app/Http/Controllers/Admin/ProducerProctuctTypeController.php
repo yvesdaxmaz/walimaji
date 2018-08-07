@@ -93,8 +93,7 @@ class ProducerProctuctTypeController extends Controller
     {
         $data=$this->validate($request,[
             'designation'=>'bail|required|max:20',
-            'icon'=>'bail|dimensions:min_width=200,min_height=200',
-        ]);
+         ]);
         return $data;
     }
 }

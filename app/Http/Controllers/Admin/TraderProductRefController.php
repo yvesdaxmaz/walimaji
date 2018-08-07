@@ -14,7 +14,7 @@ class TraderProductRefController extends Controller
      */
     public function index()
     {
-        //
+        $traderProductRef=TraderProductRef::all()->toArray();
     }
 
     /**
@@ -24,7 +24,7 @@ class TraderProductRefController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,13 @@ class TraderProductRefController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$this->myValidation($request);
+        $ref =new TraderProductRef();
+        $ref->designation = $data['designation'];
+        $ref->description = $data['description'];
+        $ref->image =  file($data['image'])->store('images');
+        $ref->type =  $request->type;
+        $ref->save();
     }
 
     /**
@@ -44,9 +50,9 @@ class TraderProductRefController extends Controller
      * @param  \App\Models\TraderProductRef  $traderProductRef
      * @return \Illuminate\Http\Response
      */
-    public function show(TraderProductRef $traderProductRef)
+    public function show($id)
     {
-        //
+        $traderProductRef=TraderProductRef::find($id);
     }
 
     /**
@@ -55,9 +61,9 @@ class TraderProductRefController extends Controller
      * @param  \App\Models\TraderProductRef  $traderProductRef
      * @return \Illuminate\Http\Response
      */
-    public function edit(TraderProductRef $traderProductRef)
+    public function edit($id)
     {
-        //
+        $traderProductRef=TraderProductRef::find($id);
     }
 
     /**
@@ -67,9 +73,15 @@ class TraderProductRefController extends Controller
      * @param  \App\Models\TraderProductRef  $traderProductRef
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TraderProductRef $traderProductRef)
+    public function update(Request $request, $id)
     {
-        //
+        $data=$this->myValidation($request);
+        $ref =TraderProductRef::find($id);
+        $ref->designation = $data['designation'];
+        $ref->description = $data['description'];
+        $ref->image =  file($data['image'])->store('images');
+        $ref->type =  $request->type;
+        $ref->save();
     }
 
     /**
@@ -78,8 +90,19 @@ class TraderProductRefController extends Controller
      * @param  \App\Models\TraderProductRef  $traderProductRef
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TraderProductRef $traderProductRef)
+    public function destroy($id)
     {
-        //
+        TraderProductRef::find($id)->delete();
+    }
+
+    public function myValidation($request)
+    {
+        $data=$this->validate($request,[
+            'designation'=>'bail|required|max:20',
+            'description'=>'required',
+            'image'=>'bail|required|dimensions:min_width=2000,min_height=2000',
+            'type'=>'required',
+        ]);
+        return $data;
     }
 }

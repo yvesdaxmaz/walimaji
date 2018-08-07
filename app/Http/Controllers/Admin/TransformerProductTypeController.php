@@ -14,7 +14,7 @@ class TransformerProductTypeController extends Controller
      */
     public function index()
     {
-        //
+        $producerProctuctTypes=TransformerProductType::all()->toArray();
     }
 
     /**
@@ -35,7 +35,10 @@ class TransformerProductTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$this->myValidation($request);
+        $type =new TransformerProductType();
+        $type->designation = $data['designation'];
+        $type->save();
     }
 
     /**
@@ -44,9 +47,9 @@ class TransformerProductTypeController extends Controller
      * @param  \App\Models\TransformerProductType  $transformerProductType
      * @return \Illuminate\Http\Response
      */
-    public function show(TransformerProductType $transformerProductType)
+    public function show(  $id)
     {
-        //
+        $transformerProductType=TransformerProductType::find($id);
     }
 
     /**
@@ -55,9 +58,9 @@ class TransformerProductTypeController extends Controller
      * @param  \App\Models\TransformerProductType  $transformerProductType
      * @return \Illuminate\Http\Response
      */
-    public function edit(TransformerProductType $transformerProductType)
+    public function edit( $id  )
     {
-        //
+        $transformerProductType=TransformerProductType::find($id);
     }
 
     /**
@@ -67,9 +70,12 @@ class TransformerProductTypeController extends Controller
      * @param  \App\Models\TransformerProductType  $transformerProductType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TransformerProductType $transformerProductType)
+    public function update(Request $request, $id)
     {
-        //
+        $data=$this->myValidation($request);
+        $type = TransformerProductType::find($id);
+        $type->designation = $data['designation'];
+        $type->save();
     }
 
     /**
@@ -78,8 +84,16 @@ class TransformerProductTypeController extends Controller
      * @param  \App\Models\TransformerProductType  $transformerProductType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TransformerProductType $transformerProductType)
+    public function destroy($id)
     {
-        //
+        TransformerProductType::find($id)->delete();
+    }
+
+    public function myValidation($request)
+    {
+        $data=$this->validate($request,[
+            'designation'=>'bail|required|max:20',
+        ]);
+        return $data;
     }
 }

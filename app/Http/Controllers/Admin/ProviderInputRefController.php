@@ -14,7 +14,7 @@ class ProviderInputRefController extends Controller
      */
     public function index()
     {
-        //
+        $providerInputRef=ProviderInputRef::all()->toArray();
     }
 
     /**
@@ -35,7 +35,13 @@ class ProviderInputRefController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$this->myValidation($request);
+        $ref =new ProviderInputRef();
+        $ref->designation = $data['designation'];
+        $ref->description = $data['description'];
+        $ref->image =  file($data['image'])->store('images');
+        $ref->type =  $request->type;
+        $ref->save();
     }
 
     /**
@@ -44,9 +50,9 @@ class ProviderInputRefController extends Controller
      * @param  \App\Models\ProviderInputRef  $providerInputRef
      * @return \Illuminate\Http\Response
      */
-    public function show(ProviderInputRef $providerInputRef)
+    public function show($id)
     {
-        //
+        $providerInputRef=ProviderInputRef::find($id);
     }
 
     /**
@@ -55,9 +61,9 @@ class ProviderInputRefController extends Controller
      * @param  \App\Models\ProviderInputRef  $providerInputRef
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProviderInputRef $providerInputRef)
+    public function edit($id)
     {
-        //
+        $providerInputRef=ProviderInputRef::find($id);
     }
 
     /**
@@ -67,9 +73,15 @@ class ProviderInputRefController extends Controller
      * @param  \App\Models\ProviderInputRef  $providerInputRef
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProviderInputRef $providerInputRef)
+    public function update(Request $request, $id)
     {
-        //
+        $data=$this->myValidation($request);
+        $ref =ProviderInputRef::find($id);
+        $ref->designation = $data['designation'];
+        $ref->description = $data['description'];
+        $ref->image =  file($data['image'])->store('images');
+        $ref->type =  $request->type;
+        $ref->save();
     }
 
     /**
@@ -78,8 +90,19 @@ class ProviderInputRefController extends Controller
      * @param  \App\Models\ProviderInputRef  $providerInputRef
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProviderInputRef $providerInputRef)
+    public function destroy($id)
     {
-        //
+        ProviderInputRef::find($id)->delete();
+    }
+
+    public function myValidation($request)
+    {
+        $data=$this->validate($request,[
+            'designation'=>'bail|required|max:20',
+            'description'=>'required',
+            'image'=>'bail|required|dimensions:min_width=2000,min_height=2000',
+            'type'=>'required',
+        ]);
+        return $data;
     }
 }
