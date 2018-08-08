@@ -20,11 +20,7 @@
                 <div class="container">
                     <a href="index.html" class="brand-logo">WalimajI</a>
 
-                {{--<!--@if(user.connected === true)-->--}}
-                    <a href="#" data-activates="slide-out" class="button-collapse show-on-large">
-                        <i class="material-icons">menu</i>
-                    </a>
-                {{--<!--@endif-->--}}
+
 
                 {{--<!--@if(!user.connected === true)-->--}}
                     <ul class="right">
@@ -32,8 +28,8 @@
                                 <i class="material-icons right">person_pin</i></a></li>
                     </ul>
                     <ul id="dropdown-login" class="dropdown-content">
-                        <li><a href="../modules.auth/login.html">Connexion</a></li>
-                        <li><a href="../modules.auth/sign.html">Inscription</a></li>
+                        <li><a href="{{route('login')}}">Connexion</a></li>
+                        <li><a href="{{route('register')}}">Inscription</a></li>
                     </ul>
                 {{--<!--@endif-->--}}
                 </div>
@@ -59,41 +55,7 @@
 
     <!--////////////////////////////////////// sidebar /////////////////////////////////////////////-->
 {{--<!--@if(user.connected === true)-->--}}
-    <ul id="slide-out" class="side-nav">
-        <li>
-            <div class="user-view">
-                <div class="background">
-                    <img src="../../images/default-cover.jpg" class="responsive-img">
-                </div>
-                <a href="#!user">
-                    <img class="circle" src="../../images/profile.png">
-                </a>
-                <a href="#!name">
-                    <span class="white-text name">username</span>
-                </a>
-                <a href="#!email">
-                    <span class="white-text email">user@mail.com</span>
-                </a>
-            </div>
-        </li>
-        <li>
-            <a href="#!">
-                <i class="material-icons">person</i>mon profile</a>
-        </li>
-        <li>
-            <a href="#!">
-                <i class="material-icons">show_chart</i> Mes activités</a>
-        </li>
-        <li>
-            <a href="#!">
-                <i class="material-icons">maps</i> Carte</a>
-        </li>
-        <li>
-            <a href="#!">
-                <i class="material-icons">settings</i>Paramètres
-            </a>
-        </li>
-    </ul>
+
     <!--////////////////////////////////////// sidebar /////////////////////////////////////////////-->
 </header>
 <main>
