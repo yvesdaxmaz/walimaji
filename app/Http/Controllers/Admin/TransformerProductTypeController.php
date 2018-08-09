@@ -47,7 +47,7 @@ class TransformerProductTypeController extends Controller
      * @param  \App\Models\TransformerProductType  $transformerProductType
      * @return \Illuminate\Http\Response
      */
-    public function show(  $id)
+    public function show($id)
     {
         $transformerProductType=TransformerProductType::find($id);
     }
@@ -58,7 +58,7 @@ class TransformerProductTypeController extends Controller
      * @param  \App\Models\TransformerProductType  $transformerProductType
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id  )
+    public function edit($id)
     {
         $transformerProductType=TransformerProductType::find($id);
     }
@@ -91,7 +91,7 @@ class TransformerProductTypeController extends Controller
 
     public function myValidation($request)
     {
-        $data=$this->validate($request,[
+        $data=$this->validate($request, [
             'designation'=>'bail|required|max:20',
         ]);
         return $data;

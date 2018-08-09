@@ -24,7 +24,6 @@ class ProducerProctuctTypeController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -91,7 +90,7 @@ class ProducerProctuctTypeController extends Controller
 
     public function myValidation($request)
     {
-        $data=$this->validate($request,[
+        $data=$this->validate($request, [
             'designation'=>'bail|required|max:20',
          ]);
         return $data;

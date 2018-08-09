@@ -15,8 +15,8 @@ class UserAdressController extends Controller
     public function index()
     {
         $list_Adresses = DB::table('user_adresses')
-            ->select('*','users.name')
-            ->join('users','user_adresse.user_id','=','users.id')
+            ->select('*', 'users.name')
+            ->join('users', 'user_adresse.user_id', '=', 'users.id')
             ->get();
         dd($list_Adresses);
 

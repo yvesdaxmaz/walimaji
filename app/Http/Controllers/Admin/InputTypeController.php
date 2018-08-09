@@ -91,7 +91,7 @@ class InputTypeController extends Controller
 
     public function myValidation($request)
     {
-        $data=$this->validate($request,[
+        $data=$this->validate($request, [
             'designation'=>'required'
          ]);
         return $data;

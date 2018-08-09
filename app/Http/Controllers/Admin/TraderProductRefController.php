@@ -24,7 +24,6 @@ class TraderProductRefController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -97,7 +96,7 @@ class TraderProductRefController extends Controller
 
     public function myValidation($request)
     {
-        $data=$this->validate($request,[
+        $data=$this->validate($request, [
             'designation'=>'bail|required|max:20',
             'description'=>'required',
             'image'=>'bail|required|dimensions:min_width=2000,min_height=2000',

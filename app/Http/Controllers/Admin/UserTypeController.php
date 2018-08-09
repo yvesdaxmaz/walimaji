@@ -56,7 +56,6 @@ class UserTypeController extends Controller
         $type->description = $request->description;
         $type->icon = $request->file('icon')->store('icons');
         $type->save();
-
     }
 
     public function destroy($id)
@@ -66,11 +65,10 @@ class UserTypeController extends Controller
 
     public function myValidation($request)
     {
-        $data=$this->validate($request,[
+        $data=$this->validate($request, [
             'designation'=>'bail|required|max:20',
             'icon'=>'bail|dimensions:max_width=200,max_height=200',
         ]);
         return $data;
     }
-
 }

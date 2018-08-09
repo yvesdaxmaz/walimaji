@@ -47,7 +47,7 @@ class TraderProductTypeController extends Controller
      * @param  \App\Models\TraderProductType  $traderProductType
      * @return \Illuminate\Http\Response
      */
-    public function show( $id  )
+    public function show($id)
     {
         $traderProductType=TraderProductType::find($id);
     }
@@ -58,7 +58,7 @@ class TraderProductTypeController extends Controller
      * @param  \App\Models\TraderProductType  $traderProductType
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id )
+    public function edit($id)
     {
         $traderProductType=TraderProductType::find($id);
     }
@@ -70,7 +70,7 @@ class TraderProductTypeController extends Controller
      * @param  \App\Models\TraderProductType  $traderProductType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $data=$this->myValidation($request);
         $type = TraderProductType::find($id);
@@ -84,14 +84,14 @@ class TraderProductTypeController extends Controller
      * @param  \App\Models\TraderProductType  $traderProductType
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id )
+    public function destroy($id)
     {
         TraderProductType::find($id);
     }
 
     public function myValidation($request)
     {
-        $data=$this->validate($request,[
+        $data=$this->validate($request, [
             'designation'=>'bail|required|max:20',
          ]);
         return $data;

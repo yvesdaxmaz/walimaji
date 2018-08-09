@@ -51,7 +51,7 @@ class TransformerProductRefController extends Controller
      * @param  \App\Models\TransformerProductRef  $transformerProductRef
      * @return \Illuminate\Http\Response
      */
-    public function show( $id)
+    public function show($id)
     {
         $transformerProductRef=TransformerProductRef::find($id);
     }
@@ -62,7 +62,7 @@ class TransformerProductRefController extends Controller
      * @param  \App\Models\TransformerProductRef  $transformerProductRef
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id )
+    public function edit($id)
     {
         $transformerProductRef=TransformerProductRef::find($id);
     }
@@ -85,14 +85,14 @@ class TransformerProductRefController extends Controller
      * @param  \App\Models\TransformerProductRef  $transformerProductRef
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
         TransformerProductRef::find($id);
     }
 
     public function myValidation($request)
     {
-        $data=$this->validate($request,[
+        $data=$this->validate($request, [
             'designation'=>'bail|required|max:20',
             'description'=>'required',
             'image'=>'bail|required|dimensions:min_width=2000,min_height=2000',

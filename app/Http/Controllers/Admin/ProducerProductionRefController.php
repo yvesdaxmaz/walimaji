@@ -73,7 +73,7 @@ class ProducerProductionRefController extends Controller
      * @param  \App\Models\ProducerProductionRef  $producerProductionRef
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $data=$this->myValidation($request);
         $ref =ProducerProductionRef::find($id);
@@ -97,7 +97,7 @@ class ProducerProductionRefController extends Controller
 
     public function myValidation($request)
     {
-        $data=$this->validate($request,[
+        $data=$this->validate($request, [
             'designation'=>'bail|required|max:20',
             'description'=>'required',
             'image'=>'bail|required|dimensions:min_width=2000,min_height=2000',

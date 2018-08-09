@@ -16,29 +16,29 @@ class welcomeController extends Controller
     public function index()
     {
         $list_provider = DB::table('user_adresses')
-            ->select('*','users.name')
-            ->join('users','user_adresses.user_id','=','users.id')
+            ->select('*', 'users.name')
+            ->join('users', 'user_adresses.user_id', '=', 'users.id')
             ->where(['users.type_id' => '1'])
             ->get();
         $list_producer = DB::table('user_adresses')
-            ->select('*','users.name')
-            ->join('users','user_adresses.user_id','=','users.id')
+            ->select('*', 'users.name')
+            ->join('users', 'user_adresses.user_id', '=', 'users.id')
             ->where(['users.type_id' => '2'])
             ->get();
         $list_transformer = DB::table('user_adresses')
-            ->select('*','users.name')
-            ->join('users','user_adresses.user_id','=','users.id')
+            ->select('*', 'users.name')
+            ->join('users', 'user_adresses.user_id', '=', 'users.id')
             ->where(['users.type_id' => '3'])
             ->get();
         $list_trader = DB::table('user_adresses')
-            ->select('*','users.name')
-            ->join('users','user_adresses.user_id','=','users.id')
+            ->select('*', 'users.name')
+            ->join('users', 'user_adresses.user_id', '=', 'users.id')
             ->where(['users.type_id' => '4'])
             ->get();
        // dd($list_Adresses);
 
 
-        return view('welcome', compact('list_provider','list_producer','list_transformer','list_trader'));
+        return view('welcome', compact('list_provider', 'list_producer', 'list_transformer', 'list_trader'));
     }
 
     /**

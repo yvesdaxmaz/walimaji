@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{{asset("assets/leaflet/dist/leaflet.css")}}"/>
     <script src="{{"assets/leaflet/dist/leaflet.js"}}"></script>
 </head>
-
 <body>
 <!--/////////////////////////////// map header here ///////////////////////////////-->
 <header id="map-header" class="map-header">
