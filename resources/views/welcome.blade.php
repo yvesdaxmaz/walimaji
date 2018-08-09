@@ -66,7 +66,7 @@
     <!--//////////////////////////////////////////  maps should be generated here///////////////////////////////-->
     <div id="tab-map1">
         <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map" style="width: 100%; height: 550px"></div>
+            <div class="map-container-content" id="map1" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -77,7 +77,7 @@
     </div>
     <div id="tab-map2" class="col s12">
         <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map" style="width: 100%; height: 550px"></div>
+            <div class="map-container-content" id="map2" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -88,7 +88,7 @@
     </div>
     <div id="tab-map3" class="col s12">
         <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map" style="width: 100%; height: 550px"></div>
+            <div class="map-container-content" id="map3" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -99,7 +99,7 @@
     </div>
     <div id="tab-map4" class="col s12">
         <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map" style="width: 100%; height: 550px"></div>
+            <div class="map-container-content" id="map4" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -150,7 +150,10 @@
 <script src="{{ asset("assets/js/bin/materialize.min.js")  }}"></script>
 <script src="{{ asset("assets/js/bin/app.init.js") }}"></script>
 <script>
-    var companies = JSON.parse( '<?php echo $list_producer ?>' );
+    var trader = JSON.parse( '<?php echo $list_trader ?>' );
+    var producer = JSON.parse( '<?php echo $list_producer ?>' );
+    var provider = JSON.parse( '<?php echo $list_provider ?>' );
+    var transformer = JSON.parse( '<?php echo $list_transformer ?>' );
 </script>
 <script src="{{ asset("assets/js/bin/map.js") }}"></script>
 

@@ -30,7 +30,7 @@ class welcomeController extends Controller
             ->join('users','user_adresses.user_id','=','users.id')
             ->where(['users.type_id' => '3'])
             ->get();
-        $list_traders = DB::table('user_adresses')
+        $list_trader = DB::table('user_adresses')
             ->select('*','users.name')
             ->join('users','user_adresses.user_id','=','users.id')
             ->where(['users.type_id' => '4'])
@@ -38,7 +38,7 @@ class welcomeController extends Controller
        // dd($list_Adresses);
 
 
-        return view('welcome', compact('list_provider','list_producer','list_transformer','list_traders'));
+        return view('welcome', compact('list_provider','list_producer','list_transformer','list_trader'));
     }
 
     /**
