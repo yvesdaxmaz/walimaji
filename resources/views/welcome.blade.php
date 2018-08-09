@@ -9,6 +9,10 @@
     <title>walimaji maps</title>
 
     <link rel="stylesheet" href="{{ asset("assets/css/style.css")  }}">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="{{asset("assets/leaflet/dist/leaflet.css")}}"/>
+    <script src="{{"assets/leaflet/dist/leaflet.js"}}"></script>
 </head>
 
 <body>
@@ -18,7 +22,7 @@
         <nav class="nav-extended">
             <div class="nav-wrapper teal z-depth-3">
                 <div class="container">
-                    <a href="index.html" class="brand-logo">WalimajI</a>
+                    <a href="index.html" class="brand-logo">Walimaji</a>
 
 
 
@@ -62,9 +66,7 @@
     <!--//////////////////////////////////////////  maps should be generated here///////////////////////////////-->
     <div id="tab-map1">
         <div class="map-container z-depth-3">
-            <iframe class="map-container-content" id="map1"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
-                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-container-content" id="map1" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -75,9 +77,7 @@
     </div>
     <div id="tab-map2" class="col s12">
         <div class="map-container z-depth-3">
-            <iframe class="map-container-content" id="map2"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
-                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-container-content" id="map2" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -88,9 +88,7 @@
     </div>
     <div id="tab-map3" class="col s12">
         <div class="map-container z-depth-3">
-            <iframe class="map-container-content" id="map3"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
-                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-container-content" id="map3" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -101,9 +99,7 @@
     </div>
     <div id="tab-map4" class="col s12">
         <div class="map-container z-depth-3">
-            <iframe class="map-container-content" id="map4"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
-                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-container-content" id="map4" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -147,9 +143,20 @@
         </div>
     </div>
 </footer>
+
+
+
 <script src="{{ asset("assets/js/bin/jquery.min.js") }}"></script>
 <script src="{{ asset("assets/js/bin/materialize.min.js")  }}"></script>
 <script src="{{ asset("assets/js/bin/app.init.js") }}"></script>
+<script>
+    var trader = JSON.parse( '<?php echo $list_trader ?>' );
+    var producer = JSON.parse( '<?php echo $list_producer ?>' );
+    var provider = JSON.parse( '<?php echo $list_provider ?>' );
+    var transformer = JSON.parse( '<?php echo $list_transformer ?>' );
+</script>
+<script src="{{ asset("assets/js/bin/map.js") }}"></script>
+
 </body>
 
 </html>
