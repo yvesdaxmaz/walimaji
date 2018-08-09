@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Actor;
 
-use App\Models\ProviderInputRef;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class ProviderInputRefController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,10 @@ class ProviderInputRefController extends Controller
      */
     public function index()
     {
-        $providerInputRef=ProviderInputRef::all()->toArray();
+        $products=DB::table('products')
+            ->where('id',Auth::id())
+            ->get()
+            ->toArray();
     }
 
     /**
@@ -36,72 +42,74 @@ class ProviderInputRefController extends Controller
     public function store(Request $request)
     {
         $data=$this->myValidation($request);
-        $ref =new ProviderInputRef();
-        $ref->designation = $data['designation'];
-        $ref->description = $data['description'];
-        $ref->image =  file($data['image'])->store('images');
-        $ref->type =  $request->type;
-        $ref->save();
+        $product =new Product();
+        $product->quantity = $data['quantity'];
+        $product->description = $request->description;
+        $product->idRef =  $request->idRef;
+        $product->idActor =  $request->idActor;
+        $product->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProviderInputRef  $providerInputRef
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $providerInputRef=ProviderInputRef::find($id);
+        $product=Product::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProviderInputRef  $providerInputRef
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $providerInputRef=ProviderInputRef::find($id);
+        $product=Product::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProviderInputRef  $providerInputRef
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $data=$this->myValidation($request);
-        $ref =ProviderInputRef::find($id);
-        $ref->designation = $data['designation'];
-        $ref->description = $data['description'];
-        $ref->image =  file($data['image'])->store('images');
-        $ref->type =  $request->type;
-        $ref->save();
+        $product =Product::find($id);
+        $product->quantity = $data['quantity'];
+        $product->description = $request->description;
+        $product->idRef =  $request->idRef;
+        $product->idActor =  $request->idActor;
+        $product->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProviderInputRef  $providerInputRef
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        ProviderInputRef::find($id)->delete();
+        Product::find($id)->delete();
     }
 
     public function myValidation($request)
     {
+<<<<<<< HEAD:app/Http/Controllers/Admin/TransformerProductTypeController.php
         $data=$this->validate($request, [
             'designation'=>'bail|required|max:20',
-            'description'=>'required',
-            'image'=>'bail|required|dimensions:min_width=2000,min_height=2000',
-            'type'=>'required',
+=======
+        $data=$this->validate($request,[
+            'quantity'=>'numeric'
+>>>>>>> 2ab1671b474f67ab578c1a5583b143e5dd2905b0:app/Http/Controllers/Actor/ProductController.php
         ]);
         return $data;
     }

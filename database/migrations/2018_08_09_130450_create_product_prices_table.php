@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProviderInputPricesTable extends Migration
+class CreateProductPricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,17 @@ class CreateProviderInputPricesTable extends Migration
      */
     public function up()
     {
-        Schema::create('provider_input_prices', function (Blueprint $table) {
+        Schema::create('product_prices', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_general_ci';
+
             $table->increments('id');
             $table->double('priceWithTax');
             $table->double('priceWithoutTax');
             $table->dateTime('dateTime');
-            $table->integer('idProduction')->references('id')->on('provider_inputs')->onDelete('restrict');
-            $table->integer('idProvider');
+            $table->integer('idProduct')->references('id')->on('products')->onDelete('restrict');
+            $table->integer('idActor')->references('id')->on('users')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -31,6 +35,6 @@ class CreateProviderInputPricesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provider_input_prices');
+        Schema::dropIfExists('product_prices');
     }
 }

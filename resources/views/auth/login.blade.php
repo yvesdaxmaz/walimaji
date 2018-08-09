@@ -1,11 +1,25 @@
-@extends('layouts.auth')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+
+
+<!--/// !!! Important -- import the background on the body ///-->
+
+<body class="form-background">
+
+<main>
     <div class="container">
         <div class="row col l4 m4 s12">
             <div class="form-title center-align">
                 <h2 class="hero-title">
-                    <a href="/" class="white-text">Walimaji</a>
+                    <a href="#" class="white-text">Walimaji</a>
                 </h2>
                 <p class="white-text light">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut eos expedita facere, fugit
@@ -61,7 +75,7 @@
 
                     <div class="row">
                         <div class="col s12">
-                            <a href="{{ route("register") }}">Créer un compte</a>
+                            <a href="{{ route("register_") }}">Créer un compte</a>
                             <a href="{{ route('password.request') }}" class="forgot">Mot de passe oublié</a>
                         </div>
                     </div>
@@ -69,4 +83,23 @@
             </div>
         </div>
     </div>
-@endsection
+
+</main>
+
+
+<!-- ////////////////////////////// footer here /////////////////////////////////////////////////// -->
+<footer class="page-footer transparent">
+    <div class="footer-copyright transparent">
+        <div class="container">
+            © 2018 Copyright walimaji.org
+            <a class="grey-text text-lighten-4 right" href="https://github.com/itotafrica/walimaji">code source</a>
+        </div>
+    </div>
+</footer>
+<script src=../../assets/js/bin/jquery.min.js></script>
+<script src="../../assets/js/bin/materialize.min.js"></script>
+<script src="../../assets/js/bin/app.init.js"></script>
+<!-- ////////////////////////////// footer here /////////////////////////////////////////////////// -->
+</body>
+
+</html>

@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TraderProductRef extends Model
+class Product extends Model
 {
     protected $fillable=[
-        'designation','description','image','type'
+        'quantity','description','idRef','idActor'
     ];
 }

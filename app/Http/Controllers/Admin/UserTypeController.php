@@ -17,7 +17,8 @@ class UserTypeController extends Controller
 
     public function index()
     {
-        $types=UserType::all()->toArray();
+        $typeList=UserType::all()->toArray();
+        return view('auth.register', compact('typeList'));
     }
 
 

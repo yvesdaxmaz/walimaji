@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique()->nullable();
             $table->string('password');
             $table->integer('type_id')->references('id')->on('user_types')->onDelete('restrict');
-            $table->string('profil_image')->nullable();
+            $table->string('image')->nullable();
             $table->string('facebook')->nullable();
             $table->string('tittwer')->nullable();
             $table->string('instragram')->nullable();

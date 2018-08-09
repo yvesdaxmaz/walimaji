@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\InputType;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class InputTypeController extends Controller
+class ProductTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class InputTypeController extends Controller
      */
     public function index()
     {
-        $types=InputType::all()->toArray();
+        $productTypes=ProductType::all()->toArray();
     }
 
     /**
@@ -24,7 +25,7 @@ class InputTypeController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -36,52 +37,54 @@ class InputTypeController extends Controller
     public function store(Request $request)
     {
         $data = $this->myValidation($request);
-        $type = new InputType();
+        $type = new ProductType();
         $type->designation = $data['designation'];
+        $type->idActor=$request->idActor;
         $type->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\InputType  $inputType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $type=InputType::find(id);
+        $productType=ProductType::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\InputType  $inputType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $types=InputType::find($id);
+        $productType=ProductType::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InputType  $inputType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $data=$this->myValidation($request);
-        $type = InputType::find($id);
+        $data = $this->myValidation($request);
+        $type =ProductType::find($id);
         $type->designation = $data['designation'];
+        $type->idActor=$request->idActor;
         $type->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\InputType  $inputType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

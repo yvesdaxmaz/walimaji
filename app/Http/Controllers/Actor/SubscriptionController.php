@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
@@ -14,7 +16,25 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-        //
+
+    }
+
+    public function getSubscrubers()
+    {
+        $users = DB::table('subscriptions')
+            ->join('users', 'users.id', '=', 'subscriptions.idsubscriber')
+            ->select('users.*')
+            ->where('subscriptions.idActor','=',Auth::id())
+            ->get();
+    }
+
+    public function getSubscriptions()
+    {
+        $users = DB::table('subscriptions')
+            ->join('users', 'users.id', '=', 'subscriptions.idActor')
+            ->select('users.*')
+            ->where('subscriptions.idsubscriber','=',Auth::id())
+            ->get();
     }
 
     /**
@@ -35,7 +55,10 @@ class SubscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $subscription= new Subscription();
+        $subscription->idsubscriber=$request->idsubscriber;
+        $subscription->idActor=Auth::id();
+        $subscription->save();
     }
 
     /**
@@ -78,8 +101,9 @@ class SubscriptionController extends Controller
      * @param  \App\Models\Subscription  $subscription
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subscription $subscription)
+    public function destroy($id)
     {
-        //
+        DB::table('subscriptions')
+            ->where(['idActor'=>$id,'idsubscriber'=>Auth::id()]);
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Actor;
 
-use App\Models\ProducerProctuctType;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ProducerProctuctTypeController extends Controller
+class ProductPriceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,10 @@ class ProducerProctuctTypeController extends Controller
      */
     public function index()
     {
-        $producerProctuctTypes=ProducerProctuctType::all()->toArray();
+        $productPrices=DB::table('product_prices')
+                        ->where('actor_id','=',Auth::id())
+                        ->orderBy('id','desc')
+                        ->first();
     }
 
     /**
@@ -24,6 +27,10 @@ class ProducerProctuctTypeController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD:app/Http/Controllers/Admin/ProducerProctuctTypeController.php
+=======
+        //
+>>>>>>> 2ab1671b474f67ab578c1a5583b143e5dd2905b0:app/Http/Controllers/Actor/ProductPriceController.php
     }
 
     /**
@@ -35,64 +42,73 @@ class ProducerProctuctTypeController extends Controller
     public function store(Request $request)
     {
         $data=$this->myValidation($request);
-        $type =new ProductType;
-        $type->designation = $data['designation'];
-        $type->save();
+        $price= new ProductPrice();
+        $price->idProduct=$request->idProduct;
+        $price->idActor=$request->idActor;
+        $price->price_with_tax=$data['price_with_tax'];
+        $price->price_without_tax=$data['price_without_tax'];
+        $price->date_time=$data['date_time'];
+        $price->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProducerProctuctType  $producerProctuctType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $producerProctuctType=ProducerProctuctType::find($id);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProducerProctuctType  $producerProctuctType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $producerProctuctType=ProducerProctuctType::find($id);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProducerProctuctType  $producerProctuctType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $data=$this->myValidation($request);
-        $type = ProducerProctuctType::find($id);
-        $type->designation = $data['designation'];
-        $type->save();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProducerProctuctType  $producerProctuctType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        ProducerProctuctType::find($id)->delete();
+        //
     }
 
     public function myValidation($request)
     {
+<<<<<<< HEAD:app/Http/Controllers/Admin/ProducerProctuctTypeController.php
         $data=$this->validate($request, [
             'designation'=>'bail|required|max:20',
          ]);
+=======
+        $data=$this->validate($request,[
+            'price_with_tax'=>'bail|required|numeric',
+            'price_without_tax'=>'bail|required|numeric',
+            'date_time'=>'bail|required',
+        ]);
+>>>>>>> 2ab1671b474f67ab578c1a5583b143e5dd2905b0:app/Http/Controllers/Actor/ProductPriceController.php
         return $data;
     }
 }

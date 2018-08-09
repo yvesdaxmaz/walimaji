@@ -45,8 +45,12 @@ class UserUpdate extends Controller
 
         $user=User::find($id);
         $user->name=$data['name'];
-        $user->description=$data['description'];
+        $user->description=$request->description;
+        $user->facebook=$request->facebook;
+        $user->tittwer=$request->tittwer;
+        $user->instagram=$request->instagram;
         $user->phone=$data['phone'];
+        $user->image=file($data['image'])->store('images');
         $user->save();
     }
 
@@ -61,8 +65,8 @@ class UserUpdate extends Controller
     {
         $data=$this->validate($request, [
             'name'=>'bail|required|max:20',
-            'description'=>'max:250',
-            'phone'=>'bail|required',
+            'phone'=>'numeric',
+            'image'=>'bail|mines:jpeg,png|dimensions:min_width=100, max_width=2000, min_height=100, max_height=2000',
         ]);
         return $data;
     }

@@ -10,9 +10,13 @@ class CreateSubscriptionsTable extends Migration
     public function up()
     {
         Schema::create('subscriptions', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_general_ci';
+
             $table->increments('id');
-            $table->string('idsubscriber');
-            $table->string('idActor');
+            $table->string('idsubscriber')->references('id')->on('users')->onDelete('restrict');
+            $table->string('idActor')->references('id')->on('users')->onDelete('restrict');
             $table->timestamps();
         });
     }
