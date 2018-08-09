@@ -13,9 +13,10 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
+Route::get('/register_', 'Admin\UserTypeController@index')->name('register_');;
 
 Route::get('/home', 'HomeController@index')->name('home');
 

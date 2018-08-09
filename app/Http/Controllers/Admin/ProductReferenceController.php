@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\TraderProductRef;
-use App\Models\TransformerProductRef;
+use App\Models\ProductReference;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class TransformerProductRefController extends Controller
+class ProductReferenceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class TransformerProductRefController extends Controller
      */
     public function index()
     {
-        $transformerProductRefs=TransformerProductRef::all()->toArray();
+        $productReferences=ProductReference::all()->toArray();
     }
 
     /**
@@ -25,7 +25,7 @@ class TransformerProductRefController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -37,57 +37,65 @@ class TransformerProductRefController extends Controller
     public function store(Request $request)
     {
         $data=$this->myValidation($request);
-        $ref =new TransformerProductRef();
+        $ref =new ProductReference();
         $ref->designation = $data['designation'];
         $ref->description = $data['description'];
         $ref->image =  file($data['image'])->store('images');
         $ref->type =  $request->type;
+        $ref->idActor =  $request->idActor;
         $ref->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TransformerProductRef  $transformerProductRef
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( $id)
+    public function show($id)
     {
-        $transformerProductRef=TransformerProductRef::find($id);
+        $productReference=ProductReference::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TransformerProductRef  $transformerProductRef
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id )
+    public function edit($id)
     {
-        $transformerProductRef=TransformerProductRef::find($id);
+        $productReference=ProductReference::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TransformerProductRef  $transformerProductRef
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=$this->myValidation($request);
+        $ref =ProductReference::find($id);
+        $ref->designation = $data['designation'];
+        $ref->description = $data['description'];
+        $ref->image =  file($data['image'])->store('images');
+        $ref->type =  $request->type;
+        $ref->idActor =  $request->idActor;
+        $ref->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TransformerProductRef  $transformerProductRef
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
-        TransformerProductRef::find($id);
+        //
     }
 
     public function myValidation($request)

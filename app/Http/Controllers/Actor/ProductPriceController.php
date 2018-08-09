@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Actor;
 
-use App\Models\InputType;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class InputTypeController extends Controller
+class ProductPriceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,10 @@ class InputTypeController extends Controller
      */
     public function index()
     {
-        $types=InputType::all()->toArray();
+        $productPrices=DB::table('product_prices')
+                        ->where('actor_id','=',Auth::id())
+                        ->orderBy('id','desc')
+                        ->first();
     }
 
     /**
@@ -35,65 +38,68 @@ class InputTypeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $this->myValidation($request);
-        $type = new InputType();
-        $type->designation = $data['designation'];
-        $type->save();
+        $data=$this->myValidation($request);
+        $price= new ProductPrice();
+        $price->idProduct=$request->idProduct;
+        $price->idActor=$request->idActor;
+        $price->price_with_tax=$data['price_with_tax'];
+        $price->price_without_tax=$data['price_without_tax'];
+        $price->date_time=$data['date_time'];
+        $price->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\InputType  $inputType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $type=InputType::find(id);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\InputType  $inputType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $types=InputType::find($id);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InputType  $inputType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $data=$this->myValidation($request);
-        $type = InputType::find($id);
-        $type->designation = $data['designation'];
-        $type->save();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\InputType  $inputType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        InputType::find($id)->delete();
+        //
     }
 
     public function myValidation($request)
     {
         $data=$this->validate($request,[
-            'designation'=>'required'
-         ]);
+            'price_with_tax'=>'bail|required|numeric',
+            'price_without_tax'=>'bail|required|numeric',
+            'date_time'=>'bail|required',
+        ]);
         return $data;
     }
 }

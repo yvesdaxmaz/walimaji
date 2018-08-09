@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Actor;
 
-use App\Models\TransformerProductType;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class TransformerProductTypeController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,10 @@ class TransformerProductTypeController extends Controller
      */
     public function index()
     {
-        $producerProctuctTypes=TransformerProductType::all()->toArray();
+        $products=DB::table('products')
+            ->where('id',Auth::id())
+            ->get()
+            ->toArray();
     }
 
     /**
@@ -36,63 +42,69 @@ class TransformerProductTypeController extends Controller
     public function store(Request $request)
     {
         $data=$this->myValidation($request);
-        $type =new TransformerProductType();
-        $type->designation = $data['designation'];
-        $type->save();
+        $product =new Product();
+        $product->quantity = $data['quantity'];
+        $product->description = $request->description;
+        $product->idRef =  $request->idRef;
+        $product->idActor =  $request->idActor;
+        $product->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TransformerProductType  $transformerProductType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(  $id)
+    public function show($id)
     {
-        $transformerProductType=TransformerProductType::find($id);
+        $product=Product::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TransformerProductType  $transformerProductType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id  )
+    public function edit($id)
     {
-        $transformerProductType=TransformerProductType::find($id);
+        $product=Product::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TransformerProductType  $transformerProductType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $data=$this->myValidation($request);
-        $type = TransformerProductType::find($id);
-        $type->designation = $data['designation'];
-        $type->save();
+        $product =Product::find($id);
+        $product->quantity = $data['quantity'];
+        $product->description = $request->description;
+        $product->idRef =  $request->idRef;
+        $product->idActor =  $request->idActor;
+        $product->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TransformerProductType  $transformerProductType
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        TransformerProductType::find($id)->delete();
+        Product::find($id)->delete();
     }
 
     public function myValidation($request)
     {
         $data=$this->validate($request,[
-            'designation'=>'bail|required|max:20',
+            'quantity'=>'numeric'
         ]);
         return $data;
     }

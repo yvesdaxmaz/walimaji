@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProducerProctuctType extends Model
+class ProductPrice extends Model
 {
     protected $fillable=[
-        'designation'
+        'priceWithTax','priceWithoutTax','dateTime','idProduct','idActor'
     ];
 }

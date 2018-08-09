@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\TransformerProductPrice;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class TransformerProductPriceController extends Controller
+class ProductTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class TransformerProductPriceController extends Controller
      */
     public function index()
     {
-        //
+        $productTypes=ProductType::all()->toArray();
     }
 
     /**
@@ -24,7 +25,7 @@ class TransformerProductPriceController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,50 +36,58 @@ class TransformerProductPriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->myValidation($request);
+        $type = new ProductType();
+        $type->designation = $data['designation'];
+        $type->idActor=$request->idActor;
+        $type->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TransformerProductPrice  $transformerProductPrice
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(TransformerProductPrice $transformerProductPrice)
+    public function show($id)
     {
-        //
+        $productType=ProductType::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TransformerProductPrice  $transformerProductPrice
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(TransformerProductPrice $transformerProductPrice)
+    public function edit($id)
     {
-        //
+        $productType=ProductType::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TransformerProductPrice  $transformerProductPrice
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TransformerProductPrice $transformerProductPrice)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $this->myValidation($request);
+        $type =ProductType::find($id);
+        $type->designation = $data['designation'];
+        $type->idActor=$request->idActor;
+        $type->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TransformerProductPrice  $transformerProductPrice
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TransformerProductPrice $transformerProductPrice)
+    public function destroy($id)
     {
         //
     }

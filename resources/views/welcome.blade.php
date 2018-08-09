@@ -29,7 +29,7 @@
                     </ul>
                     <ul id="dropdown-login" class="dropdown-content">
                         <li><a href="{{route('login')}}">Connexion</a></li>
-                        <li><a href="{{route('register')}}">Inscription</a></li>
+                        <li><a href="{{route('register_')}}">Inscription</a></li>
                     </ul>
                 {{--<!--@endif-->--}}
                 </div>
