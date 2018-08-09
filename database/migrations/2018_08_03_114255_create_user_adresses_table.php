@@ -15,6 +15,10 @@ class CreateUserAdressesTable extends Migration
     {
         Schema::create('user_adresses', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->references('id')->on('users');
+            $table->string('latitude');
+            $table->string('longitude');
+            $table->string('adresse');
             $table->timestamps();
         });
     }

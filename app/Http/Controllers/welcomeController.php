@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\UserAdress;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class UserAdressController extends Controller
+class welcomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,21 +15,31 @@ class UserAdressController extends Controller
      */
     public function index()
     {
-        $list_Adresses = DB::table('user_adresses')
+        $list_provider = DB::table('user_adresses')
             ->select('*','users.name')
-            ->join('users','user_adresse.user_id','=','users.id')
+            ->join('users','user_adresses.user_id','=','users.id')
+            ->where(['users.type_id' => '1'])
             ->get();
-        dd($list_Adresses);
+        $list_producer = DB::table('user_adresses')
+            ->select('*','users.name')
+            ->join('users','user_adresses.user_id','=','users.id')
+            ->where(['users.type_id' => '2'])
+            ->get();
+        $list_transformer = DB::table('user_adresses')
+            ->select('*','users.name')
+            ->join('users','user_adresses.user_id','=','users.id')
+            ->where(['users.type_id' => '3'])
+            ->get();
+        $list_traders = DB::table('user_adresses')
+            ->select('*','users.name')
+            ->join('users','user_adresses.user_id','=','users.id')
+            ->where(['users.type_id' => '4'])
+            ->get();
+       // dd($list_Adresses);
 
-        return view('welcome', compact('list_Adresses'));
-        //
+
+        return view('welcome', compact('list_provider','list_producer','list_transformer','list_traders'));
     }
-    public function test()
-    {
-
-        //
-    }
-
 
     /**
      * Show the form for creating a new resource.
@@ -54,10 +65,10 @@ class UserAdressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UserAdress  $userAdress
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(UserAdress $userAdress)
+    public function show($id)
     {
         //
     }
@@ -65,10 +76,10 @@ class UserAdressController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UserAdress  $userAdress
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserAdress $userAdress)
+    public function edit($id)
     {
         //
     }
@@ -77,10 +88,10 @@ class UserAdressController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\UserAdress  $userAdress
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserAdress $userAdress)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -88,10 +99,10 @@ class UserAdressController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UserAdress  $userAdress
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserAdress $userAdress)
+    public function destroy($id)
     {
         //
     }
