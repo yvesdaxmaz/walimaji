@@ -11,15 +11,7 @@
 |
 */
 
-<<<<<<< HEAD
 Route::get('/', 'welcomeController@index');
-=======
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
-
-Route::get('/','welcomeController@index');
->>>>>>> 2ab1671b474f67ab578c1a5583b143e5dd2905b0
 
 Auth::routes();
 Route::get('/register_', 'Admin\UserTypeController@index')->name('register_');;
