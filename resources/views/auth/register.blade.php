@@ -19,7 +19,7 @@
         <div class="row col l4 m4 s12">
             <div class="form-title center-align">
                 <h2 class="hero-title">
-                    <a href="{{ route('welcome') }}" class="white-text">Walimaji</a>
+                    <a href="" class="white-text">Walimaji</a>
                 </h2>
                 <p class="white-text light">
                     Lorem ipsum dolor sit amet, consectetur adipisicing

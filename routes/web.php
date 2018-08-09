@@ -11,13 +11,11 @@
 |
 */
 
-<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-=======
+
 Route::get('/','welcomeController@index');
->>>>>>> 02e3a77156bd1074832905e60a770f9e2f2fcede
 
 Auth::routes();
 Route::get('/register_', 'Admin\UserTypeController@index')->name('register_');;

@@ -19,7 +19,7 @@ class CreateUserAdressesTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('user_id')->references('id')->on('users');
+            $table->integer('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->string('latitude');
             $table->string('longitude');
             $table->string('adresse');
