@@ -22,7 +22,7 @@
         <nav class="nav-extended">
             <div class="nav-wrapper teal z-depth-3">
                 <div class="container">
-                    <a href="index.html" class="brand-logo">WalimajI</a>
+                    <a href="index.html" class="brand-logo">Walimaji</a>
 
 
 
