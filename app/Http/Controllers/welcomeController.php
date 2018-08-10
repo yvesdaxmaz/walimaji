@@ -35,9 +35,6 @@ class welcomeController extends Controller
             ->join('users', 'user_adresses.user_id', '=', 'users.id')
             ->where(['users.type_id' => '4'])
             ->get();
-       // dd($list_Adresses);
-
-
         return view('welcome', compact('list_provider', 'list_producer', 'list_transformer', 'list_trader'));
     }
 
