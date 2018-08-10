@@ -9,8 +9,11 @@
     <title>walimaji maps</title>
 
     <link rel="stylesheet" href="{{ asset("assets/css/style.css")  }}">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="{{asset("assets/leaflet/dist/leaflet.css")}}"/>
+    <script src="{{"assets/leaflet/dist/leaflet.js"}}"></script>
 </head>
-
 <body>
 <!--/////////////////////////////// map header here ///////////////////////////////-->
 <header id="map-header" class="map-header">
@@ -18,13 +21,9 @@
         <nav class="nav-extended">
             <div class="nav-wrapper teal z-depth-3">
                 <div class="container">
-                    <a href="index.html" class="brand-logo">WalimajI</a>
+                    <a href="index.html" class="brand-logo">Walimaji</a>
 
-                {{--<!--@if(user.connected === true)-->--}}
-                    <a href="#" data-activates="slide-out" class="button-collapse show-on-large">
-                        <i class="material-icons">menu</i>
-                    </a>
-                {{--<!--@endif-->--}}
+
 
                 {{--<!--@if(!user.connected === true)-->--}}
                     <ul class="right">
@@ -32,8 +31,8 @@
                                 <i class="material-icons right">person_pin</i></a></li>
                     </ul>
                     <ul id="dropdown-login" class="dropdown-content">
-                        <li><a href="../modules.auth/login.html">Connexion</a></li>
-                        <li><a href="../modules.auth/sign.html">Inscription</a></li>
+                        <li><a href="{{route('login')}}">Connexion</a></li>
+                        <li><a href="{{route('register_')}}">Inscription</a></li>
                     </ul>
                 {{--<!--@endif-->--}}
                 </div>
@@ -59,50 +58,14 @@
 
     <!--////////////////////////////////////// sidebar /////////////////////////////////////////////-->
 {{--<!--@if(user.connected === true)-->--}}
-    <ul id="slide-out" class="side-nav">
-        <li>
-            <div class="user-view">
-                <div class="background">
-                    <img src="../../images/default-cover.jpg" class="responsive-img">
-                </div>
-                <a href="#!user">
-                    <img class="circle" src="../../images/profile.png">
-                </a>
-                <a href="#!name">
-                    <span class="white-text name">username</span>
-                </a>
-                <a href="#!email">
-                    <span class="white-text email">user@mail.com</span>
-                </a>
-            </div>
-        </li>
-        <li>
-            <a href="#!">
-                <i class="material-icons">person</i>mon profile</a>
-        </li>
-        <li>
-            <a href="#!">
-                <i class="material-icons">show_chart</i> Mes activités</a>
-        </li>
-        <li>
-            <a href="#!">
-                <i class="material-icons">maps</i> Carte</a>
-        </li>
-        <li>
-            <a href="#!">
-                <i class="material-icons">settings</i>Paramètres
-            </a>
-        </li>
-    </ul>
+
     <!--////////////////////////////////////// sidebar /////////////////////////////////////////////-->
 </header>
 <main>
     <!--//////////////////////////////////////////  maps should be generated here///////////////////////////////-->
     <div id="tab-map1">
         <div class="map-container z-depth-3">
-            <iframe class="map-container-content" id="map1"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
-                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-container-content" id="map1" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -113,9 +76,7 @@
     </div>
     <div id="tab-map2" class="col s12">
         <div class="map-container z-depth-3">
-            <iframe class="map-container-content" id="map2"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
-                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-container-content" id="map2" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -126,9 +87,7 @@
     </div>
     <div id="tab-map3" class="col s12">
         <div class="map-container z-depth-3">
-            <iframe class="map-container-content" id="map3"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
-                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-container-content" id="map3" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -139,9 +98,7 @@
     </div>
     <div id="tab-map4" class="col s12">
         <div class="map-container z-depth-3">
-            <iframe class="map-container-content" id="map4"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15630.679180929914!2d27.4688104!3d-11.6468624!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1532932610500"
-                    frameborder="0" style="border:0" allowfullscreen="allowfullscreen"></iframe>
+            <div class="map-container-content" id="map4" style="width: 100%; height: 550px"></div>
             <div class="map-search-btn toolbar">
                 <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
                    href="#search-modal">
@@ -160,17 +117,36 @@
                 <div class="row">
                     <div class="col s12 m12">
                         <div class="icon-block">
-                            <h4 class="white-text hero-title">A propos</h4>
-                            <p class="light white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Adipisci aperiam consequuntur cum
-                                cupiditate dolores ducimus earum eligendi, est, in labore molestiae nostrum officiis
-                                perspiciatis possimus quis rem reprehenderit sed ullam! Lorem ipsum dolor sit amet
-                                consectetur
-                                adipisicing elit. Eaque inventore tempore assumenda deleniti, ea alias blanditiis
-                                delectus,
-                                fugiat asperiores a cumque neque nobis labore officia eveniet nihil, possimus libero
-                                explicabo? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, suscipit!
-                            </p>
+                            <h4 class="white-text hero-title center-align center">A propos</h4>
+                            <div class="row">
+                                <div class="col l3">
+                                    <h4 class="center-align center">Trader</h4>
+                                    <p>
+                                        //recuperer la descripion de la base de donnees
+                                    </p>
+                                </div>
+                                <div class="col l3">
+                                    <h4 class="center-align center">Producteur</h4>
+                                    <p>
+                                        //recuperer la descripion de la base de donnees
+                                    </p>
+                                </div>
+                                <div class="col l3">
+                                    <h4 class="center-align center">Fournisseur</h4>
+                                    <p>
+                                        //recuperer la descripion de la base de donnees
+                                    </p>
+                                </div>
+                                <div class="col l3">
+                                    <h4 class="center-align center">Transformateur</h4>
+                                    <p>
+                                        //recuperer la descripion de la base de donnees
+                                    </p>
+                                </div>
+
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -185,9 +161,20 @@
         </div>
     </div>
 </footer>
+
+
+
 <script src="{{ asset("assets/js/bin/jquery.min.js") }}"></script>
 <script src="{{ asset("assets/js/bin/materialize.min.js")  }}"></script>
 <script src="{{ asset("assets/js/bin/app.init.js") }}"></script>
+<script>
+    var trader = JSON.parse( '<?php echo $list_trader ?>' );
+    var producer = JSON.parse( '<?php echo $list_producer ?>' );
+    var provider = JSON.parse( '<?php echo $list_provider ?>' );
+    var transformer = JSON.parse( '<?php echo $list_transformer ?>' );
+</script>
+<script src="{{ asset("assets/js/bin/map.js") }}"></script>
+
 </body>
 
 </html>

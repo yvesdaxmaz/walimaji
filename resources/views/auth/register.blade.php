@@ -1,11 +1,25 @@
-@extends('layouts.auth')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+
+
+<!--/// !!! Important -- import the background on the body ///-->
+
+<body class="form-background">
+
+<main>
     <div class="container">
         <div class="row col l4 m4 s12">
             <div class="form-title center-align">
                 <h2 class="hero-title">
-                    <a href="{{ route("home") }}" class="white-text">Walimaji</a>
+                    <a href="" class="white-text">Walimaji</a>
                 </h2>
                 <p class="white-text light">
                     Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -13,21 +27,25 @@
             </div>
 
             <div class="card-panel z-depth-2 hoverable animated slideInLeft" id="loginBox">
-                <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}"
-                      autocomplete="off">
+                <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                     @csrf
 
                     <div class="row">
+                        <label>Qui êtes vous ?</label>
                         <div class="input-field col s12 ">
-                            <select class="icons" autofocus>
-                                <option value="" disabled selected>Choose your option</option>
-                                <option value="" data-icon="images/sample-1.jpg" class="left circle">example 1</option>
-                                <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
-                                <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
+                            <select name="type" class="icons"  autofocus>
+                                <option value="" disabled selected>Faites votre choix</option>
+                                @foreach($typeList as $typeListElement)
+                                    <option value="{{$typeListElement['id']}}" data-icon="{{url('storage/public/'.$typeListElement['icon'])}}" class="left circle">{{$typeListElement['designation']}}</option>
+                                @endforeach
                             </select>
-                            <label>Qui êtes vous ?</label>
-                        </div>
 
+                            <span class="helper-text red-text">
+                                @if($errors->has('type'))
+                                    <strong>{{ $errors->first('type') }}</strong>
+                                @endif
+                            </span>
+                        </div>
 
                         <div class="input-field col s12">
                             <label for="name">name</label>
@@ -93,4 +111,23 @@
             </div>
         </div>
     </div>
-@endsection
+
+    </main>
+
+
+    <!-- ////////////////////////////// footer here /////////////////////////////////////////////////// -->
+    <footer class="page-footer transparent">
+        <div class="footer-copyright transparent">
+            <div class="container">
+                © 2018 Copyright walimaji.org
+                <a class="grey-text text-lighten-4 right" href="https://github.com/itotafrica/walimaji">code source</a>
+            </div>
+        </div>
+    </footer>
+    <script src=../../assets/js/bin/jquery.min.js></script>
+    <script src="../../assets/js/bin/materialize.min.js"></script>
+    <script src="../../assets/js/bin/app.init.js"></script>
+    <!-- ////////////////////////////// footer here /////////////////////////////////////////////////// -->
+    </body>
+
+    </html>

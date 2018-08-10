@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TraderProductRef;
 use App\Models\TransformerProductRef;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class TransformerProductRefController extends Controller
      */
     public function index()
     {
-        //
+        $transformerProductRefs=TransformerProductRef::all()->toArray();
     }
 
     /**
@@ -35,7 +36,13 @@ class TransformerProductRefController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$this->myValidation($request);
+        $ref =new TransformerProductRef();
+        $ref->designation = $data['designation'];
+        $ref->description = $data['description'];
+        $ref->image =  file($data['image'])->store('images');
+        $ref->type =  $request->type;
+        $ref->save();
     }
 
     /**
@@ -44,9 +51,9 @@ class TransformerProductRefController extends Controller
      * @param  \App\Models\TransformerProductRef  $transformerProductRef
      * @return \Illuminate\Http\Response
      */
-    public function show(TransformerProductRef $transformerProductRef)
+    public function show($id)
     {
-        //
+        $transformerProductRef=TransformerProductRef::find($id);
     }
 
     /**
@@ -55,9 +62,9 @@ class TransformerProductRefController extends Controller
      * @param  \App\Models\TransformerProductRef  $transformerProductRef
      * @return \Illuminate\Http\Response
      */
-    public function edit(TransformerProductRef $transformerProductRef)
+    public function edit($id)
     {
-        //
+        $transformerProductRef=TransformerProductRef::find($id);
     }
 
     /**
@@ -67,7 +74,7 @@ class TransformerProductRefController extends Controller
      * @param  \App\Models\TransformerProductRef  $transformerProductRef
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TransformerProductRef $transformerProductRef)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,8 +85,19 @@ class TransformerProductRefController extends Controller
      * @param  \App\Models\TransformerProductRef  $transformerProductRef
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TransformerProductRef $transformerProductRef)
+    public function destroy($id)
     {
-        //
+        TransformerProductRef::find($id);
+    }
+
+    public function myValidation($request)
+    {
+        $data=$this->validate($request, [
+            'designation'=>'bail|required|max:20',
+            'description'=>'required',
+            'image'=>'bail|required|dimensions:min_width=2000,min_height=2000',
+            'type'=>'required',
+        ]);
+        return $data;
     }
 }

@@ -11,10 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'welcomeController@index');
 
 Auth::routes();
+Route::get('/register_', 'Admin\UserTypeController@index')->name('register_');;
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/userType', function () {
+    return view('admin.userType.add');
+});
+Route::post('/userType', 'Admin\UserTypeController@store');
