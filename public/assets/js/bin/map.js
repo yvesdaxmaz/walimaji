@@ -22,7 +22,7 @@ function showPosition(position) {
 
     var latuser = position.coords.latitude;
     var longuser = position.coords.longitude;
-    console.log(latuser + " ," + longuser);
+
 
 
     var map1 = L.map('map1').setView([position.coords.latitude, position.coords.longitude], 12);
