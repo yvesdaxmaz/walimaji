@@ -22,3 +22,8 @@ Route::get('/userType', function () {
     return view('admin.userType.add');
 });
 Route::post('/userType', 'Admin\UserTypeController@store');
+
+Route:: post('/check',[
+    'users' => 'nomContrllr@currentfunction',
+    'as' => 'check'
+]);
