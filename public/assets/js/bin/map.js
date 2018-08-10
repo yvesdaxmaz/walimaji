@@ -3,7 +3,7 @@
  */
 
 
-    var map1 = L.map('map1').setView([-11.66494,27.4837274], 13);
+    var map1 = L.map('map1').setView([-11.66494,27.4837274], 12);
     L.tileLayer( 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, ' +
@@ -22,7 +22,7 @@
     });
 
 
-    var map2 = L.map('map2').setView([-11.66494,27.4837274], 13);
+    var map2 = L.map('map2').setView([-11.66494,27.4837274], 12);
     L.tileLayer( 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, ' +
@@ -35,7 +35,7 @@
 
 
 
-    var map3 = L.map('map3').setView([-11.66494,27.4837274], 13);
+    var map3 = L.map('map3').setView([-11.66494,27.4837274], 12);
     L.tileLayer( 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, ' +
@@ -47,7 +47,7 @@
 
 
 
-    var map4 = L.map('map4').setView([-11.66494,27.4837274], 13);
+    var map4 = L.map('map4').setView([-11.66494,27.4837274], 12);
     L.tileLayer( 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, ' +

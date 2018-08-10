@@ -22,9 +22,7 @@
                     <a href="#" class="white-text">Walimaji</a>
                 </h2>
                 <p class="white-text light">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut eos expedita facere, fugit
-                    pariatur! At,<br>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut eos,
+
 
                 </p>
             </div>

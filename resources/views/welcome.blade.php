@@ -117,17 +117,36 @@
                 <div class="row">
                     <div class="col s12 m12">
                         <div class="icon-block">
-                            <h4 class="white-text hero-title">A propos</h4>
-                            <p class="light white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Adipisci aperiam consequuntur cum
-                                cupiditate dolores ducimus earum eligendi, est, in labore molestiae nostrum officiis
-                                perspiciatis possimus quis rem reprehenderit sed ullam! Lorem ipsum dolor sit amet
-                                consectetur
-                                adipisicing elit. Eaque inventore tempore assumenda deleniti, ea alias blanditiis
-                                delectus,
-                                fugiat asperiores a cumque neque nobis labore officia eveniet nihil, possimus libero
-                                explicabo? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, suscipit!
-                            </p>
+                            <h4 class="white-text hero-title center-align center">A propos</h4>
+                            <div class="row">
+                                <div class="col l3">
+                                    <h4 class="center-align center">Trader</h4>
+                                    <p>
+                                        //recuperer la descripion de la base de donnees
+                                    </p>
+                                </div>
+                                <div class="col l3">
+                                    <h4 class="center-align center">Producteur</h4>
+                                    <p>
+                                        //recuperer la descripion de la base de donnees
+                                    </p>
+                                </div>
+                                <div class="col l3">
+                                    <h4 class="center-align center">Fournisseur</h4>
+                                    <p>
+                                        //recuperer la descripion de la base de donnees
+                                    </p>
+                                </div>
+                                <div class="col l3">
+                                    <h4 class="center-align center">Transformateur</h4>
+                                    <p>
+                                        //recuperer la descripion de la base de donnees
+                                    </p>
+                                </div>
+
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
