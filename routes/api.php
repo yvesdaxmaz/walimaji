@@ -21,3 +21,7 @@ Route::get('Trader','WelcomeController@getTrader');
 Route::get('Producer','WelcomeController@getProducer');
 Route::get('Transformer','WelcomeController@getTransformer');
 Route::get('Provider','WelcomeController@getProvider');
+Route::post('/register','UserController@store');
+
+
+
