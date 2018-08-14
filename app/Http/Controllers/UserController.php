@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +13,7 @@ class UserController extends Controller
 {
     public function store(request $request)
     {
+
         $name = $request->input('name');
         $email = $request->input('email');
         $password = Hash::make($request->input('password'));
@@ -25,6 +27,25 @@ class UserController extends Controller
             'type_id' => $type_id,
             'api_token'=>$api_token
         ]);
+
+    }
+
+    public function setAdresse(request $request)
+    {
+        $msg = '';
+
+       try{
+           DB::table('user_adresses')
+               ->where('id', $request->input('id'))
+               ->update(['adresse' => $request->input('adresse'),
+                   'latitude' => $request->input('latitude'),
+                   'longitude' => $request->input('longitude')]);
+           $msg= 'update success';
+
+       }catch (QueryException $exception){
+           $msg= $exception->getMessage();
+       }
+       return json_encode(['msg'=>$msg]);
 
     }
 
