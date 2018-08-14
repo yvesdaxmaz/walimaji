@@ -11,7 +11,7 @@
 
 
         <div class="login-box-body">
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('login') }}" method="POST" autocomplete="on">
                 @csrf
 
 
