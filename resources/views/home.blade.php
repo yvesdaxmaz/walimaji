@@ -1,6 +1,9 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
 @section('content')
+
+    <h1>Hello</h1>
+
     <!--//////////////////////////////////////////  maps should be generated here///////////////////////////////-->
     <div id="tab-map1">
         <div class="map-container z-depth-3">
