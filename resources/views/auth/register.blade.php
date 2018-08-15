@@ -2,7 +2,14 @@
 
 
 @section('content')
-    <div class="login-box-body">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ url('/')  }}">
+                <h1><strong>{{ config('app.name', 'Laravel') }}</strong></h1>
+            </a>
+        </div>
+
+        <div class="login-box-body">
         <form action="{{ route('register') }}" method="POST" autocomplete="off">
             @csrf
 
@@ -79,5 +86,6 @@
 
         <br>
         <a href="{{ route('login') }}" class="text-center">Connexion</a>
+        </div>
     </div>
 @endsection
