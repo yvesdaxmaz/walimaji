@@ -6,7 +6,7 @@ use App\Models\UserAdress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class WelcomeController extends Controller
+class welcomeController extends Controller
 {
     /**
      * Display a listing of the resource.
