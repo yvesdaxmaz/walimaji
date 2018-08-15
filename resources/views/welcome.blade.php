@@ -20,7 +20,7 @@
     @guest
         @include('includes.default-guest-header')
     @else
-        @include('includes.default-guest-header')
+        @include('includes.default-auth-header')
     @endif
 
 
