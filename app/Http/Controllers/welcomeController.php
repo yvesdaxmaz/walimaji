@@ -36,50 +36,14 @@ class welcomeController extends Controller
             ->where(['users.type_id' => '4'])
             ->get();
 
+        json_encode($list_trader);
+        json_encode($list_producer);
+        json_encode($list_provider);
+        json_encode($list_transformer);
+
+
+
         return view('welcome', compact('list_provider', 'list_producer', 'list_transformer', 'list_trader'));
-    }
-
-    public function getTrader()
-    {
-        $list_trader = DB::table('user_adresses')
-            ->select('*', 'users.name')
-            ->join('users', 'user_adresses.user_id', '=', 'users.id')
-            ->where(['users.type_id' => '4'])
-            ->get();
-        return response()->json($list_trader);
-    }
-
-    public function getProducer()
-    {
-        $list_producer = DB::table('user_adresses')
-            ->select('*', 'users.name')
-            ->join('users', 'user_adresses.user_id', '=', 'users.id')
-            ->where(['users.type_id' => '2'])
-            ->get();
-
-        return response()->json($list_producer);
-    }
-
-    public function getProvider()
-    {
-        $list_provider = DB::table('user_adresses')
-            ->select('*', 'users.name')
-            ->join('users', 'user_adresses.user_id', '=', 'users.id')
-            ->where(['users.type_id' => '1'])
-            ->get();
-        return response()->json($list_provider);
-
-    }
-
-    public  function getTransformer()
-    {
-        $list_transformer = DB::table('user_adresses')
-            ->select('*', 'users.name')
-            ->join('users', 'user_adresses.user_id', '=', 'users.id')
-            ->where(['users.type_id' => '3'])
-            ->get();
-        return response()->json($list_transformer);
-
     }
 
     /**

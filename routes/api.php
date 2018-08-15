@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,11 +16,3 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('Trader','WelcomeController@getTrader');
-Route::get('Producer','WelcomeController@getProducer');
-Route::get('Transformer','WelcomeController@getTransformer');
-Route::get('Provider','WelcomeController@getProvider');
-Route::post('/register','UserController@store');
-
-
-
