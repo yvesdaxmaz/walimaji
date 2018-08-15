@@ -1,180 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>walimaji maps</title>
 
-    <link rel="stylesheet" href="{{ asset("assets/css/style.css")  }}">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
-    <link rel="stylesheet" href="{{asset("assets/leaflet/dist/leaflet.css")}}"/>
-    <script src="{{"assets/leaflet/dist/leaflet.js"}}"></script>
-</head>
-<body>
-<!--/////////////////////////////// map header here ///////////////////////////////-->
-<header id="map-header" class="map-header">
-    <div class="navbar-fixed">
-        <nav class="nav-extended">
-            <div class="nav-wrapper teal z-depth-3">
+@section('content')
+    <div class="wrapper">
+
+        <header class="main-header">
+            <nav class="navbar navbar-static-top">
                 <div class="container">
-                    <a href="index.html" class="brand-logo">Walimaji</a>
-
-
-
-                {{--<!--@if(!user.connected === true)-->--}}
-                    <ul class="right">
-                        <li><a class="dropdown-button" href="#!" data-activates="dropdown-login">
-                                <i class="material-icons right">person_pin</i></a></li>
-                    </ul>
-                    <ul id="dropdown-login" class="dropdown-content">
-                        <li><a href="{{route('login')}}">Connexion</a></li>
-                        <li><a href="{{route('register_')}}">Inscription</a></li>
-                    </ul>
-                {{--<!--@endif-->--}}
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!--/////////////////////////////// map header here ///////////////////////////////-->
-
-
-    <!--////////////////////////////////////// maps tab /////////////////////////////////////////////-->
-    <div class="row col s12" style="margin-bottom: 0;">
-        <ul class="tabs grey darken-4">
-            <div class="container">
-                <li class="tab col s3"><a href="#tab-map1" class="active">Traders</a></li>
-                <li class="tab col s3"><a href="#tab-map2"> Producteurs</a></li>
-                <li class="tab col s3"><a href="#tab-map3">Fournisseurs</a></li>
-                <li class="tab col s3"><a href="#tab-map4">Transformateur</a></li>
-            </div>
-        </ul>
-    </div>
-    <!--////////////////////////////////////// maps tab /////////////////////////////////////////////-->
-
-
-    <!--////////////////////////////////////// sidebar /////////////////////////////////////////////-->
-{{--<!--@if(user.connected === true)-->--}}
-
-    <!--////////////////////////////////////// sidebar /////////////////////////////////////////////-->
-</header>
-<main>
-    <!--//////////////////////////////////////////  maps should be generated here///////////////////////////////-->
-    <div id="tab-map1">
-        <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map1" style="width: 100%; height: 550px"></div>
-            <div class="map-search-btn toolbar">
-                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
-                   href="#search-modal">
-                    <i class="material-icons">search</i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div id="tab-map2" class="col s12">
-        <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map2" style="width: 100%; height: 550px"></div>
-            <div class="map-search-btn toolbar">
-                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
-                   href="#search-modal">
-                    <i class="material-icons">search</i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div id="tab-map3" class="col s12">
-        <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map3" style="width: 100%; height: 550px"></div>
-            <div class="map-search-btn toolbar">
-                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
-                   href="#search-modal">
-                    <i class="material-icons">search</i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div id="tab-map4" class="col s12">
-        <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map4" style="width: 100%; height: 550px"></div>
-            <div class="map-search-btn toolbar">
-                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
-                   href="#search-modal">
-                    <i class="material-icons">search</i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!--//////////////////////////////////////////  maps should be generated here///////////////////////////////-->
-</main>
-<!-- //////////////////////////////////// footer here //////////////////////////////////////////// -->
-<footer class="page-footer transparent">
-    <div class="parallax-container valign-wrapper map-banner" style="background: url('../../images/walimaji.jpg');">
-        <div class="container map-banner-content">
-            <div class="section">
-                <div class="row">
-                    <div class="col s12 m12">
-                        <div class="icon-block">
-                            <h4 class="white-text hero-title center-align center">A propos</h4>
-                            <div class="row">
-                                <div class="col l3">
-                                    <h4 class="center-align center">Trader</h4>
-                                    <p>
-                                        //recuperer la descripion de la base de donnees
-                                    </p>
-                                </div>
-                                <div class="col l3">
-                                    <h4 class="center-align center">Producteur</h4>
-                                    <p>
-                                        //recuperer la descripion de la base de donnees
-                                    </p>
-                                </div>
-                                <div class="col l3">
-                                    <h4 class="center-align center">Fournisseur</h4>
-                                    <p>
-                                        //recuperer la descripion de la base de donnees
-                                    </p>
-                                </div>
-                                <div class="col l3">
-                                    <h4 class="center-align center">Transformateur</h4>
-                                    <p>
-                                        //recuperer la descripion de la base de donnees
-                                    </p>
-                                </div>
-
-                            </div>
-
-
-                        </div>
+                    <div class="navbar-header">
+                        <a href="../../index2.html" class="navbar-brand"><b>Admin</b>LTE</a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
                     </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                            <li><a href="#">Link</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Messages: style can be found in dropdown.less-->
+                            <li class="dropdown messages-menu">
+                                <!-- Menu toggle button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="label label-success">4</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">You have 4 messages</li>
+                                    <li>
+                                        <!-- inner menu: contains the messages -->
+                                        <ul class="menu">
+                                            <li><!-- start message -->
+                                                <a href="#">
+                                                    <div class="pull-left">
+                                                        <!-- User Image -->
+                                                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                    </div>
+                                                    <!-- Message title and timestamp -->
+                                                    <h4>
+                                                        Support Team
+                                                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                    </h4>
+                                                    <!-- The message -->
+                                                    <p>Why not buy a new awesome theme?</p>
+                                                </a>
+                                            </li>
+                                            <!-- end message -->
+                                        </ul>
+                                        <!-- /.menu -->
+                                    </li>
+                                    <li class="footer"><a href="#">See All Messages</a></li>
+                                </ul>
+                            </li>
+                            <!-- /.messages-menu -->
+
+                            <!-- Notifications Menu -->
+                            <li class="dropdown notifications-menu">
+                                <!-- Menu toggle button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="label label-warning">10</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">You have 10 notifications</li>
+                                    <li>
+                                        <!-- Inner Menu: contains the notifications -->
+                                        <ul class="menu">
+                                            <li><!-- start notification -->
+                                                <a href="#">
+                                                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                                </a>
+                                            </li>
+                                            <!-- end notification -->
+                                        </ul>
+                                    </li>
+                                    <li class="footer"><a href="#">View all</a></li>
+                                </ul>
+                            </li>
+                            <!-- Tasks Menu -->
+                            <li class="dropdown tasks-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-flag-o"></i>
+                                    <span class="label label-danger">9</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">You have 9 tasks</li>
+                                    <li>
+                                        <!-- Inner menu: contains the tasks -->
+                                        <ul class="menu">
+                                            <li><!-- Task item -->
+                                                <a href="#">
+                                                    <!-- Task title and progress text -->
+                                                    <h3>
+                                                        Design some buttons
+                                                        <small class="pull-right">20%</small>
+                                                    </h3>
+                                                    <!-- The progress bar -->
+                                                    <div class="progress xs">
+                                                        <!-- Change the css width attribute to simulate progress -->
+                                                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">20% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <!-- end task item -->
+                                        </ul>
+                                    </li>
+                                    <li class="footer">
+                                        <a href="#">View all tasks</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!-- The user image in the navbar-->
+                                    <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                    <span class="hidden-xs">Alexander Pierce</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- The user image in the menu -->
+                                    <li class="user-header">
+                                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                                        <p>
+                                            Alexander Pierce - Web Developer
+                                            <small>Member since Nov. 2012</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <li class="user-body">
+                                        <div class="row">
+                                            <div class="col-xs-4 text-center">
+                                                <a href="#">Followers</a>
+                                            </div>
+                                            <div class="col-xs-4 text-center">
+                                                <a href="#">Sales</a>
+                                            </div>
+                                            <div class="col-xs-4 text-center">
+                                                <a href="#">Friends</a>
+                                            </div>
+                                        </div>
+                                        <!-- /.row -->
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-custom-menu -->
                 </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </header>
+
+
+
+        <div class="content-wrapper">
+            <div class="container">
+                <section class="content">
+                    <div class="callout callout-info">
+                        <h4>Tip!</h4>
+
+                        <p>Add the layout-top-nav class to the body tag to get this layout. This feature can also be used with a
+                            sidebar! So use this class if you want to remove the custom dropdown menus from the navbar and use regular
+                            links instead.</p>
+                    </div>
+                    <div class="callout callout-danger">
+                        <h4>Warning!</h4>
+
+                        <p>The construction of this layout differs from the normal one. In other words, the HTML markup of the navbar
+                            and the content will slightly differ than that of the normal layout.</p>
+                    </div>
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Blank Box</h3>
+                        </div>
+                        <div class="box-body">
+                            The great content goes here
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </section>
+                <!-- /.content -->
             </div>
+            <!-- /.container -->
         </div>
-        <div class="map-banner-overlay"></div>
+        <!-- /.content-wrapper -->
+
+        @include('includes.default-footer')
     </div>
-    <div class="footer-copyright grey darken-4">
-        <div class="container">
-            © 2018 Copyright walimaji.org
-            <a class="grey-text text-lighten-4 right" href="https://github.com/itotafrica/walimaji">code source</a>
-        </div>
-    </div>
-</footer>
-
-
-
-<script src="{{ asset("assets/js/bin/jquery.min.js") }}"></script>
-<script src="{{ asset("assets/js/bin/materialize.min.js")  }}"></script>
-<script src="{{ asset("assets/js/bin/app.init.js") }}"></script>
-<script>
-    var trader = JSON.parse( '<?php echo $list_trader ?>' );
-    var producer = JSON.parse( '<?php echo $list_producer ?>' );
-    var provider = JSON.parse( '<?php echo $list_provider ?>' );
-    var transformer = JSON.parse( '<?php echo $list_transformer ?>' );
-</script>
-<script src="{{ asset("assets/js/bin/map.js") }}"></script>
-
-</body>
-
-</html>
+@endsection;
