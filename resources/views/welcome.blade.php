@@ -24,6 +24,12 @@
     @endif
 
 
+    <div class="nav-tabs-custom map-nav-tabs">
+        <ul class="nav nav-tabs">
+            @foreach($)
+        </ul>
+    </div>
+
     <div class="content-wrapper">
         <div class="map-container">
             <div class="map-container-content" id="map">

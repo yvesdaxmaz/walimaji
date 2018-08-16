@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserAdress;
+use App\Models\UserType;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,29 +17,15 @@ class welcomeController extends Controller
      */
     public function index()
     {
-        $list_provider = DB::table('user_adresses')
-            ->select('*', 'users.name')
-            ->join('users', 'user_adresses.user_id', '=', 'users.id')
-            ->where(['users.type_id' => '1'])
-            ->get();
-        $list_producer = DB::table('user_adresses')
-            ->select('*', 'users.name')
-            ->join('users', 'user_adresses.user_id', '=', 'users.id')
-            ->where(['users.type_id' => '2'])
-            ->get();
-        $list_transformer = DB::table('user_adresses')
-            ->select('*', 'users.name')
-            ->join('users', 'user_adresses.user_id', '=', 'users.id')
-            ->where(['users.type_id' => '3'])
-            ->get();
-        $list_trader = DB::table('user_adresses')
-            ->select('*', 'users.name')
-            ->join('users', 'user_adresses.user_id', '=', 'users.id')
-            ->where(['users.type_id' => '4'])
-            ->get();
+        $list_provider = UserAdress::getWithUserType(1);
+        $list_producer = UserAdress::getWithUserType(2);
+        $list_transformer = UserAdress::getWithUserType(3);
+        $list_trader = UserAdress::getWithUserType(4);
+        $types = UserType::limit(4)->get();
 
-        return view('welcome', compact('list_provider', 'list_producer', 'list_transformer', 'list_trader'));
+        return view('welcome', compact('types', 'list_provider', 'list_producer', 'list_transformer', 'list_trader'));
     }
+
 
     public function getTrader()
     {
@@ -71,7 +59,7 @@ class welcomeController extends Controller
 
     }
 
-    public  function getTransformer()
+    public function getTransformer()
     {
         $list_transformer = DB::table('user_adresses')
             ->select('*', 'users.name')
@@ -95,7 +83,7 @@ class welcomeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -106,7 +94,7 @@ class welcomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -117,7 +105,7 @@ class welcomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -128,8 +116,8 @@ class welcomeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -140,7 +128,7 @@ class welcomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
