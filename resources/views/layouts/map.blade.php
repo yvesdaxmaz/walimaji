@@ -9,9 +9,15 @@
     <link rel="stylesheet" href="{{ asset("assets/vendor/Ionicons/css/ionicons.min.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/dist/css/AdminLTE.min.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/dist/css/skins/_all-skins.min.css") }}">
+
+    {{--////////////// leaflet and mapbox API ressources /////////////--}}
+    <script src="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
+    <script src="{{ asset("assets/leaflet/dist/leaflet.js") }}"></script>
+    <link rel="stylesheet" href="{{ asset("assets/leaflet/dist/leaflet.css") }}">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css">
+
+
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
-
-
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -49,8 +55,8 @@
 <script src="{{ asset("assets/dist/js/adminlte.min.js") }}"></script>
 <script src="{{ asset("assets/dist/js/demo.js") }}"></script>
 <script>
-    var mapData = JSON.parse({{ $data }});
+    var mapData = JSON.parse("<?= $data ?>");
 </script>
-<script src="{{ asset("assets/js/bin/map.js") }}"></script>
+<script src="{{ asset("assets/js/map.js") }}"></script>
 </body>
 </html>

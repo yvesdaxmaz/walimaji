@@ -4,10 +4,7 @@
 @section('content')
     <div class="content-wrapper">
         <div class="map-container">
-            <div class="map-container-content" id="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.6698692087125!2d27.466621714831753!3d-11.646857137760964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x197239b7fd095f69%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1534326593321"
-                        width="100%" height="450px" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
+            <div class="map-container-content" id="map"></div>
         </div>
         <div class="page-footer transparent">
             <div class="valign-wrapper map-banner" style="background: url({{ url("images/walimaji.jpg") }});">

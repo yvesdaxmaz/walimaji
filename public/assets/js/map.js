@@ -1,5 +1,6 @@
 /**
- * Created by itot on 08/08/2018.
+ * create a greenIcon for the active located user.
+ * @type {*}
  */
 var greenIcon = new L.Icon({
     iconUrl: 'http://127.0.0.1:8000/assets/leaflet/dist/images/green.png',
@@ -10,110 +11,56 @@ var greenIcon = new L.Icon({
     shadowSize: [41, 51]
 });
 
-var x = document.getElementById("map1");
+
+/**
+ * get location of the current active user.
+ */
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        document.getElementById("map").innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+
+
+/**
+ * render the map with the current active user and other users type requested.
+ * @param position
+ */
 function showPosition(position) {
 
-    var latuser = position.coords.latitude;
-    var longuser = position.coords.longitude;
+    let userLat = position.coords.latitude;
+    let userLng = position.coords.longitude;
+    let map = L.map('map').setView([userLat, userLng], 12);
 
 
-
-    var map1 = L.map('map1').setView([position.coords.latitude, position.coords.longitude], 12);
     L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
         maxZoom: 18,
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, ' +
-        '<a href="http://creativecommons.org/"> CC-BY-SA </a>, ' +
-        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        id: 'examples.map-i875mjb7'
-    }).addTo(map1);
+        attribution: `Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, <a href="http://creativecommons.org/"> CC-BY-SA </a>, Imagery © <a href="http://mapbox.com">Mapbox</a>`,
+        id: 'map'
+    }).addTo(map);
 
 
-    var map2 = L.map('map2').setView([-11.66494, 27.4837274], 12);
-    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, ' +
-        '<a href="http://creativecommons.org/"> CC-BY-SA </a>, ' +
-        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        id: 'examples.map-i875mjb7'
-    }).addTo(map2);
+    /**
+     * set users data into the popup of a map's pin
+     */
+    function setPopupData() {
+        for (let i = 0; i < mapData.length; i++) {
+            let marker = L.marker(
+                    [mapData[i]['latitude'], mapData[i]['longitude']],
+                    {color: 'red'}
+                ).addTo(map);
 
-
-    var map3 = L.map('map3').setView([-11.66494, 27.4837274], 12);
-    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, ' +
-        '<a href="http://creativecommons.org/"> CC-BY-SA </a>, ' +
-        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        id: 'examples.map-i875mjb7'
-    }).addTo(map3);
-
-
-    var map4 = L.map('map4').setView([-11.66494, 27.4837274], 12);
-    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, ' +
-        '<a href="http://creativecommons.org/"> CC-BY-SA </a>, ' +
-        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        id: 'examples.map-i875mjb7'
-    }).addTo(map4);
-
-
-    function addTraders() {
-
-        for (var i = 0; i < trader.length; i++) {
-
-            var marker = L.marker([trader[i]['latitude'], trader[i]['longitude']], {color: 'red'}).addTo(map1);
-            marker.bindPopup("<b>" + trader[i]['name'] + "</b><br>Details:" + trader[i]['adresse'] + "<br />Telephone: " + trader[i]['telephone'] + '<br /><a href=" ">Voir Plus</a>');
-
+            marker.bindPopup(
+                `<b>${mapData[i]['name']}</b>` +
+                `<br>Details: ${mapData[i]['adresse']}` +
+                `<br />Telephone: ${trader[i]['telephone']}` +
+                `<br /><a href="#">Voir Plus</a>`
+            );
         }
     }
 
-    function addProducer() {
-
-        for (var i = 0; i < producer.length; i++) {
-
-            var marker = L.marker([producer[i]['latitude'], producer[i]['longitude']]).addTo(map2);
-            marker.bindPopup("<b>" + producer[i]['name'] + "</b><br>Details:" + producer[i]['adresse'] + "<br />Telephone: " + producer[i]['telephone']);
-
-        }
-    }
-
-    function addProviders() {
-
-        for (var i = 0; i < provider.length; i++) {
-
-            var marker = L.marker([provider[i]['latitude'], provider[i]['longitude']]).addTo(map3);
-            marker.bindPopup("<b>" + provider[i]['name'] + "</b><br>Details:" + provider[i]['adresse'] + "<br />Telephone: " + provider[i]['telephone']);
-
-        }
-    }
-
-    function addTransformers() {
-
-        for (var i = 0; i < transformer.length; i++) {
-
-            var marker = L.marker([transformer[i]['latitude'], transformer[i]['longitude']]).addTo(map4);
-            marker.bindPopup("<b>" + transformer[i]['name'] + "</b><br>Details:" + transformer[i]['adresse'] + "<br />Telephone: " + transformer[i]['telephone']);
-
-        }
-    }
-
-    function addCurrent() {
-        var usrlong = 1;
-        for (var i = 0; i < usrlong; i++) {
-
-            var marker = L.marker([latuser, longuser], {icon: greenIcon}).addTo(map1);
-            marker.bindPopup("vous");
-
-        }
-    }
 
     function addAreas() {
         for (var i = 0; i < areas.length; i++) {
@@ -155,13 +102,7 @@ function showPosition(position) {
     }
 
     $(document).ready(function () {
-
-        addTraders();
-        addProducer();
-        addProviders();
-        addTransformers();
-        addCurrent();
-
+        setPopupData();
     });
 
 
