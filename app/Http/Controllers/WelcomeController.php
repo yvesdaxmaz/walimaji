@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserAdress;
+use App\Models\UserType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
