@@ -1,42 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    @include("includes.default-meta")
+@extends('layouts.map')
 
 
-    <link rel="stylesheet" href="{{ asset("assets/vendor/bootstrap/dist/css/bootstrap.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/vendor/font-awesome/css/font-awesome.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/vendor/Ionicons/css/ionicons.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/dist/css/AdminLTE.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/dist/css/skins/_all-skins.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
-
-
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
-<body class="hold-transition skin-blue layout-top-nav">
-<div class="wrapper">
-
-    @guest
-    @include('includes.default-guest-header')
-    @else
-        @include('includes.default-auth-header')
-    @endif
-
-
-    <div class="nav-tabs-custom map-nav-tabs">
-        <ul class="nav nav-tabs ">
-            @foreach($types as $type)
-                @if($tab == $type->designation)
-                    <li class="active"><a href="{{ "?tab={$type->designation}" }}">{{ $type->designation }}</a></li>
-                @else
-                    <li><a href="{{ "?tab={$type->designation}" }}">{{ $type->designation }}</a></li>
-                @endif
-            @endforeach
-        </ul>
-    </div>
-
+@section('content')
     <div class="content-wrapper">
         <div class="map-container">
             <div class="map-container-content" id="map">
@@ -99,15 +64,4 @@
             </div>
         </div>
     </div>
-
-    @include('includes.default-footer')
-</div>
-
-<script src="{{ asset("assets/vendor/jquery/dist/jquery.min.js") }}"></script>
-<script src="{{ asset("assets/vendor/bootstrap/dist/js/bootstrap.min.js") }}"></script>
-<script src="{{ asset("assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js") }}"></script>
-<script src="{{ asset("assets/vendor/fastclick/lib/fastclick.js") }}"></script>
-<script src="{{ asset("assets/dist/js/adminlte.min.js") }}"></script>
-<script src="{{ asset("assets/dist/js/demo.js") }}"></script>
-</body>
-</html>
+@endsection
