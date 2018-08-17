@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'welcomeController@index');
+Route::get('/', 'WelcomeController@index');
 
 Auth::routes();
 Route::get('/register_', 'Admin\UserTypeController@index')->name('register_');;

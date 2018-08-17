@@ -1,180 +1,57 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>walimaji maps</title>
+    @include("includes.default-meta")
 
-    <link rel="stylesheet" href="{{ asset("assets/css/style.css")  }}">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
-    <link rel="stylesheet" href="{{asset("assets/leaflet/dist/leaflet.css")}}"/>
-    <script src="{{"assets/leaflet/dist/leaflet.js"}}"></script>
+
+    <link rel="stylesheet" href="{{ asset("assets/vendor/bootstrap/dist/css/bootstrap.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/vendor/font-awesome/css/font-awesome.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/vendor/Ionicons/css/ionicons.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/dist/css/AdminLTE.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/dist/css/skins/_all-skins.min.css") }}">
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body>
-<!--/////////////////////////////// map header here ///////////////////////////////-->
-<header id="map-header" class="map-header">
-    <div class="navbar-fixed">
-        <nav class="nav-extended">
-            <div class="nav-wrapper teal z-depth-3">
-                <div class="container">
-                    <a href="index.html" class="brand-logo">Walimaji</a>
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="wrapper">
+
+    @guest
+        @include('includes.default-guest-header')
+    @else
+        @include('includes.default-auth-header')
+    @endif
 
 
+    <div class="nav-tabs-custom map-nav-tabs">
+        <ul class="nav nav-tabs">
 
-                {{--<!--@if(!user.connected === true)-->--}}
-                    <ul class="right">
-                        <li><a class="dropdown-button" href="#!" data-activates="dropdown-login">
-                                <i class="material-icons right">person_pin</i></a></li>
-                    </ul>
-                    <ul id="dropdown-login" class="dropdown-content">
-                        <li><a href="{{route('login')}}">Connexion</a></li>
-                        <li><a href="{{route('register_')}}">Inscription</a></li>
-                    </ul>
-                {{--<!--@endif-->--}}
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!--/////////////////////////////// map header here ///////////////////////////////-->
-
-
-    <!--////////////////////////////////////// maps tab /////////////////////////////////////////////-->
-    <div class="row col s12" style="margin-bottom: 0;">
-        <ul class="tabs grey darken-4">
-            <div class="container">
-                <li class="tab col s3"><a href="#tab-map1" class="active">Traders</a></li>
-                <li class="tab col s3"><a href="#tab-map2"> Producteurs</a></li>
-                <li class="tab col s3"><a href="#tab-map3">Fournisseurs</a></li>
-                <li class="tab col s3"><a href="#tab-map4">Transformateur</a></li>
-            </div>
         </ul>
     </div>
-    <!--////////////////////////////////////// maps tab /////////////////////////////////////////////-->
 
-
-    <!--////////////////////////////////////// sidebar /////////////////////////////////////////////-->
-{{--<!--@if(user.connected === true)-->--}}
-
-    <!--////////////////////////////////////// sidebar /////////////////////////////////////////////-->
-</header>
-<main>
-    <!--//////////////////////////////////////////  maps should be generated here///////////////////////////////-->
-    <div id="tab-map1">
-        <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map1" style="width: 100%; height: 550px"></div>
-            <div class="map-search-btn toolbar">
-                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
-                   href="#search-modal">
-                    <i class="material-icons">search</i>
-                </a>
+    <div class="content-wrapper">
+        <div class="map-container">
+            <div class="map-container-content" id="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.6698692087125!2d27.466621714831753!3d-11.646857137760964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x197239b7fd095f69%3A0x51540f372bd869d6!2sNgpictures!5e0!3m2!1sfr!2scd!4v1534326593321" width="100%" height="450px" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
         </div>
-    </div>
-    <div id="tab-map2" class="col s12">
-        <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map2" style="width: 100%; height: 550px"></div>
-            <div class="map-search-btn toolbar">
-                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
-                   href="#search-modal">
-                    <i class="material-icons">search</i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div id="tab-map3" class="col s12">
-        <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map3" style="width: 100%; height: 550px"></div>
-            <div class="map-search-btn toolbar">
-                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
-                   href="#search-modal">
-                    <i class="material-icons">search</i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div id="tab-map4" class="col s12">
-        <div class="map-container z-depth-3">
-            <div class="map-container-content" id="map4" style="width: 100%; height: 550px"></div>
-            <div class="map-search-btn toolbar">
-                <a class="btn-floating btn-large teal z-depth-2 waves-effect waves-light modal-trigger"
-                   href="#search-modal">
-                    <i class="material-icons">search</i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!--//////////////////////////////////////////  maps should be generated here///////////////////////////////-->
-</main>
-<!-- //////////////////////////////////// footer here //////////////////////////////////////////// -->
-<footer class="page-footer transparent">
-    <div class="parallax-container valign-wrapper map-banner" style="background: url('../../images/walimaji.jpg');">
-        <div class="container map-banner-content">
-            <div class="section">
-                <div class="row">
-                    <div class="col s12 m12">
-                        <div class="icon-block">
-                            <h4 class="white-text hero-title center-align center">A propos</h4>
-                            <div class="row">
-                                <div class="col l3">
-                                    <h4 class="center-align center">Trader</h4>
-                                    <p>
-                                        //recuperer la descripion de la base de donnees
-                                    </p>
-                                </div>
-                                <div class="col l3">
-                                    <h4 class="center-align center">Producteur</h4>
-                                    <p>
-                                        //recuperer la descripion de la base de donnees
-                                    </p>
-                                </div>
-                                <div class="col l3">
-                                    <h4 class="center-align center">Fournisseur</h4>
-                                    <p>
-                                        //recuperer la descripion de la base de donnees
-                                    </p>
-                                </div>
-                                <div class="col l3">
-                                    <h4 class="center-align center">Transformateur</h4>
-                                    <p>
-                                        //recuperer la descripion de la base de donnees
-                                    </p>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="map-banner-overlay"></div>
-    </div>
-    <div class="footer-copyright grey darken-4">
         <div class="container">
-            © 2018 Copyright walimaji.org
-            <a class="grey-text text-lighten-4 right" href="https://github.com/itotafrica/walimaji">code source</a>
+            <section class="content">
+
+            </section>
         </div>
     </div>
-</footer>
 
 
+    @include('includes.default-footer')
+</div>
 
-<script src="{{ asset("assets/js/bin/jquery.min.js") }}"></script>
-<script src="{{ asset("assets/js/bin/materialize.min.js")  }}"></script>
-<script src="{{ asset("assets/js/bin/app.init.js") }}"></script>
-<script>
-    var trader = JSON.parse( '<?php echo $list_trader ?>' );
-    var producer = JSON.parse( '<?php echo $list_producer ?>' );
-    var provider = JSON.parse( '<?php echo $list_provider ?>' );
-    var transformer = JSON.parse( '<?php echo $list_transformer ?>' );
-</script>
-<script src="{{ asset("assets/js/bin/map.js") }}"></script>
-
+<script src="{{ asset("assets/vendor/jquery/dist/jquery.min.js") }}"></script>
+<script src="{{ asset("assets/vendor/bootstrap/dist/js/bootstrap.min.js") }}"></script>
+<script src="{{ asset("assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js") }}"></script>
+<script src="{{ asset("assets/vendor/fastclick/lib/fastclick.js") }}"></script>
+<script src="{{ asset("assets/dist/js/adminlte.min.js") }}"></script>
+<script src="{{ asset("assets/dist/js/demo.js") }}"></script>
 </body>
-
 </html>

@@ -9,4 +9,7 @@ class UserType extends Model
     protected $fillable=[
         'designation','description','icon'
     ];
+
 }
+
+

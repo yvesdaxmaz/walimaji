@@ -1,103 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
-</head>
+@extends('layouts.auth')
 
 
-<!--/// !!! Important -- import the background on the body ///-->
-
-<body class="form-background">
-
-<main>
-    <div class="container">
-        <div class="row col l4 m4 s12">
-            <div class="form-title center-align">
-                <h2 class="hero-title">
-                    <a href="#" class="white-text">Walimaji</a>
-                </h2>
-                <p class="white-text light">
+@section('content')
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ url('/')  }}">
+                <h1><strong>{{ config('app.name', 'Laravel') }}</strong></h1>
+            </a>
+        </div>
 
 
-                </p>
-            </div>
-
-            <div class="card-panel z-depth-2 hoverable animated slideInLeft" id="loginBox">
-                <form action="{{ route('login') }}" method="post" aria-label="{{ __('Login') }}" autocomplete="off">
-                    @csrf
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="email">email</label>
-                            <input type="email" name="email" id="email"
-                                   class="validate {{ $errors->has('email') ? ' invalid' : '' }}"
-                                   value="{{ old('email') }}">
-                            <span class="helper-text red-text">
-                                 @if ($errors->has('email'))
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                @endif
-                            </span>
-                        </div>
+        <div class="login-box-body">
+            <form action="{{ route('login') }}" method="POST" autocomplete="on">
+                @csrf
 
 
-                        <div class="input-field col s12">
-                            <label for="password">password</label>
-                            <input type="password" name="password" id="password"
-                                   class="validate {{ $errors->has('email') ? ' invalid' : '' }}">
-                            <span class="helper-text red-text">
-                                @if ($errors->has('password'))
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                @endif
-                            </span>
+                {{--///////// email ////////--}}
+                <div class="form-group has-feedback {{ $errors->has('email')? 'has-error' : '' }}">
+                    <input type="email" name="email" class="form-control" placeholder="Email" autofocus value="{{ old('email') }}">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <span class="help-block">
+                        @if($errors->has('email'))
+                            <strong>{{ $errors->first('email') }}</strong>
+                        @endif
+                    </span>
+                </div>
+
+
+                {{--///////// password ////////--}}
+                <div class="form-group has-feedback {{ $errors->has('password')? 'has-error' : ''  }}">
+                    <input type="password" name="email" class="form-control" placeholder="Password">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <span class="help-block">
+                        @if($errors->has('password'))
+                            <strong>{{ $errors->first('password') }}</strong>
+                        @endif
+                    </span>
+                </div>
+
+
+                {{--///////// remember ////////--}}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="checkbox icheck">
+                            <label>
+                                <input type="checkbox" {{ old('remember') ? 'checked' : '' }} id="remember" name="remember" value='1' > Remember Me
+                            </label>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="row col s12" id="cookieOptions">
-                            <input type="checkbox" class="filled-in teal"
-                                   {{ old('remember') ? 'checked' : '' }} id="remember" name="remember" value='1'/>
-                            <label for="remember">Rester connecté</label>
-                        </div>
-
-                        <div class="col s12" id="connectOptions">
-                            <button type="submit" class="btn btn-flat waves-effect teal white-text" id="connect">
-                                Connexion
-                            </button>
-                        </div>
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">connexion</button>
                     </div>
+                </div>
+            </form>
 
-                    <div class="row">
-                        <div class="col s12">
-                            <a href="{{ route("register_") }}">Créer un compte</a>
-                            <a href="{{ route('password.request') }}" class="forgot">Mot de passe oublié</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <br>
+            <a href="{{ route('password.request') }}">Mot de passe oublié</a>
+            <br>
+            <a href="{{ route('register')  }}" class="text-center">Créer un nouveau compte</a>
         </div>
     </div>
 
-</main>
 
-
-<!-- ////////////////////////////// footer here /////////////////////////////////////////////////// -->
-<footer class="page-footer transparent">
-    <div class="footer-copyright transparent">
-        <div class="container">
-            © 2018 Copyright walimaji.org
-            <a class="grey-text text-lighten-4 right" href="https://github.com/itotafrica/walimaji">code source</a>
-        </div>
-    </div>
-</footer>
-<script src=../../assets/js/bin/jquery.min.js></script>
-<script src="../../assets/js/bin/materialize.min.js"></script>
-<script src="../../assets/js/bin/app.init.js"></script>
-<!-- ////////////////////////////// footer here /////////////////////////////////////////////////// -->
-</body>
-
-</html>
+    {{--/////// needed script ///////--}}
+    <script src="{{ asset('assets/plugins/iCheck/icheck.min.js') }}"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%'
+            });
+        });
+    </script>
+@endsection
