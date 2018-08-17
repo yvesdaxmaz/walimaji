@@ -26,8 +26,14 @@
 
 
     <div class="nav-tabs-custom map-nav-tabs">
-        <ul class="nav nav-tabs">
-
+        <ul class="nav nav-tabs ">
+            @foreach($types as $type)
+                @if($tab == $type->designation)
+                    <li class="active"><a href="{{ "?tab={$type->designation}" }}">{{ $type->designation }}</a></li>
+                @else
+                    <li><a href="{{ "?tab={$type->designation}" }}">{{ $type->designation }}</a></li>
+                @endif
+            @endforeach
         </ul>
     </div>
 
@@ -38,76 +44,59 @@
                         width="100%" height="450px" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
         </div>
-        <div class="container">
-            <section class="content">
-
-            </section>
-        </div>
-    </div>
-
-
-    <div class="page-footer transparent">
-        <div class="valign-wrapper map-banner" style="background: url({{ public_path("images/walimaji.jpg") }});">
-            <div class="container map-banner-content">
-                <section class="features-icons bg-light text-center">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                                    <div class="features-icons-icon d-flex">
-                                        <i class="icon-screen-desktop m-auto text-primary"></i>
+        <div class="page-footer transparent">
+            <div class="valign-wrapper map-banner" style="background: url({{ url("images/walimaji.jpg") }});">
+                <div class="container map-banner-content">
+                    <section class="features-icons text-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                        <div class="features-icons-icon d-flex">
+                                            <i class="glyphicon glyphicon-user m-auto text-primary"></i>
+                                        </div>
+                                        <h3>Traders</h3>
+                                        <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4
+                                            framework!</p>
                                     </div>
-                                    <h3>Fully Responsive</h3>
-                                    <p class="lead mb-0">This theme will look great on any device, no matter the
-                                        size!</p>
                                 </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                                    <div class="features-icons-icon d-flex">
-                                        <i class="glyphicon glyphicon-user m-auto text-primary"></i>
+                                <div class="col-lg-3">
+                                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                        <div class="features-icons-icon d-flex">
+                                            <i class="glyphicon glyphicon-user m-auto text-primary"></i>
+                                        </div>
+                                        <h3>Providers</h3>
+                                        <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4
+                                            framework!</p>
                                     </div>
-                                    <h3>Bootstrap 4 Ready</h3>
-                                    <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4
-                                        framework!</p>
                                 </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                                    <div class="features-icons-icon d-flex">
-                                        <i class="glyphicon glyphicon-user m-auto text-primary"></i>
+                                <div class="col-lg-3">
+                                    <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                                        <div class="features-icons-icon d-flex">
+                                            <i class="glyphicon glyphicon-user m-auto text-primary"></i>
+                                        </div>
+                                        <h3>Transfomers</h3>
+                                        <p class="lead mb-0">Ready to use with your own content, or customize the source
+                                            files!</p>
                                     </div>
-                                    <h3>Easy to Use</h3>
-                                    <p class="lead mb-0">Ready to use with your own content, or customize the source
-                                        files!</p>
                                 </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                                    <div class="features-icons-icon d-flex">
-                                        <i class="glyphicon glyphicon-user m-auto text-primary"></i>
+                                <div class="col-lg-3">
+                                    <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                                        <div class="features-icons-icon d-flex">
+                                            <i class="glyphicon glyphicon-user text-primary"></i>
+                                        </div>
+                                        <h3>Producers</h3>
+                                        <p class="lead mb-0">Ready to use with your own content, or customize the source
+                                            files!</p>
                                     </div>
-                                    <h3>Easy to Use</h3>
-                                    <p class="lead mb-0">Ready to use with your own content, or customize the source
-                                        files!</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                                    <div class="features-icons-icon d-flex">
-                                        <i class="glyphicon glyphicon-user m-auto text-primary"></i>
-                                    </div>
-                                    <h3>Easy to Use</h3>
-                                    <p class="lead mb-0">Ready to use with your own content, or customize the source
-                                        files!</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
+                </div>
+                <div class="map-banner-overlay"></div>
             </div>
-            <div class="map-banner-overlay"></div>
         </div>
     </div>
 
