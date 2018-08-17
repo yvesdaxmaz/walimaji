@@ -55,7 +55,7 @@
 <script src="{{ asset("assets/dist/js/adminlte.min.js") }}"></script>
 <script src="{{ asset("assets/dist/js/demo.js") }}"></script>
 <script>
-    var mapData = JSON.parse("<?= $data ?>");
+    var mapData = JSON.parse('{!! $data !!}');
 </script>
 <script src="{{ asset("assets/js/map.js") }}"></script>
 </body>
