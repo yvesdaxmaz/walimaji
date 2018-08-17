@@ -66,12 +66,12 @@
 
 
             {{--//////////////// password confirm /////////////--}}
-            <div class="form-group has-feedback {{ $errors->has('password_confirm')? 'has-error' : '' }}">
-                <input type="password" name="password_confirm" class="form-control" placeholder="Password (confirmer)">
+            <div class="form-group has-feedback {{ $errors->has('password_confirmation')? 'has-error' : '' }}">
+                <input type="password" name="password_confirmation" class="form-control" placeholder="Password (confirmer)">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 <span class="help-block">
-                    @if($errors->has('password_confirm'))
-                        <strong>{{ $errors->first('password_confirm') }}</strong>
+                    @if($errors->has('password_confirmation'))
+                        <strong>{{ $errors->first('password_confirmation') }}</strong>
                     @endif
                 </span>
             </div>
