@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserAdress;
-use App\Models\UserType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,8 +32,6 @@ class WelcomeController extends Controller
         $types = UserType::limit(4)->get();
         return view('home', compact('data', 'tab', 'types'));
     }
-
-
 
     public function getTrader()
     {
@@ -68,7 +65,7 @@ class WelcomeController extends Controller
 
     }
 
-    public function getTransformer()
+    public  function getTransformer()
     {
         $list_transformer = DB::table('user_adresses')
             ->select('*', 'users.name')
@@ -92,7 +89,7 @@ class WelcomeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -103,7 +100,7 @@ class WelcomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -114,7 +111,7 @@ class WelcomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -125,8 +122,8 @@ class WelcomeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -137,7 +134,7 @@ class WelcomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
