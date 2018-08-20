@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TradersController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class TradersController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
