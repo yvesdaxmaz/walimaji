@@ -101,26 +101,18 @@ class ProductsController extends Controller
     {
         try {
             $product = Product::findOrFail($id);
-            $quantity = $request->input('quantity') ?? $product->quantity;
-            $description = $request->input('description') ?? $product->description;
-            $idRef = $request->input('idRef') ?? $product->idRef;
-            $idActor = $request->input('idActor') ?? $product->idActor;
+            $validator = Validator::make(Input::all(), [
+                'quantity' => 'required',
+                'description' => 'required'
+            ]);
 
-            $validator = Validator::make(
-                compact('quantity', 'description', 'idRef', 'idActor'),
-                Product::$rules
-            );
+
+            $quantity = $request->input('quantity');
+            $description = $request->input('description');
 
             if (!$validator->fails()) {
-                try {
-                    User::findOrFail($idActor);
-                    ProductReference::findOrFail($idRef);
-
-                    Product::create(compact('name', 'quantity', 'description', 'idRef', 'idActor'));
-                    return Response::create("Success", 200);
-                } catch (ModelNotFoundException $e) {
-                    return Response::create("Utilisateur ou refrence non trouve", 403);
-                }
+                $product->update(compact('name', 'quantity', 'description'));
+                return Response::create("Success", 200);
             } else {
                 return Response::create($validator->errors(), 422);
             }
@@ -139,6 +131,7 @@ class ProductsController extends Controller
     {
         try {
             Product::destroy(Product::findOrFail($id)->id);
+            return Response::create("Produit Supprime avec Success", 200);
         } catch (ModelNotFoundException $e) {
             return Response::create("Produit non trouve", 404);
         }
