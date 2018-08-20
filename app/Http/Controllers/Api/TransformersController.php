@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\UserAdress;
 use App\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 
-class TranformersController extends Controller
+class TransformersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +18,9 @@ class TranformersController extends Controller
      */
     public function index()
     {
-        $data = UserAdress::getWithUserType(1);
+        $data = UserAdress::getWithUserType(4);
         return Response::create($data, 200);
     }
-
 
 
     /**
@@ -34,7 +34,7 @@ class TranformersController extends Controller
         try {
             $data = User::Where([
                 ['id', intval($id)],
-                ['type_id', 2]
+                ['type_id', 4]
             ])->firstOrFail();
 
             return Response::create($data, 200);
@@ -42,5 +42,4 @@ class TranformersController extends Controller
             return Response::create("Utilisateur n'existe pas ou plus", 404);
         }
     }
-
 }
