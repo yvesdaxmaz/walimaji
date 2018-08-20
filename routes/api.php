@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::namespace('Api')->group(function () {
-    Route::resource('traders', 'Api\\Traders');
+    Route::resource('traders', 'TradersController');
 });
 
 
