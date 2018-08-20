@@ -19,6 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
+Route::namespace('Api')->group(function () {
+    Route::resource('traders', 'Api\\Traders');
+});
+
+
 Route::get('Trader','WelcomeController@getTrader');
 Route::get('Producer','WelcomeController@getProducer');
 Route::get('Transformer','WelcomeController@getTransformer');
