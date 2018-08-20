@@ -6,7 +6,6 @@ use App\Models\UserAdress;
 use App\Models\UserType;
 use Illuminate\Http\Request;
 
-;
 
 class HomeController extends Controller
 {

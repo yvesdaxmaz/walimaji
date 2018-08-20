@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserAdress;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\UserType;
+use Illuminate\Http\Request;;
 
 class WelcomeController extends Controller
 {
