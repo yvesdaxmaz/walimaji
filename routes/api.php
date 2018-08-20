@@ -25,7 +25,8 @@ Route::namespace('Api')->group(function () {
     Route::resource('traders', 'TradersController');
     Route::resource('providers', 'ProvidersController');
     Route::resource('transformers', 'TransformersController');
-    Route::resource('Producers', 'ProducersController');
+    Route::resource('producers', 'ProducersController');
+    Route::resource('products', 'ProductsController');
 });
 
 
