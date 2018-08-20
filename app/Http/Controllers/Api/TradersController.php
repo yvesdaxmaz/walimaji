@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
+use App\Models\UserAdress;
+use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Response;
 
 class TradersController extends Controller
 {
@@ -14,29 +17,10 @@ class TradersController extends Controller
      */
     public function index()
     {
-        //
+        $data = UserAdress::getWithUserType(1);
+        return Response::create($data, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -46,40 +30,15 @@ class TradersController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        try {
+            $data = User::Where([
+                ['id', intval($id)],
+                ['type_id', 1]
+            ])->firstOrFail();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+            return Response::create($data, 200);
+        } catch (ModelNotFoundException $e) {
+            return Response::create("Utilisateur n'existe pas ou plus", 404);
+        }
     }
 }
