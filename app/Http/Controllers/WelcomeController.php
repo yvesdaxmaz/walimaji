@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UserAdress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\UserType;
 
 class WelcomeController extends Controller
 {

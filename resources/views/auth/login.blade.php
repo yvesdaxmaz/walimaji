@@ -57,7 +57,7 @@
             <br>
             <a href="{{ route('password.request') }}">Mot de passe oublié</a>
             <br>
-            <a href="{{ route('register')  }}" class="text-center">Créer un nouveau compte</a>
+            <a href="{{ route('register2')  }}" class="text-center">Créer un nouveau compte</a>
         </div>
     </div>
 

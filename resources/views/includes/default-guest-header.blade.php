@@ -15,7 +15,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">S'indentifier <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ route('login') }}">Connexion</a></li>
-                            <li><a href="{{ route('register_') }}">Inscription</a></li>
+                            <li><a href="{{ route('register2') }}">Inscription</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ route('password.request') }}">Mot de passe oublié ?</a></li>
                         </ul>
