@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\UserAdress;
 use App\User;
-use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 
-class TradersController extends Controller
+class ProvidersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
+    /* Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -20,6 +20,7 @@ class TradersController extends Controller
         $data = UserAdress::getWithUserType(1);
         return Response::create($data, 200);
     }
+
 
 
     /**
@@ -33,7 +34,7 @@ class TradersController extends Controller
         try {
             $data = User::Where([
                 ['id', intval($id)],
-                ['type_id', 1]
+                ['type_id', 2]
             ])->firstOrFail();
 
             return Response::create($data, 200);

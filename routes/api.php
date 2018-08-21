@@ -24,6 +24,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('Api')->group(function () {
     Route::resource('traders', 'TradersController');
     Route::resource('users', 'UsersController');
+    Route::resource('providers', 'ProvidersController');
+    Route::resource('transformers', 'TransformersController');
+    Route::resource('producers', 'ProducersController');
+    Route::resource('products', 'ProductsController');
 });
 
 
