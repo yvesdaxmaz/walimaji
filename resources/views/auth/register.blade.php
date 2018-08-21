@@ -10,7 +10,7 @@
         </div>
 
         <div class="login-box-body">
-        <form action="{{ route('register') }}" method="POST" autocomplete="off">
+        <form action="{{ route('register2') }}" method="POST" autocomplete="off">
             @csrf
 
             {{--///////////// type ////////////--}}
