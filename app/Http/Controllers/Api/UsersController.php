@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -19,20 +19,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data = User::all();
-        return Response::create($data, 200);
-
+        return Response::create(User::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -42,27 +31,6 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->input('name');
-        $description = $request->input('description');
-        $email = $request->input('email');
-        $phone = $request->input('phone');
-        $password = Hash::make($request->input('password'));
-        $type_id = $request->input('type_id');
-
-        try {
-
-            User::firstOrCreate([
-                'name' => $name,
-                'description' => $description,
-                'email' => $email,
-                'phone' => $phone,
-                'password' => $password,
-                'type_id' => $type_id,
-                'api_token' => str_random(60)
-            ]);
-        }catch (\Exception $e){
-            return Response::create("Error value");
-        }
 
     }
 
@@ -74,7 +42,12 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $data = User::Where('id', intval($id))->firstOrFail();
+            return Response::create($data, 200);
+        } catch (ModelNotFoundException $e) {
+            return Response::create("Utilisateur n'existe pas ou plus", 404);
+        }
     }
 
 
@@ -88,21 +61,21 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
 
-
-        try {
-            $user = User::findOrFail($id);
-            $name = $request->input('name') ?? $user->name;
-            $description = $request->input('description') ?? $user->description;
-            $phone = $request->input('phone') ?? $user->phone;
-
-            $data = compact('name', 'description', 'email', 'phone');
-            $user->update($data);
-
-
-        } catch (ModelNotFoundException $e) {
-            return Response::create("Utilisateur n'existe plus ou pas");
-        }
     }
 
 
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            $user = User::Where('id', $id)->firstOrFail();
+            $user->destroy($id);
+            return Response::create("Utilisateur supprime", 200);
+        } catch (ModelNotFoundException $e) {
+            return Response::create("Utilisateur n'existe pas ou plus", 404);
+        }
+    }
 }
