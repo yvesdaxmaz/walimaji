@@ -24,7 +24,7 @@ Route::get('Producer','WelcomeController@getProducer');
 Route::get('Transformer','WelcomeController@getTransformer');
 Route::get('Provider','WelcomeController@getProvider');
 Route::post('register','UserController@store');
-Route::post('setAdresse','UserController@setAdresse');
+Route::post('setAdresse','UserController@setAdreeeesse');
 
 
 
