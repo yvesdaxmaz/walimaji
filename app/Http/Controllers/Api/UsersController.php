@@ -32,6 +32,20 @@ class UsersController extends Controller
     public function store(Request $request)
     {
 
+        $validator = Validator::make(Input::all(), User::$rules);
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $type_id = $request->input('type_id');
+        $data = compact('name', 'description', 'email', 'password', 'type_id');
+
+        if (!$validator->fails()) {
+            User::firstOrCreate($data);
+            return Response::create("Success", 200);
+        } else {
+            return Response::create($validator->errors(), 422);
+        }
     }
 
     /**
@@ -60,7 +74,30 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        try {
+            $user = User::findOrFail($id);
+            $data = [
+                'name' => $request->input('name') ?? $user->name,
+                'description' => $request->input('description') ?? $user->description,
+                'phone' => $request->input('phone') ?? $user->phone
+            ];
 
+            $validator = Validator::make($data, [
+                'name' => 'required|unique:users',
+                'phone' => 'required|unique:users',
+                'description' => 'required|min:6'
+            ]);
+
+
+            if (!$validator->fails()) {
+                $user->update($data);
+                return Response::create($user, 200);
+            } else {
+                return Response::create($validator->errors(), 422);
+            }
+        } catch (ModelNotFoundException $e) {
+            return Response::create("utilisateur non trouve", 404);
+        }
     }
 
 
