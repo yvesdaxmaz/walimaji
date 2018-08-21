@@ -96,19 +96,6 @@ function showPosition(position) {
     };
 
 
-    /**
-     * add a street on the map
-     */
-    let addStreets = () => {
-        for (let i = 0; i < streets.length; i++) {
-            let polyline = L.polyline(
-                stringToGeoPoints(
-                    streets[i]['geolocations']),
-                    {color: 'red'}
-                ).addTo(map);
-            polyline.bindPopup("<b>" + streets[i]['name']);
-        }
-    };
 
 
     /**
