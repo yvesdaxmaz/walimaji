@@ -12,7 +12,7 @@
                 <div class="col-md-3">
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+                            <img class="profile-user-img img-responsive img-circle" src="http://www.gstatic.com/webp/gallery/2.jpg" alt="User profile picture">
 
                             <h3 class="profile-username text-center">{{$details[0]->name}}</h3>
 
@@ -105,99 +105,27 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Nom</th>
-                                        <th>Description</th>
-                                        <th>Prix</th>
+                                        <th>Prix HT</th>
+                                        <th>Prix AT</th>
                                         <th>Quantité</th>
+                                        <th>Description</th>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="https://via.placeholder.com/50x50" alt="">
-                                        </td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td>
-                                            <span class="label label-success">Approved</span>
-                                        </td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="https://via.placeholder.com/50x50" alt="">
-                                        </td>
-                                        <td>Alexander Pierce</td>
-                                        <td>11-7-2014</td>
-                                        <td>
-                                            <span class="label label-warning">Pending</span>
-                                        </td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="https://via.placeholder.com/50x50" alt="">
-                                        </td>
-                                        <td>Bob Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td>
-                                            <span class="label label-primary">Approved</span>
-                                        </td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="https://via.placeholder.com/50x50" alt="">
-                                        </td>
-                                        <td>Mike Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td>
-                                            <span class="label label-danger">Denied</span>
-                                        </td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="https://via.placeholder.com/50x50" alt="">
-                                        </td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td>
-                                            <span class="label label-success">Approved</span>
-                                        </td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="https://via.placeholder.com/50x50" alt="">
-                                        </td>
-                                        <td>Alexander Pierce</td>
-                                        <td>11-7-2014</td>
-                                        <td>
-                                            <span class="label label-warning">Pending</span>
-                                        </td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="https://via.placeholder.com/50x50" alt="">
-                                        </td>
-                                        <td>Bob Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td>
-                                            <span class="label label-primary">Approved</span>
-                                        </td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="https://via.placeholder.com/50x50" alt="">
-                                        </td>
-                                        <td>Mike Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td>
-                                            <span class="label label-danger">Denied</span>
-                                        </td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
+                                    @foreach($products as $product )
+                                        <tr>
+                                            <td>
+                                                <img src="http://www.gstatic.com/webp/gallery/2.jpg" alt="">
+                                            </td>
+                                            <td>{{$products[0]->designation}}</td>
+                                            <td>
+                                                <span class="label label-success">{{$products[0]->priceWithoutTax}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="label label-success">{{$products[0]->priceWithTax}}</span>
+                                            </td>
+                                            <td> <td>{{$products[0]->quantity}}</td></td>
+                                            <td> <td>{{$products[0]->description}}</td></td>
+                                        </tr>
+                                    @endforeach
                                 </table>
                             </div>
                             <!-- /.tab-pane -->
@@ -249,9 +177,9 @@
                                 </div>
                                 <!-- /.box -->
                             </div>
-                            <!-- /.tab-pane -->
+
                         </div>
-                        <!-- /.tab-content -->
+
                     </div>
                 </div>
                 <div class="col-md-1"></div>
