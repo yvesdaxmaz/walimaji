@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Subscription extends Model
 {
@@ -12,14 +13,14 @@ class Subscription extends Model
 
     public static function getFollowers($id){
         return DB::table('subscriptions')
-            ->select(DB::raw('count(idActor)'))
+            ->select(DB::raw('count(idActor) as followers_count'))
             ->where('idActor','=',$id)
             ->get();
     }
 
     public static function getFollowing($id){
         return DB::table('subscriptions')
-            ->select(DB::raw('count(idsubscriber)'))
+            ->select(DB::raw('count(idsubscriber) as following_count'))
             ->get();
 
     }

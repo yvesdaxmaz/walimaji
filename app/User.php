@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -34,6 +35,6 @@ class User extends Authenticatable
             ->join('user_types','users.type_id','=','user_types.id')
             ->select('users.*','user_adresses.*','user_types.*')
             ->where('users.id','=',$id)
-            ->get()->toArray();
+            ->get();
     }
 }

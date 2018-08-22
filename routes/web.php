@@ -18,3 +18,5 @@ Route:: post('/check',[
     'users' => 'nomContrllr@currentfunction',
     'as' => 'check'
 ]);
+
+Route::get('/users/details/{id}','UserController@detail');

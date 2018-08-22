@@ -14,17 +14,17 @@
                         <div class="box-body box-profile">
                             <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
 
-                            <h3 class="profile-username text-center">{{$userDetails['name']}}</h3>
+                            <h3 class="profile-username text-center">{{$details[0]->name}}</h3>
 
-                            <p class="text-muted text-center">{{$userDetails['designation']}}</p>
+                            <p class="text-muted text-center">{{$details[0]->designation}}</p>
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
                                     <b>Followers</b>
-                                    <a class="pull-right"> {{$followers}}</a>
+                                    <a class="pull-right"> {{$followers[0]->followers_count}}</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>Following</b>
-                                    <a class="pull-right">{{$following}}</a>
+                                    <a class="pull-right">{{$following[0]->following_count}}</a>
                                 </li>
                             </ul>
 
@@ -38,13 +38,12 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">About Me</h3>
                         </div>
-                        <!-- /.box-header -->
                         <div class="box-body">
                             <strong>
                                 <i class="fa fa-info margin-r-5"></i>Description</strong>
 
                             <p class="text-muted">
-                                {{$userDetails['description']}}
+                                {{ $details[0]->description }}
                             </p>
 
                             <hr>
@@ -52,19 +51,19 @@
                             <strong>
                                 <i class="fa fa-map-marker margin-r-5"></i> Adresse </strong>
 
-                            <p class="text-muted"> {{$userDetails['adresse']}}</p>
+                            <p class="text-muted"> {{ $details[0]->adresse}}</p>
 
                             <hr>
                             <strong>
                                 <i class="fa fa-map-marker margin-r-5"></i> Phone </strong>
 
-                            <p class="text-muted">{{$userDetails['phone']}}</p>
+                            <p class="text-muted">{{$details[0]->phone}}</p>
 
                             <hr>
                             <strong>
                                 <i class="fa fa-map-marker margin-r-5"></i> Adresse Mail </strong>
 
-                            <p class="text-muted">{{$userDetails['email']}}</p>
+                            <p class="text-muted">{{$details[0]->email}}</p>
 
                             <hr>
 
@@ -72,128 +71,188 @@
                                 <i class="fa fa-pencil margin-r-5"></i>Sociaux</strong>
 
                             <p class="">
-                                <a href="{{$userDetails['facebook']}}" class="btn btn-social-icon btn-facebook">
+                                <a href="{{$details[0]->facebook }}" class="btn btn-social-icon btn-facebook">
                                     <i class="fa fa-facebook"></i>
                                 </a>
-                                <a href="{{$userDetails['instagram']}}" class="btn btn-social-icon btn-instagram">
+                                <a href="{{$details[0]->instagram }}" class="btn btn-social-icon btn-instagram">
                                     <i class="fa fa-instagram"></i>
                                 </a>
-                                <a href="{{$userDetails['twitter']}}" class="btn btn-social-icon btn-twitter">
+                                <a href="{{$details[0]->twitter }}" class="btn btn-social-icon btn-twitter">
                                     <i class="fa fa-twitter"></i>
                                 </a>
                             </p>
 
                             <hr>
                         </div>
-                        <!-- /.box-body -->
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#produits" data-toggle="tab">Produits</a>
+                                <a href="#activity" data-toggle="tab">Produits</a>
                             </li>
                             <li>
-                                <a href="#localisation" data-toggle="tab">Localisation</a>
+                                <a href="#timeline" data-toggle="tab">Localisation</a>
                             </li>
                             <li>
-                                <a href="#stat" data-toggle="tab">Statistiques</a>
+                                <a href="#settings" data-toggle="tab">Statistiques</a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="active tab-pane" id="produits">
-                                <div class="box-body">
-                                    <ul class="products-list product-list-in-box">
-                                        <li class="item">
-                                            <div class="product-img">
-                                                <img src="../../dist/img/default-50x50.gif" alt="Product Image">
-                                            </div>
-                                            <div class="product-info">
-                                                <a href="javascript:void(0)" class="product-title">Xbox One
-                                                    <span class="label label-primary pull-right">Node.js</span>
-                                                </a>
-                                                <span class="product-description">
-                                                        Xbox One Console Bundle with Halo Master Chief Collection.
-                                                    </span>
-                                            </div>
-                                        </li>
-                                        <!-- /.item -->
-                                        <li class="item">
-                                            <div class="product-img">
-                                                <img src="../../dist/img/default-50x50.gif" alt="Product Image">
-                                            </div>
-                                            <div class="product-info">
-                                                <a href="javascript:void(0)" class="product-title">Xbox One
-                                                    <div class="btn btn-xs btn-info pull-right">
-                                                        Follow
-                                                    </div>
-                                                </a>
-                                                <span class="product-description">
-                                                        Xbox One Console Bundle with Halo Master Chief Collection.
-                                                    </span>
-                                            </div>
-                                        </li>
-                                        <!-- /.item -->
-                                        <li class="item">
-                                            <div class="product-img">
-                                                <img src="../../dist/img/default-50x50.gif" alt="Product Image">
-                                            </div>
-                                            <div class="product-info">
-                                                <a href="javascript:void(0)" class="product-title">Xbox One
-                                                    <div class="btn btn-xs btn-info pull-right">
-                                                        Follow
-                                                    </div>
-                                                </a>
-                                                <span class="product-description">
-                                                        Xbox One Console Bundle with Halo Master Chief Collection.
-                                                    </span>
-                                            </div>
-                                        </li>
-                                        <!-- /.item -->
-                                        <li class="item">
-                                            <div class="product-img">
-                                                <img src="../../dist/img/default-50x50.gif" alt="Product Image">
-                                            </div>
-                                            <div class="product-info">
-                                                <a href="javascript:void(0)" class="product-title">Xbox One
-                                                    <div class="btn btn-xs btn-info pull-right">
-                                                        Follow
-                                                    </div>
-                                                </a>
-                                                <span class="product-description">
-                                                        Xbox One Console Bundle with Halo Master Chief Collection.
-                                                    </span>
-                                            </div>
-                                        </li>
-                                        <!-- /.item -->
-                                    </ul>
-                                </div>
-                                <!-- /.box-body -->
-                                <div class="box-footer text-center">
-                                    <a href="javascript:void(0)" class="uppercase">View All Products</a>
-                                </div>
+                            <div class="active tab-pane" id="activity">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Nom</th>
+                                        <th>Description</th>
+                                        <th>Prix</th>
+                                        <th>Quantité</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="https://via.placeholder.com/50x50" alt="">
+                                        </td>
+                                        <td>John Doe</td>
+                                        <td>11-7-2014</td>
+                                        <td>
+                                            <span class="label label-success">Approved</span>
+                                        </td>
+                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="https://via.placeholder.com/50x50" alt="">
+                                        </td>
+                                        <td>Alexander Pierce</td>
+                                        <td>11-7-2014</td>
+                                        <td>
+                                            <span class="label label-warning">Pending</span>
+                                        </td>
+                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="https://via.placeholder.com/50x50" alt="">
+                                        </td>
+                                        <td>Bob Doe</td>
+                                        <td>11-7-2014</td>
+                                        <td>
+                                            <span class="label label-primary">Approved</span>
+                                        </td>
+                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="https://via.placeholder.com/50x50" alt="">
+                                        </td>
+                                        <td>Mike Doe</td>
+                                        <td>11-7-2014</td>
+                                        <td>
+                                            <span class="label label-danger">Denied</span>
+                                        </td>
+                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    </tr>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="https://via.placeholder.com/50x50" alt="">
+                                        </td>
+                                        <td>John Doe</td>
+                                        <td>11-7-2014</td>
+                                        <td>
+                                            <span class="label label-success">Approved</span>
+                                        </td>
+                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="https://via.placeholder.com/50x50" alt="">
+                                        </td>
+                                        <td>Alexander Pierce</td>
+                                        <td>11-7-2014</td>
+                                        <td>
+                                            <span class="label label-warning">Pending</span>
+                                        </td>
+                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="https://via.placeholder.com/50x50" alt="">
+                                        </td>
+                                        <td>Bob Doe</td>
+                                        <td>11-7-2014</td>
+                                        <td>
+                                            <span class="label label-primary">Approved</span>
+                                        </td>
+                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="https://via.placeholder.com/50x50" alt="">
+                                        </td>
+                                        <td>Mike Doe</td>
+                                        <td>11-7-2014</td>
+                                        <td>
+                                            <span class="label label-danger">Denied</span>
+                                        </td>
+                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    </tr>
+                                </table>
                             </div>
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="localisation">
+                            <div class="tab-pane" id="timeline">
                                 <!-- Map box -->
                                 <div class="box box-solid bg-light-blue-gradient">
                                     <div class="box-body">
-                                        <div id="world-map" style="height: 450px;"></div>
+                                        <div id="world-map" style="height: 250px; width: 100%;"></div>
                                     </div>
-                                    <!-- /.box-body-->
                                 </div>
+                                <!-- /.box -->
                             </div>
                             <!-- /.tab-pane -->
 
-                            <div class="tab-pane" id="stat">
+                            <div class="tab-pane" id="settings">
+                                <!-- solid sales graph -->
+                                <div class="box box-solid bg-teal-gradient">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Représentation graphique des activités</h3>
+                                    </div>
+                                    <div class="box-body border-radius-none">
+                                        <div class="chart" id="line-chart" style="height: 250px;"></div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer no-border">
+                                        <div class="row">
+                                            <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                                                <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
 
+                                                <div class="knob-label">Mail-Orders</div>
+                                            </div>
+                                            <!-- ./col -->
+                                            <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                                                <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+                                                <div class="knob-label">Online</div>
+                                            </div>
+                                            <!-- ./col -->
+                                            <div class="col-xs-4 text-center">
+                                                <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+                                                <div class="knob-label">In-Store</div>
+                                            </div>
+                                            <!-- ./col -->
+                                        </div>
+                                        <!-- /.row -->
+                                    </div>
+                                    <!-- /.box-footer -->
+                                </div>
+                                <!-- /.box -->
                             </div>
                             <!-- /.tab-pane -->
                         </div>
                         <!-- /.tab-content -->
                     </div>
-                    <!-- /.nav-tabs-custom -->
                 </div>
                 <div class="col-md-1"></div>
             </div>
