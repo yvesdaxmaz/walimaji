@@ -15,7 +15,10 @@ class UserController extends Controller
 {
     public function index($id){
 
-        $userDetails=User::getWithAdressAndType($id);
+    }
+
+    public function detail($id){
+        $details=User::getWithAdressAndType($id);
 
         $products=Product::getWithReference($id);
 
@@ -23,7 +26,7 @@ class UserController extends Controller
 
         $following= Subscription::getFollowers($id);
 
-        return view('user.userDetail',compact('$userDetails','$products','$followers','$following'));
+        return view('user.detail',compact('$userDetails','$products','$followers','$following'));
 
     }
 

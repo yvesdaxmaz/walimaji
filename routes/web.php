@@ -20,5 +20,5 @@ Route:: post('/check',[
 ]);
 
 Route::get('/userDetail',function (){
-    return view('user.userDetail');
+    return view('user.detail');
 });
