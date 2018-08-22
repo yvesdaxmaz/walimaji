@@ -97,7 +97,7 @@ function showPosition(position) {
                     `<b>${mapData[i]['name']}</b>` +
                     `<br>Details: ${mapData[i]['adresse']}` +
                     `<br />Telephone: ${mapData[i]['telephone']}` +
-                    `<br /><a href="#">Voir Plus</a>`
+                    `<br /><a href="/users/details/${mapData[i]['id']}">Voir Plus</a>`
                 );
             }
         } catch(e) {
