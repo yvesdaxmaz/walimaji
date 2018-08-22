@@ -24,8 +24,9 @@ class Product extends Model
     public static function getWithReference($id){
         return DB::table('products')
             ->join('product_refs', 'product_refs.id', '=', 'products.idRef')
-            ->select('products.*', 'product_refs.*')
-            ->where('products.idActor','=',$id)
+            ->join('product_prices','product_prices.idProduct','=','products.id')
+            ->select('products.*', 'product_refs.*','product_prices.*')
+            ->where('products.idActor','=',$id,'and','')
             ->get()->toArray();
     }
 }
