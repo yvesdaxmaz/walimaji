@@ -18,7 +18,3 @@ Route:: post('/check',[
     'users' => 'nomContrllr@currentfunction',
     'as' => 'check'
 ]);
-
-Route::get('/userDetail',function (){
-    return view('user.userDetail');
-});

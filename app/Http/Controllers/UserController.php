@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Subscription;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -13,27 +15,18 @@ class UserController extends Controller
 {
     public function index($id){
 
-        $userDetails=DB::table('users')
-            ->join('user_adresses','users.id','=','user_adresses.user_id')
-            ->select('users.*','user_adresses.*')
-            ->where('users.id','=',$id);
+    }
 
-        $products=DB::table('products')
-            ->join('product_refs', 'product_refs.id', '=', 'products.idRef')
-            ->select('products.*', 'product_refs.*')
-            ->where('products.idActor','=',$id)
-            ->get();
+    public function detail($id){
+        $details=User::getWithAdressAndType($id);
 
-        $followers=DB::table('subscriptions')
-            ->select(DB::raw('count(idActor) as follewers_count'))
-            ->where('idActor','=',$id)
-            ->get();
+        $products=Product::getWithReference($id);
 
-        $following=DB::table('subscriptions')
-            ->select(DB::raw('count(idsubscriber) as follewing_count'))
-            ->get();
+        $followers=Subscription::getFollowers($id);
 
-        return view('user.userDetail',compact('$userDetails','$products','$followers','$following'));
+        $following= Subscription::getFollowers($id);
+
+        return view('user.detail',compact('$userDetails','$products','$followers','$following'));
 
     }
 

@@ -14,17 +14,17 @@
                         <div class="box-body box-profile">
                             <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
 
-                            <h3 class="profile-username text-center">Nina Mcintire</h3>
+                            <h3 class="profile-username text-center">{{$userDetails['name']}}</h3>
 
-                            <p class="text-muted text-center">Software Engineer</p>
+                            <p class="text-muted text-center">{{$userDetails['designation']}}</p>
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
                                     <b>Followers</b>
-                                    <a class="pull-right">1,322</a>
+                                    <a class="pull-right"> {{$followers}}</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>Following</b>
-                                    <a class="pull-right">543</a>
+                                    <a class="pull-right">{{$following}}</a>
                                 </li>
                             </ul>
 
@@ -41,10 +41,10 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <strong>
-                                <i class="fa fa-book margin-r-5"></i>Description</strong>
+                                <i class="fa fa-info margin-r-5"></i>Description</strong>
 
                             <p class="text-muted">
-                                B.S. in Computer Science from the University of Tennessee at Knoxville
+                                {{$userDetails['description']}}
                             </p>
 
                             <hr>
@@ -52,19 +52,19 @@
                             <strong>
                                 <i class="fa fa-map-marker margin-r-5"></i> Adresse </strong>
 
-                            <p class="text-muted">Malibu, California</p>
+                            <p class="text-muted"> {{$userDetails['adresse']}}</p>
 
                             <hr>
                             <strong>
                                 <i class="fa fa-map-marker margin-r-5"></i> Phone </strong>
 
-                            <p class="text-muted">+243967558661</p>
+                            <p class="text-muted">{{$userDetails['phone']}}</p>
 
                             <hr>
                             <strong>
                                 <i class="fa fa-map-marker margin-r-5"></i> Adresse Mail </strong>
 
-                            <p class="text-muted">walimaji@gmail.com</p>
+                            <p class="text-muted">{{$userDetails['email']}}</p>
 
                             <hr>
 
@@ -72,13 +72,13 @@
                                 <i class="fa fa-pencil margin-r-5"></i>Sociaux</strong>
 
                             <p class="">
-                                <a class="btn btn-social-icon btn-facebook">
+                                <a href="{{$userDetails['facebook']}}" class="btn btn-social-icon btn-facebook">
                                     <i class="fa fa-facebook"></i>
                                 </a>
-                                <a class="btn btn-social-icon btn-instagram">
+                                <a href="{{$userDetails['instagram']}}" class="btn btn-social-icon btn-instagram">
                                     <i class="fa fa-instagram"></i>
                                 </a>
-                                <a class="btn btn-social-icon btn-twitter">
+                                <a href="{{$userDetails['twitter']}}" class="btn btn-social-icon btn-twitter">
                                     <i class="fa fa-twitter"></i>
                                 </a>
                             </p>

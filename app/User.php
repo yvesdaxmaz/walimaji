@@ -9,18 +9,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-
-    /**
-     * the table name in the database
-     * @var string
-     */
     protected $table = 'users';
 
-
-    /**
-     * validation rules
-     * @var array
-     */
     public static $rules = [
         "name" => "required|unique:users|max:65",
         "email" => "required|unique:users|email",
@@ -30,23 +20,20 @@ class User extends Authenticatable
         'type_id' => 'required|numeric'
     ];
 
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email', 'password', 'type_id', 'description', 'phone', 'image', 'facebook', 'tittwer', 'instagram', 'api_token'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
+    public static function getWithAdressAndType($id){
+        return DB::table('users')
+            ->join('user_adresses','users.id','=','user_adresses.user_id')
+            ->join('user_types','users.type_id','=','user_types.id')
+            ->select('users.*','user_adresses.*','user_types.*')
+            ->where('users.id','=',$id)
+            ->get()->toArray();
+    }
 }
