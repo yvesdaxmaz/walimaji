@@ -6,7 +6,6 @@ use App\Models\UserAdress;
 use App\Models\UserType;
 use Illuminate\Http\Request;
 
-;
 
 class HomeController extends Controller
 {
@@ -29,7 +28,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if ($request->query('tab')) {
-            $types = ['trader' => 1, 'producer' => 2, 'transfomer' => 3, 'provider' => 4];
+            $types = ['trader' => 1, 'provider' => 2, 'producer' => 3, 'transformer' => 4];
             $tab = (array_key_exists($request->query('tab'), $types))?
                 htmlspecialchars($request->query('tab')) :
                 'trader';

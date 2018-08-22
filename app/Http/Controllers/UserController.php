@@ -29,25 +29,4 @@ class UserController extends Controller
         ]);
 
     }
-
-    public function setAdresse(request $request)
-    {
-        $msg = '';
-
-       try{
-           DB::table('user_adresses')
-               ->where('id', $request->input('id'))
-               ->update(['adresse' => $request->input('adresse'),
-                   'latitude' => $request->input('latitude'),
-                   'longitude' => $request->input('longitude')]);
-           $msg= 'update success';
-
-       }catch (QueryException $exception){
-           $msg= $exception->getMessage();
-       }
-       return json_encode(['msg'=>$msg]);
-
-    }
-
-
 }

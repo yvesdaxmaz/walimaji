@@ -15,7 +15,7 @@ class UserTypesTableSeed extends Seeder
 
         $data = [];
         $designation = [
-            'provider', 'producer', 'transfomer', 'trader'
+            'trader', 'provider', 'producer', 'transformer'
         ];
 
         for ($i = 0; $i < 4; $i++) {
