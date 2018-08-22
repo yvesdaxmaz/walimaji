@@ -1,15 +1,53 @@
 /**
- * create a greenIcon for the active located user.
- * @type {*}
+ * icons for different user type
+ * @type {{currentUser: *|Ye, traders: *|Ye, transformers: *|Ye, providers: *|Ye, producers: *|Ye}}
  */
-let greenIcon = new L.Icon({
-    iconUrl: 'http://127.0.0.1:8000/assets/leaflet/dist/images/green.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    iconSize: [41, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -32],
-    shadowSize: [41, 51]
-});
+let icons = {
+    currentUser: new L.Icon({
+        iconUrl: 'http://127.0.0.1:8000/assets/leaflet/dist/images/violet.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [41, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -32],
+        shadowSize: [41, 51]
+    }),
+
+    trader: new L.Icon({
+        iconUrl: 'http://127.0.0.1:8000/assets/leaflet/dist/images/green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [41, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -32],
+        shadowSize: [41, 51]
+    }),
+
+    transformer: new L.Icon({
+        iconUrl: 'http://127.0.0.1:8000/assets/leaflet/dist/images/red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [41, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -32],
+        shadowSize: [41, 51]
+    }),
+
+    provider: new L.Icon({
+        iconUrl: 'http://127.0.0.1:8000/assets/leaflet/dist/images/yellow.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [41, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -32],
+        shadowSize: [41, 51]
+    }),
+
+    producer: new L.Icon({
+        iconUrl: 'http://127.0.0.1:8000/assets/leaflet/dist/images/blue.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [41, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -32],
+        shadowSize: [41, 51]
+    })
+};
 
 
 /**
@@ -52,7 +90,7 @@ function showPosition(position) {
             for (let i = 0; i < mapData.length; i++) {
                 let marker = L.marker(
                     [mapData[i]['latitude'], mapData[i]['longitude']],
-                    {color: 'red'}
+                    {icon: icons[tab]}
                 ).addTo(map);
 
                 marker.bindPopup(
@@ -74,7 +112,7 @@ function showPosition(position) {
     let addCurrent = () => {
         let marker = L.marker(
             [userLat, userLng],
-            {icon: greenIcon}
+            {icon: icons.currentUser}
         ).addTo(map);
 
         marker.bindPopup("Vous");
@@ -96,19 +134,6 @@ function showPosition(position) {
     };
 
 
-    /**
-     * add a street on the map
-     */
-    let addStreets = () => {
-        for (let i = 0; i < streets.length; i++) {
-            let polyline = L.polyline(
-                stringToGeoPoints(
-                    streets[i]['geolocations']),
-                    {color: 'red'}
-                ).addTo(map);
-            polyline.bindPopup("<b>" + streets[i]['name']);
-        }
-    };
 
 
     /**

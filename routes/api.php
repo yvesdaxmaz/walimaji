@@ -19,13 +19,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('Trader','WelcomeController@getTrader');
-Route::get('Producer','WelcomeController@getProducer');
-Route::get('Transformer','WelcomeController@getTransformer');
-Route::get('Provider','WelcomeController@getProvider');
-Route::post('register','UserController@store');
-Route::post('setAdresse','UserController@setAdresse');
 
+
+Route::namespace('Api')->group(function () {
+    Route::resource('traders', 'TradersController');
+    Route::resource('users', 'UsersController');
+    Route::resource('providers', 'ProvidersController');
+    Route::resource('transformers', 'TransformersController');
+    Route::resource('producers', 'ProducersController');
+    Route::resource('products', 'ProductsController');
+});
 
 
 
