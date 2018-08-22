@@ -8,8 +8,8 @@
         <section class="content">
 
             <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-2">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
                     <div class="box box-primary">
                         <div class="box-body box-profile">
                             <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
@@ -88,7 +88,7 @@
                         <!-- /.box-body -->
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
                             <li class="active">
@@ -195,7 +195,7 @@
                     </div>
                     <!-- /.nav-tabs-custom -->
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-1"></div>
             </div>
         </section>
         <!-- /.content -->
