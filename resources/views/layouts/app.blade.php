@@ -7,19 +7,25 @@
     {{--///////// specific page ressources //////////--}}
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js')  }}"></script>
+
+    {{--////////////// leaflet and mapbox API ressources /////////////--}}
+    <script src="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
+    <script src="{{ asset("assets/leaflet/dist/leaflet.js") }}"></script>
+    <link rel="stylesheet" href="{{ asset("assets/leaflet/dist/leaflet.css") }}">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css">
+    <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
 </head>
 <body class="hold-transition sidebar-mini skin-blue ">
     <div class="wrapper">
         @include('includes.default-auth-header')
         @yield('content')
     </div>
+    
+    @include("includes.default-script")
 
-    <script src="{{ asset("assets/vendor/jquery/dist/jquery.min.js") }}"></script>
-    <script src="{{ asset("assets/vendor/bootstrap/dist/js/bootstrap.min.js") }}"></script>
-    <script src="{{ asset("assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js") }}"></script>
-    <script src="{{ asset("assets/vendor/fastclick/lib/fastclick.js") }}"></script>
-    <script src="{{ asset("assets/dist/js/adminlte.min.js") }}"></script>
-    <script src="{{ asset("assets/dist/js/demo.js") }}"></script>
     <script>
         var tab = '{{ $tab }}';
         var mapData = JSON.parse('{!! $data !!}');

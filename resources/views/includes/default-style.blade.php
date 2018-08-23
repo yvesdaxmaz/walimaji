@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{ asset("assets/vendor/Ionicons/css/ionicons.min.css") }}">
 <link rel="stylesheet" href="{{ asset("assets/dist/css/AdminLTE.min.css") }}">
 <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+<link rel="stylesheet" href="{{ asset("assets/dist/css/skins/_all-skins.min.css") }}">
 
 {{--google fonts--}}
 <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet">
