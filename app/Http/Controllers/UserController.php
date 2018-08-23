@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Subscription;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -26,8 +27,15 @@ class UserController extends Controller
 
         $following= Subscription::getFollowing($id);
 
-        return view('user.detail',compact('details','products','followers','following'));
+        return view('user-detail',compact('details','products','followers','following'));
 
+    }
+
+    public static function newSubscription($id){
+        $sub= new Subscription();
+        $sub->idsubscriber=Auth::id();
+        $sub->idActor=$id;
+        $sub->save();
     }
 
     public function store(request $request)

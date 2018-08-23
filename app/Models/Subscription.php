@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Subscription extends Model
@@ -22,6 +23,5 @@ class Subscription extends Model
         return DB::table('subscriptions')
             ->select(DB::raw('count(idsubscriber) as following_count'))
             ->get();
-
     }
 }
