@@ -194,8 +194,8 @@ function showPosition(position) {
          * lead pin on the map when the document is loaded.
          */
         $(document).ready(function () {
-            //addCurrent();
-            //setPopupData();
+            addCurrent();
+            setPopupData();
         });
     } catch (e) {
         console.warn(e);
@@ -203,4 +203,4 @@ function showPosition(position) {
 }
 
 
-//getLocation();
+getLocation();
