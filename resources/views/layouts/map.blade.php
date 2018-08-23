@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="{{ asset("assets/vendor/Ionicons/css/ionicons.min.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/dist/css/AdminLTE.min.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/dist/css/skins/_all-skins.min.css") }}">
-
-
-
     {{--////////////// leaflet and mapbox API ressources /////////////--}}
     <script src="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
     <script src="{{ asset("assets/leaflet/dist/leaflet.js") }}"></script>
@@ -23,10 +20,8 @@
 </head>
 <body class="hold-transition skin-blue layout-top-nav">
     <div class="wrapper">
-
-        @guest
-             @include('includes.default-guest-header')
-            <div class="nav-tabs-custom map-nav-tabs">
+        @include('includes.default-guest-header')
+        <div class="nav-tabs-custom map-nav-tabs">
                 <ul class="nav nav-tabs ">
                     @foreach($types as $type)
                         @if($tab == $type->designation)
@@ -37,15 +32,9 @@
                     @endforeach
                 </ul>
             </div>
-        @else
-            @include('includes.default-auth-header')
-        @endif
-
         @yield('content')
-
         @include('includes.default-footer')
     </div>
-
     <script src="{{ asset("assets/vendor/jquery/dist/jquery.min.js") }}"></script>
     <script src="{{ asset("assets/vendor/bootstrap/dist/js/bootstrap.min.js") }}"></script>
     <script src="{{ asset("assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js") }}"></script>
