@@ -40,6 +40,7 @@ class HomeController extends Controller
         }
 
         $types = UserType::limit(4)->get();
+
         return view('home', compact('data', 'tab', 'types'));
     }
 }

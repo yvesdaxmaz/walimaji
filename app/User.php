@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
@@ -36,5 +37,44 @@ class User extends Authenticatable
             ->select('users.*','user_adresses.*','user_types.*')
             ->where('users.id','=',$id)
             ->get();
+    }
+
+    public static function getWithType(){
+        return DB::table('users')
+            ->join('user_types','users.type_id','=','user_types.id')
+            ->select('users.*','user_types.*')
+            ->where('users.id','=',Auth::id())
+            ->get();
+    }
+
+    public static function getAllProviders(){
+        return DB::table('users')
+            ->join('user_types','users.type_id','=','user_types.id')
+            ->select('users.*','user_types.*')
+            ->where('user_types.designation','=','provider')
+            ->get();
+    }
+    public static function getAllProducers(){
+        return DB::table('users')
+            ->join('user_types','users.type_id','=','user_types.id')
+            ->select('users.*','user_types.*')
+            ->where('user_types.designation','=','producer')
+            ->get();
+    }
+    public static function getAllTransfomers(){
+        return DB::table('users')
+            ->join('user_types','users.type_id','=','user_types.id')
+            ->select('users.*','user_types.*')
+            ->where('user_types.designation','=','transfomer')
+            ->get();
+
+    }
+    public static function getAllTraders(){
+        return DB::table('users')
+            ->join('user_types','users.type_id','=','user_types.id')
+            ->select('users.*','user_types.*')
+            ->where('user_types.designation','=','trader')
+            ->get();
+
     }
 }
