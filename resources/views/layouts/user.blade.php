@@ -2,20 +2,20 @@
 <html>
 <head>
     @include("includes.default-meta")
+    @include('includes.default-style')
 
-
-    <link rel="stylesheet" href="{{ asset("assets/vendor/bootstrap/dist/css/bootstrap.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/vendor/font-awesome/css/font-awesome.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/vendor/Ionicons/css/ionicons.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/dist/css/AdminLTE.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/dist/css/skins/_all-skins.min.css") }}">
 
     {{--////////////// leaflet and mapbox API ressources /////////////--}}
-    <script src="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
-    <script src="{{ asset("assets/leaflet/dist/leaflet.js") }}"></script>
     <link rel="stylesheet" href="{{ asset("assets/leaflet/dist/leaflet.css") }}">
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css">
 
+
+
+    {{--///////////////// javascript for map //////////////////--}}
+    <script src="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
+    <script src="{{ asset("assets/leaflet/dist/leaflet.js") }}"></script>
+    <script src="{{ asset("assets/js/map.js") }}"></script>
+    @include('includes.default-script')
 
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
     <link rel="stylesheet"
@@ -30,18 +30,6 @@
         @include('includes.default-auth-header')
     @endif
 
-
-    <div class="nav-tabs-custom map-nav-tabs">
-        <ul class="nav nav-tabs ">
-            @foreach($types as $type)
-                @if($tab == $type->designation)
-                    <li class="active"><a href="{{ "?tab={$type->designation}" }}">{{ $type->designation }}</a></li>
-                @else
-                    <li><a href="{{ "?tab={$type->designation}" }}">{{ $type->designation }}</a></li>
-                @endif
-            @endforeach
-        </ul>
-    </div>
 
     @yield('content')
 

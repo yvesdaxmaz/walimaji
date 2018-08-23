@@ -4,4 +4,3 @@
 <script src="{{ asset("assets/vendor/fastclick/lib/fastclick.js") }}"></script>
 <script src="{{ asset("assets/dist/js/adminlte.min.js") }}"></script>
 <script src="{{ asset("assets/dist/js/demo.js") }}"></script>
-<script src="{{ asset("assets/js/map.js") }}"></script>

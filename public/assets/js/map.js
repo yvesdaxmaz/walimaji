@@ -62,117 +62,145 @@ function getLocation() {
 }
 
 
+function showSinglePosition(data) {
+    try {
+        let userLat = data[0].latitude;
+        let userLng = data[0].longitude;
+
+        let map = L.map('map-single').setView([userLat, userLng], 18);
+        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
+            maxZoom: 18,
+            attribution: `Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, <a href="http://creativecommons.org/"> CC-BY-SA </a>, Imagery © <a href="http://mapbox.com">Mapbox</a>`,
+            id: 'map-single'
+        }).addTo(map);
+
+        let marker = L.marker(
+            [userLat, userLng],
+        ).addTo(map);
+
+        marker.bindPopup(
+            `<b>${data[0].name}</b>` +
+            `<br>Details: ${data[0].adresse}` +
+            `<br />Telephone: ${data[0].telephone}` +
+            `<br /><a href="/users/details/${data[0].id}">Voir Plus</a>`
+        );
+    } catch (e) {
+        console.warn(e);
+    }
+}
+
+
 /**
  * render the map with the current active user and other users type requested.
  * @param position
  */
 function showPosition(position) {
+    try {
+        let userLat = position.coords.latitude;
+        let userLng = position.coords.longitude;
 
-    let userLat = position.coords.latitude;
-    let userLng = position.coords.longitude;
-
-    console.log(userLat, userLng);
-    let map = L.map('map').setView([userLat, userLng], 12);
-
-
-    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
-        maxZoom: 18,
-        attribution: `Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, <a href="http://creativecommons.org/"> CC-BY-SA </a>, Imagery © <a href="http://mapbox.com">Mapbox</a>`,
-        id: 'map'
-    }).addTo(map);
+        console.log(userLat, userLng);
+        let map = L.map('map').setView([userLat, userLng], 12);
 
 
-    /**
-     * set users data into the popup of a map's pin
-     */
-    function setPopupData() {
-        try {
-            for (let i = 0; i < mapData.length; i++) {
-                let marker = L.marker(
-                    [mapData[i]['latitude'], mapData[i]['longitude']],
-                    {icon: icons[tab]}
-                ).addTo(map);
+        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
+            maxZoom: 18,
+            attribution: `Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, <a href="http://creativecommons.org/"> CC-BY-SA </a>, Imagery © <a href="http://mapbox.com">Mapbox</a>`,
+            id: 'map'
+        }).addTo(map);
 
-                marker.bindPopup(
-                    `<b>${mapData[i]['name']}</b>` +
-                    `<br>Details: ${mapData[i]['adresse']}` +
-                    `<br />Telephone: ${mapData[i]['telephone']}` +
-                    `<br /><a href="/users/details/${mapData[i]['id']}">Voir Plus</a>`
-                );
+
+        /**
+         * set users data into the popup of a map's pin
+         */
+        function setPopupData() {
+            try {
+                for (let i = 0; i < mapData.length; i++) {
+                    let marker = L.marker(
+                        [mapData[i]['latitude'], mapData[i]['longitude']],
+                        {icon: icons[tab]}
+                    ).addTo(map);
+
+                    marker.bindPopup(
+                        `<b>${mapData[i]['name']}</b>` +
+                        `<br>Details: ${mapData[i]['adresse']}` +
+                        `<br />Telephone: ${mapData[i]['telephone']}` +
+                        `<br /><a href="/users/details/${mapData[i]['id']}">Voir Plus</a>`
+                    );
+                }
+            } catch (e) {
+                console.warn(e);
             }
-        } catch(e) {
-            console.warn(e);
         }
-    }
 
 
-    /**
-     * add the current user location to the map
-     */
-    let addCurrent = () => {
-        let marker = L.marker(
-            [userLat, userLng],
-            {icon: icons.currentUser}
-        ).addTo(map);
+        /**
+         * add the current user location to the map
+         */
+        let addCurrent = () => {
+            let marker = L.marker(
+                [userLat, userLng],
+                {icon: icons.currentUser}
+            ).addTo(map);
 
-        marker.bindPopup("Vous");
-    };
+            marker.bindPopup("Vous");
+        };
 
 
-    /**
-     * draw an areas on the map
-     */
-    let addAreas = () => {
-        for (let i = 0; i < areas.length; i++) {
-            let polygon = L.polygon(
-                stringToGeoPoints(
-                    polygon[i]['geolocations']),
+        /**
+         * draw an areas on the map
+         */
+        let addAreas = () => {
+            for (let i = 0; i < areas.length; i++) {
+                let polygon = L.polygon(
+                    stringToGeoPoints(
+                        polygon[i]['geolocations']),
                     {color: 'red'}
                 ).addTo(map);
-            polygon.bindPopup("<b>" + polygon[i]['name']);
-        }
-    };
-
-
-
-
-    /**
-     * convert a string to a geoPoint.
-     * @param geo
-     * @returns {Array}
-     */
-    let stringToGeoPoints = (geo) => {
-        let linesPin = geo.split(",");
-
-        let linesLat = [];
-        let linesLng = [];
-
-        for (i = 0; i < linesPin.length; i++) {
-            if (i % 2) {
-                linesLat.push(linesPin[i]);
-            } else {
-                linesLng.push(linesPin[i]);
+                polygon.bindPopup("<b>" + polygon[i]['name']);
             }
-        }
+        };
 
-        let latLngLine = [];
 
-        for (let i = 0; i < linesLng.length; i++) {
-            latLngLine.push(L.latLng(linesLat[i], linesLng[i]));
-        }
+        /**
+         * convert a string to a geoPoint.
+         * @param geo
+         * @returns {Array}
+         */
+        let stringToGeoPoints = (geo) => {
+            let linesPin = geo.split(",");
 
-        return latLngLine;
-    };
+            let linesLat = [];
+            let linesLng = [];
 
-    /**
-     * lead pin on the map when the document is loaded.
-     */
-    $(document).ready(function () {
-        addCurrent();
-        setPopupData();
-    });
+            for (i = 0; i < linesPin.length; i++) {
+                if (i % 2) {
+                    linesLat.push(linesPin[i]);
+                } else {
+                    linesLng.push(linesPin[i]);
+                }
+            }
 
+            let latLngLine = [];
+
+            for (let i = 0; i < linesLng.length; i++) {
+                latLngLine.push(L.latLng(linesLat[i], linesLng[i]));
+            }
+
+            return latLngLine;
+        };
+
+        /**
+         * lead pin on the map when the document is loaded.
+         */
+        $(document).ready(function () {
+            //addCurrent();
+            //setPopupData();
+        });
+    } catch (e) {
+        console.warn(e);
+    }
 }
 
 
-getLocation();
+//getLocation();
