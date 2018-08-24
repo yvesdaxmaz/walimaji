@@ -196,10 +196,21 @@
                 </a>
             </li>
             <li>
-                <a href="list_product_user.html">
+                <a href="list_product_user.html" >
                     <i class="fa fa-pie-chart"></i>
                     <span>Mon stock</span>
                 </a>
+            </li>
+            <li>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>{{ __('Deconnextion') }}</span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
         </ul>
     </section>
