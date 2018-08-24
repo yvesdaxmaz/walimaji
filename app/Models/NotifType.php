@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class NotifType extends Model
 {
     protected $fillable=[
-        'idSender','idType','isRead'
+        'designation'
     ];
 }
