@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UserAdress;
 use App\Models\UserType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -38,9 +39,14 @@ class HomeController extends Controller
             $tab = 'trader';
             $data = UserAdress::getWithUserType(1);
         }
-
         $types = UserType::limit(4)->get();
+/*
+        $type_designation=UserType::find(Auth::user()->type_id)->designation;
 
+        if ($type = 'admin'){
+            return view('admin.home', compact('data', 'tab', 'types'));
+        }
+*/
         return view('home', compact('data', 'tab', 'types'));
     }
 }
