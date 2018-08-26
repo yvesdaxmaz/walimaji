@@ -29,7 +29,7 @@
 
                 {{--///////// password ////////--}}
                 <div class="form-group has-feedback {{ $errors->has('password')? 'has-error' : ''  }}">
-                    <input type="password" name="email" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="password">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     <span class="help-block">
                         @if($errors->has('password'))

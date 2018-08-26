@@ -30,12 +30,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public static function getWithAdressAndType($id){
+    public static function getWithAdressAndType($id,$email){
         return DB::table('users')
             ->join('user_adresses','users.id','=','user_adresses.user_id')
             ->join('user_types','users.type_id','=','user_types.id')
             ->select('users.*','user_adresses.*','user_types.*')
-            ->where('users.id','=',$id)
+            ->where('users.id','=',$id,' or ','users.email','=','')
             ->get();
     }
 

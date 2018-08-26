@@ -40,13 +40,13 @@ class HomeController extends Controller
             $data = UserAdress::getWithUserType(1);
         }
         $types = UserType::limit(4)->get();
-/*
-        $type_designation=UserType::find(Auth::user()->type_id)->designation;
 
-        if ($type = 'admin'){
+        $type_designation=UserType::find(Auth::user()->type_id)->designation;
+        if ($type_designation == 'admin'){
+
             return view('admin.home', compact('data', 'tab', 'types'));
         }
-*/
-        return view('home', compact('data', 'tab', 'types'));
+
+        return view('user.home', compact('data', 'tab', 'types'));
     }
 }
