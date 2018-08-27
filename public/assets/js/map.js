@@ -97,10 +97,11 @@ function showPosition(position) {
                     `<b>${mapData[i]['name']}</b>` +
                     `<br>Details: ${mapData[i]['adresse']}` +
                     `<br />Telephone: ${mapData[i]['telephone']}` +
-                    `<br /><a href="#">Voir Plus</a>`
+                    `<br /><a href="#">Voir Plus</a>` +
+                    `<br /><a onclick="setRoute(${mapData[i]['latitude']},${userLat},${mapData[i]['longitude']},${userLng});">Voir chemin</a>`
                 );
             }
-        } catch(e) {
+        } catch (e) {
             console.warn(e);
         }
     }
@@ -127,8 +128,8 @@ function showPosition(position) {
             let polygon = L.polygon(
                 stringToGeoPoints(
                     polygon[i]['geolocations']),
-                    {color: 'red'}
-                ).addTo(map);
+                {color: 'red'}
+            ).addTo(map);
             polygon.bindPopup("<b>" + polygon[i]['name']);
         }
     };
@@ -142,8 +143,8 @@ function showPosition(position) {
             let polyline = L.polyline(
                 stringToGeoPoints(
                     streets[i]['geolocations']),
-                    {color: 'red'}
-                ).addTo(map);
+                {color: 'red'}
+            ).addTo(map);
             polyline.bindPopup("<b>" + streets[i]['name']);
         }
     };
@@ -185,7 +186,31 @@ function showPosition(position) {
         setPopupData();
     });
 
+
+    /**
+     * set a route between two points
+     */
+
+    $(document).ready(function () {
+
+        setRoute = function (lat1, lat2, long1, long2) {
+
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(lat1, long1),
+                    L.latLng(lat2, long2)
+                ],
+                createMarker: function() { return null; },
+                addWaypoints: false,
+                draggableWaypoints: false,
+            }).addTo(map);
+        }
+    });
 }
 
 
 getLocation();
+
+
+
+

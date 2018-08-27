@@ -2,6 +2,7 @@
 
 
 @section('content')
+
     <div class="content-wrapper">
         <div class="map-container">
             <div class="map-container-content" id="map"></div>
