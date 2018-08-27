@@ -30,12 +30,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public static function count(){
+        return DB::table('users')
+            ->join('user_types','user_types.id','users.type_id')
+            ->select(DB::raw('count(users.id) as nombreUser'))
+            ->where('user_types.designation','=','admin')->get();
+    }
+
     public static function getWithAdressAndType($id,$email){
         return DB::table('users')
             ->join('user_adresses','users.id','=','user_adresses.user_id')
             ->join('user_types','users.type_id','=','user_types.id')
             ->select('users.*','user_adresses.*','user_types.*')
-            ->where('users.id','=',$id,' or ','users.email','=','')
+            ->where('users.id','=',$id,' or ','users.email','=',$email)
             ->get();
     }
 

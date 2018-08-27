@@ -19,7 +19,7 @@ class UserController extends Controller
     }
 
     public function detail($id){
-        $details=User::getWithAdressAndType($id);
+        $details=User::getWithAdressAndType($id,'');
 
         $products=Product::getWithReference($id);
 

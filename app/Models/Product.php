@@ -21,6 +21,12 @@ class Product extends Model
         'idActor' => 'required|numeric',
     ];
 
+    public static function count(){
+        return DB::table('products')
+            ->select(DB::raw('count(id) as nombreProduit'))
+            ->get();
+    }
+
     public static function getWithReference($id){
         return DB::table('products')
             ->join('product_refs', 'product_refs.id', '=', 'products.idRef')

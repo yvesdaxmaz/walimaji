@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductReference;
+use App\Models\ProductType;
 use App\Models\UserAdress;
 use App\Models\UserType;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
@@ -43,10 +47,14 @@ class HomeController extends Controller
 
         $type_designation=UserType::find(Auth::user()->type_id)->designation;
         if ($type_designation == 'admin'){
-
-            return view('admin.home', compact('data', 'tab', 'types'));
+            $adminDetail=DB::table('users')
+                ->where('email','=',$request->email)
+                ->select('*')->get();
+            $nombreUser=User::count();
+            $nombreRef=ProductReference::count();
+            $nombreTypeProd=ProductType::count();
+            return view('admin.home', compact('adminDetail','nombreRef','nombreTypeProd','nombreUser'));
         }
-
         return view('user.home', compact('data', 'tab', 'types'));
     }
 }
