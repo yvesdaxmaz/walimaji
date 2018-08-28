@@ -43,10 +43,7 @@ class HomeController extends Controller
             $tab = 'trader';
             $data = UserAdress::getWithUserType(1);
         }
-        $types = UserType::limit(4)->get();
-
-        $type_designation=UserType::find(Auth::user()->type_id)->designation;
-        if ($type_designation == 'admin'){
+        if ($this->middleware('admin')){
             $adminDetail=DB::table('users')
                 ->join('user_types','users.type_id','user_types.id')
                 ->where('users.id','=',Auth::id())
@@ -56,6 +53,7 @@ class HomeController extends Controller
             $nombreTypeProd=ProductType::count();
             return view('admin.home', compact('adminDetail','nombreRef','nombreTypeProd','nombreUser'));
         }
+
         return view('user.home', compact('data', 'tab', 'types'));
     }
 }

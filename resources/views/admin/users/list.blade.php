@@ -15,148 +15,155 @@
             </ol>
         </section>
 
-        <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-xs-12">
-                    <!-- ////////////////////////////////////////// list des produit /////////////////////////////////// -->
-                    <div class="box">
-                        <div class="box-body">
-                            <table id="productsList1" class="table table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Type</th>
-                                    <th>Avatar</th>
-                                    <th>Nom</th>
-                                    <th>description</th>
-                                    <th>email</th>
-                                    <th>Phone</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>
-                                        <a href="edit_type_product.html">
-                                            <button class="btn bg-green">edit</button>
-                                        </a>
-                                        <button class="btn bg-red">delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 5.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td>5</td>
-                                    <td>
-                                        <a href="edit_type_product.html">
-                                            <button class="btn bg-green">edit</button>
-                                        </a>
-                                        <button class="btn bg-red">delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 5.5
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td>5.5</td>
-                                    <td>
-                                        <a href="edit_type_product.html">
-                                            <button class="btn bg-green">edit</button>
-                                        </a>
-                                        <button class="btn bg-red">delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 6
-                                    </td>
-                                    <td>Win 98+</td>
-                                    <td>6</td>
-                                    <td>
-                                        <a href="edit_type_product.html">
-                                            <button class="btn bg-green">edit</button>
-                                        </a>
-                                        <button class="btn bg-red">delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 7</td>
-                                    <td>Win XP SP2+</td>
-                                    <td>7</td>
-                                    <td>
-                                        <a href="edit_type_product.html">
-                                            <button class="btn bg-green">edit</button>
-                                        </a>
-                                        <button class="btn bg-red">delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>AOL browser (AOL desktop)</td>
-                                    <td>Win XP</td>
-                                    <td>6</td>
-                                    <td>
-                                        <a href="edit_type_product.html">
-                                            <button class="btn bg-green">edit</button>
-                                        </a>
-                                        <button class="btn bg-red">delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Gecko</td>
-                                    <td>Firefox 1.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.7</td>
-                                    <td>
-                                        <a href="edit_type_product.html">
-                                            <button class="btn bg-green">edit</button>
-                                        </a>
-                                        <button class="btn bg-red">delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Gecko</td>
-                                    <td>Firefox 1.5</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>
-                                        <a href="edit_type_product.html">
-                                            <button class="btn bg-green">edit</button>
-                                        </a>
-                                        <button class="btn bg-red">delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Gecko</td>
-                                    <td>Firefox 2.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>
-                                        <a href="edit_type_product.html">
-                                            <button class="btn bg-green">edit</button>
-                                        </a>
-                                        <button class="btn bg-red">delete</button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- ////////////////////////////////////////// list des produit /////////////////////////////////// -->
+                <div class="col-md-9">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#Trader" data-toggle="tab">Traders</a>
+                            </li>
+                            <li>
+                                <a href="#Provider" data-toggle="tab">Providers</a>
+                            </li>
+                            <li>
+                                <a href="#Producer" data-toggle="tab">Producers</a>
+                            </li>
+                            <li>
+                                <a href="#Transformer" data-toggle="tab">Tranformers</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="Trader">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Avatar</th>
+                                            <th>Nom</th>
+                                            <th>description</th>
+                                            <th>email</th>
+                                            <th>Phone</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td> </td>
+                                            <td> </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a href="edit_type_product.html">
+                                                    <button class="btn bg-green">Detail</button>
+                                                </a>
+                                                <button class="btn bg-red">Supprimer</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="Provider">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Avatar</th>
+                                            <th>Nom</th>
+                                            <th>description</th>
+                                            <th>email</th>
+                                            <th>Phone</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <a href="edit_type_product.html">
+                                                <button class="btn bg-green">Detail</button>
+                                            </a>
+                                            <button class="btn bg-red">Supprimer</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
 
+                                </table>
+                            </div>
+                            <!-- /.tab-pane -->
+
+                            <div class="tab-pane" id="Producer">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Avatar</th>
+                                            <th>Nom</th>
+                                            <th>description</th>
+                                            <th>email</th>
+                                            <th>Phone</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <a href="edit_type_product.html">
+                                                <button class="btn bg-green">Detail</button>
+                                            </a>
+                                            <button class="btn bg-red">Supprimer</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="Transformer">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Avatar</th>
+                                            <th>Nom</th>
+                                            <th>description</th>
+                                            <th>email</th>
+                                            <th>Phone</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <a href="edit_type_product.html">
+                                                <button class="btn bg-green">Detail</button>
+                                            </a>
+                                            <button class="btn bg-red">Supprimer</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    <!-- /.nav-tabs-custom -->
                 </div>
+                <!-- /.col -->
             </div>
         </section>
-        <!-- /.content -->
     </div>
 @endsection
