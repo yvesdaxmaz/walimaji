@@ -18,29 +18,29 @@
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-        <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="http://www.gstatic.com/webp/gallery/2.jpg" class="img-circle" alt="User Image">
+                <img src="http://www.gstatic.com/webp/gallery/2.jpg" class="img-circle" alt="User Image" style=" height: 45px">
             </div>
             <div class="pull-left info">
-                <p>NAME</p>
-                <p>TYPE</p>
+                <p>{{$adminDetail[0]->name}}</p>
+                {{$adminDetail[0]->designation}}
             </div>
-        </div>
+        </div></li>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">Mon compte</li>
+            <li class="header">Mon compte
+
             <li class="active">
                 <a href="#">
                     <i class="fa fa-dashboard"></i>
-                    <span>Acceuil</span>
+                    <span>Accueil</span>
                 </a>
             </li>
             <li>
                 <a href="followers.html">
                     <i class="fa fa-files-o"></i>
-                    <span>Mes fournisseurs</span>
+                    <span>les utilisateurs</span>
                     <span class="pull-right-container">
                                 <span class="label label-primary pull-right">4</span>
                             </span>
@@ -49,13 +49,19 @@
             <li>
                 <a href="following.html">
                     <i class="fa fa-th"></i>
-                    <span>Mes abonnes</span>
+                    <span>Produits de reference</span>
                 </a>
             </li>
             <li>
                 <a href="list_product_user.html" >
                     <i class="fa fa-pie-chart"></i>
-                    <span>Mon stock</span>
+                    <span>Types de produits</span>
+                </a>
+            </li>
+            <li>
+                <a href="list_product_user.html" >
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Les statistiques</span>
                 </a>
             </li>
             <li>

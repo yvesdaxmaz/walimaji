@@ -23,7 +23,7 @@
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>{{$nombreUser[0]->nombreUser}}</h3>
 
                             <p>Utilisateurs</p>
                         </div>
@@ -40,7 +40,7 @@
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>53 </h3>
+                            <h3>{{$nombreRef[0]->nombreReference}}</h3>
                             <p>Réferences des produits</p>
                         </div>
                         <div class="icon">
@@ -73,7 +73,7 @@
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>{{$nombreTypeProd[0]->nombreTypeProduit}}</h3>
 
                             <p>Type de produit</p>
                         </div>

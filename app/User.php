@@ -34,7 +34,7 @@ class User extends Authenticatable
         return DB::table('users')
             ->join('user_types','user_types.id','users.type_id')
             ->select(DB::raw('count(users.id) as nombreUser'))
-            ->where('user_types.designation','=','admin')->get();
+            ->where('user_types.designation','!=','admin')->get();
     }
 
     public static function getWithAdressAndType($id,$email){

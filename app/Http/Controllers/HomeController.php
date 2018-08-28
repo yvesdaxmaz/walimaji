@@ -48,8 +48,9 @@ class HomeController extends Controller
         $type_designation=UserType::find(Auth::user()->type_id)->designation;
         if ($type_designation == 'admin'){
             $adminDetail=DB::table('users')
-                ->where('email','=',$request->email)
-                ->select('*')->get();
+                ->join('user_types','users.type_id','user_types.id')
+                ->where('users.id','=',Auth::id())
+                ->select('users.name','user_types.designation')->get();
             $nombreUser=User::count();
             $nombreRef=ProductReference::count();
             $nombreTypeProd=ProductType::count();
