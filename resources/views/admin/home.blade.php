@@ -30,7 +30,7 @@
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="user_views_admin.html" class="small-box-footer">Voir tout
+                        <a href="{{route('users')}}" class="small-box-footer">Voir tout
                             <i class="fa fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -46,7 +46,7 @@
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="list_reference.html" class="small-box-footer">Voir tout
+                        <a href="" class="small-box-footer">Voir tout
                             <i class="fa fa-arrow-circle-right"></i>
                         </a>
                     </div>

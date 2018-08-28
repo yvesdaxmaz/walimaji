@@ -57,31 +57,38 @@ class User extends Authenticatable
     public static function getAllProviders(){
         return DB::table('users')
             ->join('user_types','users.type_id','=','user_types.id')
-            ->select('users.*','user_types.*')
+            ->select('users.*')
             ->where('user_types.designation','=','provider')
             ->get();
     }
     public static function getAllProducers(){
         return DB::table('users')
             ->join('user_types','users.type_id','=','user_types.id')
-            ->select('users.*','user_types.*')
+            ->select('users.*')
             ->where('user_types.designation','=','producer')
             ->get();
     }
     public static function getAllTransfomers(){
         return DB::table('users')
             ->join('user_types','users.type_id','=','user_types.id')
-            ->select('users.*','user_types.*')
-            ->where('user_types.designation','=','transfomer')
+            ->select('users.*')
+            ->where('user_types.designation','=','transformer')
             ->get();
 
     }
     public static function getAllTraders(){
         return DB::table('users')
             ->join('user_types','users.type_id','=','user_types.id')
-            ->select('users.*','user_types.*')
+            ->select('users.*')
             ->where('user_types.designation','=','trader')
             ->get();
 
+    }
+
+    public static  function getAdminDetail(){
+        return DB::table('users')
+            ->join('user_types','users.type_id','user_types.id')
+            ->where('users.id','=',Auth::id())
+            ->select('users.name','user_types.designation')->get();
     }
 }

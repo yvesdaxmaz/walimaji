@@ -44,10 +44,7 @@ class HomeController extends Controller
             $data = UserAdress::getWithUserType(1);
         }
         if ($this->middleware('admin')){
-            $adminDetail=DB::table('users')
-                ->join('user_types','users.type_id','user_types.id')
-                ->where('users.id','=',Auth::id())
-                ->select('users.name','user_types.designation')->get();
+            $adminDetail=User::getAdminDetail();
             $nombreUser=User::count();
             $nombreRef=ProductReference::count();
             $nombreTypeProd=ProductType::count();

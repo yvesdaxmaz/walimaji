@@ -14,5 +14,7 @@ Route:: post('/check',[
 Route::get('/users/details/{id}','UserController@detail');
 
 Route::group(['middleware' => 'admin'], function () {
-
+    Route::get('/users','Admin\AdminController@usersList')->name('users');
+    Route::get('/userDetail/{id}','Admin\AdminController@userDetail')->name('userDetail');
+    Route::get('/removeUser/{id}','Admin\AdminController@removeUser')->name('removeUser');
 });
