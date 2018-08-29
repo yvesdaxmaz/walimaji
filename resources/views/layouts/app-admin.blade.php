@@ -19,15 +19,12 @@
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
 </head>
 <body class="hold-transition sidebar-mini skin-blue ">
     <div class="wrapper">
         @include('includes.default-admin-auth-header')
         @yield('content')
     </div>
-    
     @include("includes.default-script")
-
 </body>
 </html>
