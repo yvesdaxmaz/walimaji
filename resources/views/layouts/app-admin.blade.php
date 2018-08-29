@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css">
     <script src="{{ asset("assets/js/map.js") }}"></script>
     @include('includes.default-script')
+    @include('includes.default-datatable-script')
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -26,5 +27,6 @@
         @yield('content')
     </div>
     @include("includes.default-script")
+    @include('includes.default-datatable-script')
 </body>
 </html>
