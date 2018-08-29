@@ -93,7 +93,7 @@ function showPosition(position) {
                     {icon: icons[tab]}
                 ).addTo(map);
 
-                marker.bindPopup(
+                git merge map-route --no-ffgit merge map-route --no-ff                marker.bindPopup(
                     `<b>${mapData[i]['name']}</b>` +
                     `<br>Details: ${mapData[i]['adresse']}` +
                     `<br />Telephone: ${mapData[i]['telephone']}` +
