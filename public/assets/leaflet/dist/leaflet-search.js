@@ -539,11 +539,11 @@ L.Control.Search = L.Control.extend({
         loc.layer = layer;
         retRecords[ self._getPath(layer.options,propName) ] = loc;
       }
-      else if(self._getPath(layer.feature.properties,propName))
+      else if(self._getPath(layer.properties,propName))
       {
         loc = layer.getLatLng();
         loc.layer = layer;
-        retRecords[ self._getPath(layer.feature.properties,propName) ] = loc;
+        retRecords[ self._getPath(layer.properties,propName) ] = loc;
       }
       else {
         //throw new Error("propertyName '"+propName+"' not found in marker"); 
