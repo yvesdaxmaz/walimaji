@@ -14,6 +14,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
     <script src="{{ asset("assets/leaflet/dist/leaflet.js") }}"></script>
     <link rel="stylesheet" href="{{ asset("assets/leaflet/dist/leaflet.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/leaflet/dist/leaflet-search.css") }}">
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css">
 
 
@@ -59,6 +60,7 @@
 <script src="{{ asset("assets/vendor/fastclick/lib/fastclick.js") }}"></script>
 <script src="{{ asset("assets/dist/js/adminlte.min.js") }}"></script>
 <script src="{{ asset("assets/dist/js/demo.js") }}"></script>
+<script src="{{asset("assets/leaflet/dist/leaflet-search.js")}}"></script>
 <script>
     var tab = '{{ $tab }}';
     var mapData = JSON.parse('{!! $data !!}');
