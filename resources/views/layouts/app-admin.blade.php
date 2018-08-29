@@ -11,8 +11,11 @@
     {{--////////////// leaflet and mapbox API ressources /////////////--}}
     <script src="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
     <script src="{{ asset("assets/leaflet/dist/leaflet.js") }}"></script>
+
     <link rel="stylesheet" href="{{ asset("assets/leaflet/dist/leaflet.css") }}">
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css">
+    <script src="{{ asset("assets/js/map.js") }}"></script>
+    @include('includes.default-script')
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -20,17 +23,11 @@
 </head>
 <body class="hold-transition sidebar-mini skin-blue ">
     <div class="wrapper">
-        @include('includes.default-auth-header')
+        @include('includes.default-admin-auth-header')
         @yield('content')
     </div>
     
     @include("includes.default-script")
-
-    <script>
-        var tab = '{{ $tab }}';
-        var mapData = JSON.parse('{!! $data !!}');
-    </script>
-    <script src="{{ asset("assets/js/map.js") }}"></script>
 
 </body>
 </html>

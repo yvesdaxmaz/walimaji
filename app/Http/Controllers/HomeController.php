@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductReference;
+use App\Models\ProductType;
 use App\Models\UserAdress;
 use App\Models\UserType;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
@@ -38,8 +43,14 @@ class HomeController extends Controller
             $tab = 'trader';
             $data = UserAdress::getWithUserType(1);
         }
+        if ($this->middleware('admin')){
+            $adminDetail=User::getAdminDetail();
+            $nombreUser=User::count();
+            $nombreRef=ProductReference::count();
+            $nombreTypeProd=ProductType::count();
+            return view('admin.home', compact('adminDetail','nombreRef','nombreTypeProd','nombreUser'));
+        }
 
-        $types = UserType::limit(4)->get();
-        return view('home', compact('data', 'tab', 'types'));
+        return view('user.home', compact('data', 'tab', 'types'));
     }
 }

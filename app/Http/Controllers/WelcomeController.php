@@ -9,12 +9,22 @@ use Illuminate\Http\Request;
 class WelcomeController extends Controller
 {
     /**
+     * WelcomeController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
      * affiche sur une carte, les pins de traders par default,
      * et les autres types de users en fonction du type demandE.
      *
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function index(Request $request)
     {
         if ($request->query('tab')) {
@@ -30,6 +40,6 @@ class WelcomeController extends Controller
         }
 
         $types = UserType::limit(4)->get();
-        return view('home', compact('data', 'tab', 'types'));
+        return view('welcome', compact('data', 'tab', 'types'));
     }
 }

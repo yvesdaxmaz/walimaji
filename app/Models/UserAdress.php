@@ -13,7 +13,7 @@ class UserAdress extends Model
      * @param int $type
      * @return mixed
      */
-    public static function getWithUserType(int $type) {
+    public static function getWithUserType($type) {
        return DB::table((new self)->getTable())
            ->select('*', 'users.name')
            ->join('users', 'user_adresses.user_id', '=', 'users.id')

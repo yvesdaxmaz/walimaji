@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
@@ -38,7 +39,8 @@ class UsersController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         $type_id = $request->input('type_id');
-        $data = compact('name', 'description', 'email', 'password', 'type_id');
+        $api_token = Hash::make(str_random(60));
+        $data = compact('name', 'description', 'email', 'password', 'type_id', 'api_token');
 
         if (!$validator->fails()) {
             User::firstOrCreate($data);
