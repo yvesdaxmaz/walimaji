@@ -81,6 +81,18 @@ function showPosition(position) {
         id: 'map'
     }).addTo(map);
 
+    let markersLayer = new L.LayerGroup();	//layer contain searched elements
+    map.addLayer(markersLayer);
+
+    let controlSearch = new L.Control.Search({
+        position:'topright',
+        layer: markersLayer,
+        initial: false,
+        zoom: 12,
+        marker: false
+    });
+
+    map.addControl( controlSearch );
 
     /**
      * set users data into the popup of a map's pin
@@ -88,17 +100,29 @@ function showPosition(position) {
     function setPopupData() {
         try {
             for (let i = 0; i < mapData.length; i++) {
-                let marker = L.marker(
-                    [mapData[i]['latitude'], mapData[i]['longitude']],
-                    {icon: icons[tab]}
+                let marker =new  L.marker( new L.latLng(mapData[i]['latitude'], mapData[i]['longitude']),
+                    {icon: icons[tab]}, {title: mapData[i]['name']}
                 ).addTo(map);
+                marker.properties = {};
+                marker.properties.title = mapData[i]['name'];
+                marker.properties.loc = mapData[i]['latitude']+","+mapData[i]['longitude'];
+                markersLayer.addLayer(marker);
+
 
                 marker.bindPopup(
-                    `<b>${mapData[i]['name']}</b>` +
-                    `<br>Details: ${mapData[i]['adresse']}` +
-                    `<br />Telephone: ${mapData[i]['telephone']}` +
-                    `<br /><a href="#">Voir Plus</a>` +
-                    `<br /><a onclick="setRoute(${mapData[i]['latitude']},${userLat},${mapData[i]['longitude']},${userLng});">Voir chemin</a>`
+                    `<div class="container">
+                        <p>${mapData[i]['name']}</p>` +
+                        `<p>Details: ${mapData[i]['adresse']}</p>` +
+                        `<p>Telephone: ${mapData[i]['telephone']}</p>` +
+                        `<div class="row ">
+                            <div class="col-lg-2">
+                                <a class=" text-light" href="#">Voir Plus</a>
+                            </div>` +
+                    `       <div class="col-lg-2">
+                                <a class=" text-white" onclick="setRoute(${mapData[i]['latitude']},${userLat},${mapData[i]['longitude']},${userLng});" href="#">chemin</a>
+                            </div>
+                        </div>
+                      </div>`
                 );
             }
         } catch (e) {
@@ -200,7 +224,9 @@ function showPosition(position) {
                     L.latLng(lat1, long1),
                     L.latLng(lat2, long2)
                 ],
-                createMarker: function() { return null; },
+                createMarker: function () {
+                    return null;
+                },
                 addWaypoints: false,
                 draggableWaypoints: false,
             }).addTo(map);

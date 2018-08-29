@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="{{ asset("assets/dist/css/skins/_all-skins.min.css") }}">
 
     {{--////////////// leaflet and mapbox API ressources /////////////--}}
+
     <script src="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
     <script src="{{ asset("assets/leaflet/dist/leaflet.js") }}"></script>
     <link rel="stylesheet" href="{{ asset("assets/leaflet/dist/leaflet.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/leaflet/dist/leaflet-search.css") }}">
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css">
 
 
@@ -21,10 +23,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+    <script src="{{asset("assets/leaflet/dist/leaflet-search.js")}}"></script>
 </head>
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
@@ -59,9 +62,11 @@
 <script src="{{ asset("assets/vendor/fastclick/lib/fastclick.js") }}"></script>
 <script src="{{ asset("assets/dist/js/adminlte.min.js") }}"></script>
 <script src="{{ asset("assets/dist/js/demo.js") }}"></script>
+
 <script>
     var tab = '{{ $tab }}';
     var mapData = JSON.parse('{!! $data !!}');
+    console.log(mapData[0]['name']);
 </script>
 <script src="{{ asset("assets/js/map.js") }}"></script>
 </body>
