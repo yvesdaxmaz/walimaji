@@ -9,7 +9,8 @@
                     <div class="col-md-4">
                         <div class="box box-primary">
                             <div class="box-body box-profile">
-                                <img class="profile-user-img img-responsive img-circle" src="http://www.gstatic.com/webp/gallery/2.jpg" alt="User profile picture">
+                                <img class="profile-user-img img-responsive img-circle" src="http://www.gstatic.com/webp/gallery/2.jpg" alt="User profile picture"
+                                style="height: 95px">
 
                                 <h3 class="profile-username text-center">{{$details[0]->name}}</h3>
 
@@ -93,40 +94,54 @@
                                     <a href="#timeline" data-toggle="tab">Localisation</a>
                                 </li>
                                 <li>
-                                    <a href="#settings" data-toggle="tab">Statistiques</a>
+                                    <a href="#settings" data-toggle="tab">Stock</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="active tab-pane" id="activity">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>Image</th>
-                                            <th>Nom</th>
-                                            <th>Prix HT</th>
-                                            <th>Prix AT</th>
-                                            <th>Quantité</th>
-                                            <th>Description</th>
-                                        </tr>
-                                        @foreach($products as $product )
+                                    <div class="box-body">
+                                        <table class="example1 table table-bordered table-striped">
+                                            <thead>
                                             <tr>
-                                                <td>
-                                                    <img src="http://www.gstatic.com/webp/gallery/2.jpg" alt="">
-                                                </td>
-                                                <td>{{$products[0]->designation}}</td>
-                                                <td>
-                                                    <span class="label label-success">{{$products[0]->priceWithoutTax}}</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-success">{{$products[0]->priceWithTax}}</span>
-                                                </td>
-                                                <td> <td>{{$products[0]->quantity}}</td></td>
-                                                <td> <td>{{$products[0]->description}}</td></td>
+                                                <th>Image</th>
+                                                <th>Nom</th>
+                                                <th>Prix HT</th>
+                                                <th>Prix AT</th>
+                                                <th>Quantité</th>
+                                                <th>Description</th>
                                             </tr>
-                                        @endforeach
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($products as $product )
+                                                <tr>
+                                                    <td>
+                                                        <img src="http://www.gstatic.com/webp/gallery/2.jpg" alt="">
+                                                    </td>
+                                                    <td>{{$products[0]->designation}}</td>
+                                                    <td>
+                                                        <span class="label label-success">{{$products[0]->priceWithoutTax}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="label label-success">{{$products[0]->priceWithTax}}</span>
+                                                    </td>
+                                                    <td> <td>{{$products[0]->quantity}}</td></td>
+                                                    <td> <td>{{$products[0]->description}}</td></td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Nom</th>
+                                                <th>Prix HT</th>
+                                                <th>Prix AT</th>
+                                                <th>Quantité</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
                                 </div>
-
-
                                 {{--//////////// map container /////////////////////--}}
                                 <div class="tab-pane" id="timeline">
                                     <div class="box box-solid bg-light-blue-gradient">
@@ -135,14 +150,11 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
                                 <div class="tab-pane" id="settings">
                                     <!-- solid sales graph -->
                                     <div class="box box-solid bg-teal-gradient">
                                         <div class="box-header">
-                                            <h3 class="box-title">Représentation graphique des activités</h3>
+                                            <h3 class="box-title">Représentation du stock</h3>
                                         </div>
                                         <div class="box-body border-radius-none">
                                             <div class="chart" id="line-chart" style="height: 250px;"></div>
@@ -171,9 +183,7 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -186,4 +196,6 @@
             showSinglePosition(mapData);
         })
     </script>
+
+
 @endsection
