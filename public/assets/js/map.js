@@ -84,15 +84,7 @@ function showPosition(position) {
     let markersLayer = new L.LayerGroup();	//layer contain searched elements
     map.addLayer(markersLayer);
 
-    let controlSearch = new L.Control.Search({
-        position:'topright',
-        layer: markersLayer,
-        initial: false,
-        zoom: 12,
-        marker: false
-    });
 
-    map.addControl( controlSearch );
 
     /**
      * set users data into the popup of a map's pin
