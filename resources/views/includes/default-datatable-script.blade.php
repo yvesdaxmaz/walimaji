@@ -2,8 +2,8 @@
 <script src="{{ asset("assets/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js") }}"></script>
 <script>
     $(function () {
-        $('#example1').DataTable()
-        $('#example2').DataTable({
+        $('.example1').DataTable()
+        $('.example2').DataTable({
             'paging'      : true,
             'lengthChange': false,
             'searching'   : false,
