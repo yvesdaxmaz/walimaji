@@ -84,6 +84,15 @@ function showPosition(position) {
     let markersLayer = new L.LayerGroup();	//layer contain searched elements
     map.addLayer(markersLayer);
 
+    let controlSearch = new L.Control.Search({
+        position:'topright',
+        layer: markersLayer,
+        initial: false,
+        zoom: 12,
+        marker: false
+    });
+
+    map.addControl( controlSearch );
 
 
     /**
@@ -99,6 +108,7 @@ function showPosition(position) {
                 marker.properties.title = mapData[i]['name'];
                 marker.properties.loc = mapData[i]['latitude']+","+mapData[i]['longitude'];
                 markersLayer.addLayer(marker);
+
       marker.bindPopup(
                     `<div class="container">
                         <p>${mapData[i]['name']}</p>` +
@@ -112,8 +122,27 @@ function showPosition(position) {
                                 <a class=" text-white" onclick="setRoute(${mapData[i]['latitude']},${userLat},${mapData[i]['longitude']},${userLng});" href="#">chemin</a>
                             </div>
                         </div>
-                      </div>`
+                      </div>`);
 
+                console.log( markersLayer);
+                console.log(marker.properties.title);
+                console.log(marker.properties.loc);
+
+
+                marker.bindPopup(
+                    `<div class="container">
+                        <p>${mapData[i]['name']}</p>` +
+                    `<p>Details: ${mapData[i]['adresse']}</p>` +
+                    `<p>Telephone: ${mapData[i]['telephone']}</p>` +
+                    `<div class="row ">
+                            <div class="col-lg-2">
+                                <a class=" text-light" href="#">Voir Plus</a>
+                            </div>` +
+                    `       <div class="col-lg-2">
+                                <a class=" text-white" onclick="setRoute(${mapData[i]['latitude']},${userLat},${mapData[i]['longitude']},${userLng});" href="#">chemin</a>
+                            </div>
+                        </div>
+                      </div>`
                 );
             }
         } catch (e) {
