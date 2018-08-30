@@ -85,7 +85,7 @@ function showSinglePosition(data) {
         marker.bindPopup(
             `<div class="container"><p>${data[0]['name']}</p>
              <p>Details: ${data[0]['adresse']}</p>
-             <p>Telephone: $data[0]['telephone']}</p>
+             <p>Telephone: ${data[0]['telephone']}</p>
              <div class="row ">
                 <div class="col-lg-12">
                     <a class=" text-light" href="/users/details/${data[0]['id']}">Voir Plus</a>
