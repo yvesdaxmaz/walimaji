@@ -27,6 +27,8 @@ class UserController extends Controller
 
         $following= Subscription::getFollowing($id);
 
+        dd($details);
+
         return view('user-detail',compact('details','products','followers','following'));
 
     }

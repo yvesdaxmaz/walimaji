@@ -85,7 +85,7 @@ function showSinglePosition(data) {
         marker.bindPopup(
             `<div class="container"><p>${data[0]['name']}</p>
              <p>Details: ${data[0]['adresse']}</p>
-             <p>Telephone: ${data[0]['telephone']}</p>
+             <p>phone: ${data[0]['phone']}</p>
              <div class="row ">
                 <div class="col-lg-12">
                     <a class=" text-light" href="/users/details/${data[0]['id']}">Voir Plus</a>
@@ -148,7 +148,7 @@ function showPosition(position) {
                     `<div class="container">
                         <p>${mapData[i]['name']}</p>` +
                     `<p>Details: ${mapData[i]['adresse']}</p>` +
-                    `<p>Telephone: ${mapData[i]['telephone']}</p>` +
+                    `<p>phone: ${mapData[i]['phone']}</p>` +
                     `<div class="row ">
                             <div class="col-lg-2">
                                 <a class=" text-light" href="/users/details/${mapData[i]['id']}">Voir Plus</a>
@@ -168,7 +168,7 @@ function showPosition(position) {
                     `<div class="container">
                         <p>${mapData[i]['name']}</p>` +
                     `<p>Details: ${mapData[i]['adresse']}</p>` +
-                    `<p>Telephone: ${mapData[i]['telephone']}</p>` +
+                    `<p>phone: ${mapData[i]['phone']}</p>` +
                     `<div class="row ">
                             <div class="col-lg-2">
                                 <a class=" text-light" href="/users/details/${mapData[i]['id']}">Voir Plus</a>
