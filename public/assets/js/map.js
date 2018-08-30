@@ -63,6 +63,41 @@ function getLocation() {
 
 
 /**
+ * show the position of a single user into the map
+ * @param data
+ */
+function showSinglePosition(data) {
+    try {
+        let userLat = data[0].latitude;
+        let userLng = data[0].longitude;
+
+        let map = L.map('map-single').setView([userLat, userLng], 18);
+        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
+            maxZoom: 18,
+            attribution: `Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, <a href="http://creativecommons.org/"> CC-BY-SA </a>, Imagery © <a href="http://mapbox.com">Mapbox</a>`,
+            id: 'map-single'
+        }).addTo(map);
+
+        let marker = L.marker(
+            [userLat, userLng],
+        ).addTo(map);
+
+        marker.bindPopup(
+            `<div class="container"><p>${data[0]['name']}</p>
+             <p>Details: ${data[0]['adresse']}</p>
+             <p>Telephone: $data[0]['telephone']}</p>
+             <div class="row ">
+                <div class="col-lg-12">
+                    <a class=" text-light" href="/users/details/${data[0]['id']}">Voir Plus</a>
+                </div>
+             </div>`
+        );
+    } catch (e) {
+        console.warn(e);
+    }
+}
+
+/**
  * render the map with the current active user and other users type requested.
  * @param position
  */
@@ -85,14 +120,14 @@ function showPosition(position) {
     map.addLayer(markersLayer);
 
     let controlSearch = new L.Control.Search({
-        position:'topright',
+        position: 'topright',
         layer: markersLayer,
         initial: false,
         zoom: 12,
         marker: false
     });
 
-    map.addControl( controlSearch );
+    map.addControl(controlSearch);
 
 
     /**
@@ -101,20 +136,20 @@ function showPosition(position) {
     function setPopupData() {
         try {
             for (let i = 0; i < mapData.length; i++) {
-                let marker =new  L.marker( new L.latLng(mapData[i]['latitude'], mapData[i]['longitude']),
+                let marker = new L.marker(new L.latLng(mapData[i]['latitude'], mapData[i]['longitude']),
                     {icon: icons[tab]}, {title: mapData[i]['name']}
                 ).addTo(map);
                 marker.properties = {};
                 marker.properties.title = mapData[i]['name'];
-                marker.properties.loc = mapData[i]['latitude']+","+mapData[i]['longitude'];
+                marker.properties.loc = mapData[i]['latitude'] + "," + mapData[i]['longitude'];
                 markersLayer.addLayer(marker);
 
-      marker.bindPopup(
+                marker.bindPopup(
                     `<div class="container">
                         <p>${mapData[i]['name']}</p>` +
-                        `<p>Details: ${mapData[i]['adresse']}</p>` +
-                        `<p>Telephone: ${mapData[i]['telephone']}</p>` +
-                        `<div class="row ">
+                    `<p>Details: ${mapData[i]['adresse']}</p>` +
+                    `<p>Telephone: ${mapData[i]['telephone']}</p>` +
+                    `<div class="row ">
                             <div class="col-lg-2">
                                 <a class=" text-light" href="/users/details/${mapData[i]['id']}">Voir Plus</a>
                             </div>` +
@@ -124,7 +159,7 @@ function showPosition(position) {
                         </div>
                       </div>`);
 
-                console.log( markersLayer);
+                console.log(markersLayer);
                 console.log(marker.properties.title);
                 console.log(marker.properties.loc);
 
