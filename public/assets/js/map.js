@@ -116,7 +116,7 @@ function showPosition(position) {
                         `<p>Telephone: ${mapData[i]['telephone']}</p>` +
                         `<div class="row ">
                             <div class="col-lg-2">
-                                <a class=" text-light" href="#">Voir Plus</a>
+                                <a class=" text-light" href="/users/details/${mapData[i]['id']}">Voir Plus</a>
                             </div>` +
                     `       <div class="col-lg-2">
                                 <a class=" text-white" onclick="setRoute(${mapData[i]['latitude']},${mapData[i]['longitude']},${userLat},${userLng});" href="#">chemin</a>
@@ -136,7 +136,7 @@ function showPosition(position) {
                     `<p>Telephone: ${mapData[i]['telephone']}</p>` +
                     `<div class="row ">
                             <div class="col-lg-2">
-                                <a class=" text-light" href="#">Voir Plus</a>
+                                <a class=" text-light" href="/users/details/${mapData[i]['id']}">Voir Plus</a>
                             </div>` +
                     `       <div class="col-lg-2">
                                 <a class=" text-white" onclick="setRoute(${mapData[i]['latitude']},${userLat},${mapData[i]['longitude']},${userLng});" href="#">chemin</a>
