@@ -68,8 +68,8 @@ function getLocation() {
  */
 function showSinglePosition(data) {
     try {
-        let userLat = data[0].latitude;
-        let userLng = data[0].longitude;
+        let userLat = data.latitude;
+        let userLng = data.longitude;
 
         let map = L.map('map-single').setView([userLat, userLng], 18);
         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2FteW13YW1iYSIsImEiOiJjamtnd2FlbDE1M2l5M3dtbGY1Z2wzbzJjIn0.7dqO-EqSJpSyxyUniLkUNQ', {
@@ -83,12 +83,12 @@ function showSinglePosition(data) {
         ).addTo(map);
 
         marker.bindPopup(
-            `<div class="container"><p>${data[0]['name']}</p>
-             <p>Details: ${data[0]['adresse']}</p>
-             <p>phone: ${data[0]['phone']}</p>
+            `<div class="container"><p>${data['name']}</p>
+             <p>Details: ${data['adresse']}</p>
+             <p>phone: ${data['phone']}</p>
              <div class="row ">
                 <div class="col-lg-12">
-                    <a class=" text-light" href="/users/details/${data[0]['id']}">Voir Plus</a>
+                    <a class=" text-light" href="/users/details/${data['id']}">Voir Plus</a>
                 </div>
              </div>`
         );

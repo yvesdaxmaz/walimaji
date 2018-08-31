@@ -24,13 +24,10 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         if ($user) {
-            $details = User::getWithAdressAndType($user->id, $user->email);
+            $details = User::getWithAdressAndType($user->id, $user->email)->get(0);
             $products = Product::getWithReference($user->id);
             $followers = Subscription::getFollowers($user->id);
             $following = Subscription::getFollowing($user->id);
-
-            dd($details);
-
             return view('user-detail', compact('details', 'products', 'followers', 'following'));
         }
     }

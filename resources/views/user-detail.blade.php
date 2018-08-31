@@ -12,9 +12,9 @@
                             <div class="box-body box-profile">
                                 <img class="profile-user-img img-responsive img-circle" src="http://www.gstatic.com/webp/gallery/2.jpg" alt="User profile picture">
 
-                                <h3 class="profile-username text-center">{{$details[0]->name}}</h3>
+                                <h3 class="profile-username text-center">{{$details->name}}</h3>
 
-                                <p class="text-muted text-center">{{$details[0]->designation}}</p>
+                                <p class="text-muted text-center">{{$details->designation}}</p>
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
                                         <b>Followers</b>
@@ -41,7 +41,7 @@
                                     <i class="fa fa-info margin-r-5"></i>Description</strong>
 
                                 <p class="text-muted">
-                                    {{ $details[0]->description }}
+                                    {{ $details->description }}
                                 </p>
 
                                 <hr>
@@ -49,19 +49,19 @@
                                 <strong>
                                     <i class="fa fa-map-marker margin-r-5"></i> Adresse </strong>
 
-                                <p class="text-muted"> {{ $details[0]->adresse}}</p>
+                                <p class="text-muted"> {{ $details->adresse}}</p>
 
                                 <hr>
                                 <strong>
                                     <i class="fa fa-map-marker margin-r-5"></i> Phone </strong>
 
-                                <p class="text-muted">{{$details[0]->phone}}</p>
+                                <p class="text-muted">{{$details->phone}}</p>
 
                                 <hr>
                                 <strong>
                                     <i class="fa fa-map-marker margin-r-5"></i> Adresse Mail </strong>
 
-                                <p class="text-muted">{{$details[0]->email}}</p>
+                                <p class="text-muted">{{$details->email}}</p>
 
                                 <hr>
 
@@ -69,13 +69,13 @@
                                     <i class="fa fa-pencil margin-r-5"></i>Sociaux</strong>
 
                                 <p class="">
-                                    <a href="{{$details[0]->facebook }}" class="btn btn-social-icon btn-facebook">
+                                    <a href="{{$details->facebook }}" class="btn btn-social-icon btn-facebook">
                                         <i class="fa fa-facebook"></i>
                                     </a>
-                                    <a href="{{$details[0]->instagram }}" class="btn btn-social-icon btn-instagram">
+                                    <a href="{{$details->instagram }}" class="btn btn-social-icon btn-instagram">
                                         <i class="fa fa-instagram"></i>
                                     </a>
-                                    <a href="{{$details[0]->twitter }}" class="btn btn-social-icon btn-twitter">
+                                    <a href="{{$details->twitter }}" class="btn btn-social-icon btn-twitter">
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                 </p>
@@ -182,7 +182,7 @@
         </div>
     </div>
     <script>
-        var mapData = JSON.parse('{!! $details !!}');
+        var mapData = JSON.parse('{!! json_encode($details)!!}');
         $('document').ready(function () {
             showSinglePosition(mapData);
         })
