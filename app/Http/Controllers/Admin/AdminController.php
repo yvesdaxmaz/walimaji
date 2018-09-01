@@ -7,6 +7,7 @@ use App\Models\Subscription;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -37,5 +38,15 @@ class AdminController extends Controller
     public function removeUser($id){
         User::find($id)->delete();
         return redirect()->back()->with('success', ['User removed with success !!!']);
+    }
+
+    public function ProductsList(){
+        $adminDetail=User::getAdminDetail();
+        $traderProducts=Product::getAllTraderWithPrice();
+        $porducerProducts=Product::getAllProducerWithPrice();
+        $providerProducts=Product::getAllProviderWithPrice();
+        $transformerProducts=Product::getAllTransformerWithPrice();
+        dd( );
+        return view('admin.users.detail',compact('traderProducts','providerProducts','porducerProducts','transformerProducts','adminDetail'));
     }
 }
