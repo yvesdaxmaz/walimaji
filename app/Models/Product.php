@@ -32,7 +32,36 @@ class Product extends Model
             ->join('product_refs', 'product_refs.id', '=', 'products.idRef')
             ->join('product_prices','product_prices.idProduct','=','products.id')
             ->select('products.*', 'product_refs.*','product_prices.*')
-            ->where('products.idActor','=',$id,'and','')
+            ->where('products.idActor','=',$id)
             ->get()->toArray();
     }
+
+    public static  function getAllProviderWithPrice(){
+        return DB::select("select p.*, pr.priceWithTax, pr.priceWithoutTax 
+                            FROM products p, product_prices pr
+                            WHERE p.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) 
+                            AND p.idActor =(SELECT id from user_types where designation='provider')");
+                }
+
+    public static  function getAllProducerWithPrice(){
+        return DB::select("select p.*, pr.priceWithTax, pr.priceWithoutTax 
+                            FROM products p, product_prices pr
+                            WHERE p.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) 
+                            AND p.idActor =(SELECT id from user_types where designation='producer')");
+    }
+
+    public static  function getAllTraderWithPrice(){
+        return DB::select("select p.*, pr.priceWithTax, pr.priceWithoutTax 
+                            FROM products p, product_prices pr
+                            WHERE p.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) 
+                            AND p.idActor =(SELECT id from user_types where designation='trader')");
+    }
+
+    public static  function getAllTransformerWithPrice(){
+        return DB::select("select p.*, pr.priceWithTax, pr.priceWithoutTax 
+                            FROM products p, product_prices pr
+                            WHERE p.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) 
+                            AND p.idActor =(SELECT id from user_types where designation='transformer')");
+    }
+
 }
