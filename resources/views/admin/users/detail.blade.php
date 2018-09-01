@@ -4,14 +4,12 @@
     <div class="content-wrapper">
         <div class="container">
             <section class="content">
-
                 <div class="row">
                     <div class="col-md-4">
                         <div class="box box-primary">
                             <div class="box-body box-profile">
                                 <img class="profile-user-img img-responsive img-circle" src="http://www.gstatic.com/webp/gallery/2.jpg" alt="User profile picture"
                                 style="height: 95px">
-
                                 <h3 class="profile-username text-center">{{$details[0]->name}}</h3>
 
                                 <p class="text-muted text-center">{{$details[0]->designation}}</p>
@@ -25,10 +23,6 @@
                                         <a class="pull-right">{{$following[0]->following_count}}</a>
                                     </li>
                                 </ul>
-
-                                <a href="#" class="btn btn-primary btn-block">
-                                    <b>Follow</b>
-                                </a>
                             </div>
                             <!-- /.box-body -->
                         </div>
