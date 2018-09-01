@@ -24,8 +24,6 @@ class UsersTableSeeder extends Seeder
                 'type_id' => $types[$i % 4]
             ];
         }
-
-
         DB::table('users')->insert($data);
 
     }
