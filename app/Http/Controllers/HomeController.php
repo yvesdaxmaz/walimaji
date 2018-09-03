@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\ProductReference;
 use App\Models\ProductType;
 use App\Models\UserAdress;
@@ -45,10 +46,11 @@ class HomeController extends Controller
         }
         if ($this->middleware('admin')){
             $adminDetail=User::getAdminDetail();
+            $productsCount=Product::count();
             $nombreUser=User::count();
             $nombreRef=ProductReference::count();
             $nombreTypeProd=ProductType::count();
-            return view('admin.home', compact('adminDetail','nombreRef','nombreTypeProd','nombreUser'));
+            return view('admin.home', compact('productsCount','adminDetail','nombreRef','nombreTypeProd','nombreUser'));
         }
 
         return view('user.home', compact('data', 'tab', 'types'));
