@@ -46,7 +46,7 @@ class AdminController extends Controller
         $porducerProducts=Product::getAllProducerWithPrice();
         $providerProducts=Product::getAllProviderWithPrice();
         $transformerProducts=Product::getAllTransformerWithPrice();
-        dd( );
-        return view('admin.users.detail',compact('traderProducts','providerProducts','porducerProducts','transformerProducts','adminDetail'));
+
+        return view('admin.products.list',compact('traderProducts','providerProducts','porducerProducts','transformerProducts','adminDetail'));
     }
 }
