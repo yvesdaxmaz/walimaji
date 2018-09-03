@@ -44,7 +44,7 @@ class HomeController extends Controller
             $tab = 'trader';
             $data = UserAdress::getWithUserType(1);
         }
-        if ($this->middleware('admin')){
+         if ($this->middleware('admin')){
             $adminDetail=User::getAdminDetail();
             $productsCount=Product::count();
             $nombreUser=User::count();
