@@ -37,31 +37,19 @@ class Product extends Model
     }
 
     public static  function getAllProviderWithPrice(){
-        return DB::select("select p.*, pr.priceWithTax, pr.priceWithoutTax 
-                            FROM products p, product_prices pr
-                            WHERE p.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) 
-                            AND p.idActor =(SELECT id from user_types where designation='provider')");
+        return DB::select("select p.*,prf.designation, pr.priceWithTax,u.name, pr.priceWithoutTax FROM products p, product_refs prf,users u, product_prices pr WHERE pr.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) AND p.idActor IN (SELECT users.id FROM users WHERE users.type_id=(SELECT id from user_types where designation='provider')) AND prf.id=p.idRef And u.id=p.idActor");
                 }
 
     public static  function getAllProducerWithPrice(){
-        return DB::select("select p.*, pr.priceWithTax, pr.priceWithoutTax 
-                            FROM products p, product_prices pr
-                            WHERE p.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) 
-                            AND p.idActor =(SELECT id from user_types where designation='producer')");
+        return DB::select("select p.*,prf.designation, pr.priceWithTax,u.name, pr.priceWithoutTax FROM products p, product_refs prf,users u, product_prices pr WHERE pr.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) AND p.idActor IN (SELECT users.id FROM users WHERE users.type_id=(SELECT id from user_types where designation='producer')) AND prf.id=p.idRef And u.id=p.idActor");
     }
 
     public static  function getAllTraderWithPrice(){
-        return DB::select("select p.*, pr.priceWithTax, pr.priceWithoutTax 
-                            FROM products p, product_prices pr
-                            WHERE p.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) 
-                            AND p.idActor =(SELECT id from user_types where designation='trader')");
+        return DB::select("select p.*,prf.designation, pr.priceWithTax,u.name, pr.priceWithoutTax FROM products p, product_refs prf,users u, product_prices pr WHERE pr.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) AND p.idActor IN (SELECT users.id FROM users WHERE users.type_id=(SELECT id from user_types where designation='trader')) AND prf.id=p.idRef And u.id=p.idActor");
     }
 
     public static  function getAllTransformerWithPrice(){
-        return DB::select("select p.*, pr.priceWithTax, pr.priceWithoutTax 
-                            FROM products p, product_prices pr
-                            WHERE p.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) 
-                            AND p.idActor =(SELECT id from user_types where designation='transformer')");
+        return DB::select("select p.*,prf.designation, pr.priceWithTax,u.name, pr.priceWithoutTax FROM products p, product_refs prf,users u, product_prices pr WHERE pr.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) AND p.idActor IN (SELECT users.id FROM users WHERE users.type_id=(SELECT id from user_types where designation='transformer')) AND prf.id=p.idRef And u.id=p.idActor");
     }
 
 }
