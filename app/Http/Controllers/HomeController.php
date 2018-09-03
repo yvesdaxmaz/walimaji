@@ -44,7 +44,8 @@ class HomeController extends Controller
             $tab = 'trader';
             $data = UserAdress::getWithUserType(1);
         }
-         if ($this->middleware('admin')){
+
+        if (UserType::find(Auth::user()->type_id)->designation == 'admin'){
             $adminDetail=User::getAdminDetail();
             $productsCount=Product::count();
             $nombreUser=User::count();
@@ -52,7 +53,6 @@ class HomeController extends Controller
             $nombreTypeProd=ProductType::count();
             return view('admin.home', compact('productsCount','adminDetail','nombreRef','nombreTypeProd','nombreUser'));
         }
-
         return view('user.home', compact('data', 'tab', 'types'));
     }
 }
