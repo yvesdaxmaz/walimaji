@@ -54,10 +54,10 @@
                                                     <td>{{$transformer->email}}</td>
                                                     <td>{{$transformer->phone}}</td>
                                                     <td>
-                                                        <a href="{{route('removeUser',$transformer->id )}}">
+                                                        <a href="{{route('Admin_removeUser',$transformer->id )}}">
                                                             <button class="btn bg-red">Supprimer</button>
                                                         </a>
-                                                        <a href="{{route('userDetail',$transformer->id ) }}">
+                                                        <a href="{{route('Admin_userDetail',$transformer->id ) }}">
                                                             <button class="btn bg-blue">Detail</button>
                                                         </a>
                                                     </td>

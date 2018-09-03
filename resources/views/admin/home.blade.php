@@ -30,7 +30,7 @@
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="{{route('users')}}" class="small-box-footer">Voir tout
+                        <a href="{{route('Admin_users')}}" class="small-box-footer">Voir tout
                             <i class="fa fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -56,14 +56,14 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{$productsCount[0]->nombreProduit}}</h3>
 
-                            <p>Villes</p>
+                            <p>Produits en lignes</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="user_views_admin.html" class="small-box-footer">Voir tout
+                        <a href="{{route('Admin_Products')}}" class="small-box-footer">Voir tout
                             <i class="fa fa-arrow-circle-right"></i>
                         </a>
                     </div>

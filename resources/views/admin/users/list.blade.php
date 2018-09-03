@@ -64,10 +64,10 @@
                                                 <td>{{$trader->email}}</td>
                                                 <td>{{$trader->phone}}</td>
                                                 <td>
-                                                    <a href="{{route('removeUser',$trader->id )}}">
+                                                    <a href="{{route('Admin_removeUser',$trader->id )}}">
                                                         <button class="btn bg-red">Supprimer</button>
                                                     </a>
-                                                    <a href="{{route('userDetail',$trader->id ) }}">
+                                                    <a href="{{route('Admin_userDetail',$trader->id ) }}">
                                                         <button class="btn bg-blue">Detail</button>
                                                     </a>
                                                 </td>
@@ -110,10 +110,10 @@
                                                 <td>{{$provider->email}}</td>
                                                 <td>{{$provider->phone}}</td>
                                                 <td>
-                                                    <a href="{{route('removeUser',$provider->id )}}">
+                                                    <a href="{{route('Admin_removeUser',$provider->id )}}">
                                                         <button class="btn bg-red">Supprimer</button>
                                                     </a>
-                                                    <a href="{{route('userDetail',$provider->id ) }}">
+                                                    <a href="{{route('Admin_userDetail',$provider->id ) }}">
                                                         <button class="btn bg-blue">Detail</button>
                                                     </a>
                                                 </td>
@@ -157,10 +157,10 @@
                                                 <td>{{$producer->email}}</td>
                                                 <td>{{$producer->phone}}</td>
                                                 <td>
-                                                    <a href="{{route('removeUser',$producer->id )}}">
+                                                    <a href="{{route('Admin_removeUser',$producer->id )}}">
                                                         <button class="btn bg-red">Supprimer</button>
                                                     </a>
-                                                    <a href="{{route('userDetail',$producer->id ) }}">
+                                                    <a href="{{route('Admin_userDetail',$producer->id ) }}">
                                                         <button class="btn bg-blue">Detail</button>
                                                     </a>
                                                 </td>
@@ -203,10 +203,10 @@
                                                 <td>{{$transformer->email}}</td>
                                                 <td>{{$transformer->phone}}</td>
                                                 <td>
-                                                    <a href="{{route('removeUser',$transformer->id )}}">
+                                                    <a href="{{route('Admin_removeUser',$transformer->id )}}">
                                                         <button class="btn bg-red">Supprimer</button>
                                                     </a>
-                                                    <a href="{{route('userDetail',$transformer->id ) }}">
+                                                    <a href="{{route('Admin_userDetail',$transformer->id ) }}">
                                                         <button class="btn bg-blue">Detail</button>
                                                     </a>
                                                 </td>
