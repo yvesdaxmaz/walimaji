@@ -103,23 +103,29 @@
                                                 <th>Prix AT</th>
                                                 <th>Quantité</th>
                                                 <th>Description</th>
+                                                <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($products as $product )
                                                 <tr>
                                                     <td>
-                                                        <img src="http://www.gstatic.com/webp/gallery/2.jpg" alt="">
+                                                        <img src="http://www.gstatic.com/webp/gallery/2.jpg" style="height: 40px" alt="">
                                                     </td>
-                                                    <td>{{$products[0]->designation}}</td>
+                                                    <td>{{$product->designation}}</td>
                                                     <td>
-                                                        <span class="label label-success">{{$products[0]->priceWithoutTax}}</span>
+                                                        <span class="label label-success">{{$product->priceWithoutTax}}</span>
                                                     </td>
                                                     <td>
-                                                        <span class="label label-success">{{$products[0]->priceWithTax}}</span>
+                                                        <span class="label label-success">{{$product->priceWithTax}}</span>
                                                     </td>
-                                                    <td> <td>{{$products[0]->quantity}}</td></td>
-                                                    <td> <td>{{$products[0]->description}}</td></td>
+                                                    <td>{{$product->quantity}}</td>
+                                                    <td>{{$product->description}}</td>
+                                                    <td>
+                                                        <a href="{{route('Admin_productsRefDetail',$product->idRef )}}">
+                                                            <button class="btn bg-red">Detail</button>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

@@ -18,6 +18,7 @@
         <!-- Main content -->
         <section class="content">
             <!-- Small boxes (Stat box) -->
+
             <div class="row">
                 <div class="col-lg-3 col-xs-6">
                     <!-- small box -->
@@ -87,8 +88,79 @@
                 </div>
                 <!-- ./col -->
             </div>
-            <!-- /.row -->
-            <!-- Main row -->
+            <div class="row">
+                <div class="col-lg-12 box-primary  ">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#provider" data-toggle="tab">Provider</a>
+                            </li>
+                            <li>
+                                <a href="#producer" data-toggle="tab">Producer</a>
+                            </li>
+                            <li>
+                                <a href="#transformer" data-toggle="tab">Transformer</a>
+                            </li>
+                            <li>
+                                <a href="#trader" data-toggle="tab">Trader</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="provider">
+                                <!-- Map box -->
+                                <div class="box box-solid bg-light-blue-gradient">
+                                    <div class="box-body">
+                                        <div id="world-map" style="height: 450px;"></div>
+                                    </div>
+                                    <!-- /.box-body-->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="producer">
+                                <!-- Map box -->
+                                <div class="box box-solid bg-light-blue-gradient">
+                                    <div class="box-body">
+                                        <div id="world-map" style="height: 450px;"></div>
+                                    </div>
+                                    <!-- /.box-body-->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                            <!-- /.tab-pane -->
+
+                            <div class="tab-pane" id="transformer">
+                                <!-- Map box -->
+                                <div class="box box-solid bg-light-blue-gradient">
+                                    <div class="box-body">
+                                        <div id="world-map" style="height: 450px;"></div>
+                                    </div>
+                                    <!-- /.box-body-->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                            <!-- /.tab-pane -->
+
+                            <div class="tab-pane" id="trader">
+                                <!-- Map box -->
+                                <div class="box box-solid bg-light-blue-gradient">
+                                    <div class="box-body">
+                                        <div id="world-map" style="height: 450px;"></div>
+                                    </div>
+                                    <!-- /.box-body-->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    <!-- /.nav-tabs-custom -->
+
+                    <!-- /.col -->
+
+                </div>
+            </div>
             <div class="row">
                 <!-- Left col -->
                 <section class="col-lg-7 connectedSortable">
@@ -194,8 +266,6 @@
                     <!-- /.box -->
                 </section>
             </div>
-            <!-- /.row (main row) -->
-
         </section>
         <!-- /.content -->
     </div>
