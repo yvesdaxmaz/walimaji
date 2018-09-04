@@ -53,4 +53,7 @@ class ProductReference extends Model
             ->select('product_refs.*','product_types.designation')
             ->get();
     }
+    public static  function getBiggerAndSmallerPrice($id){
+        //return DB::select("SELECT price.priceWithTax price.")
+    }
 }

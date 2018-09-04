@@ -40,6 +40,12 @@ class AdminController extends Controller
         return redirect()->back()->with('success', ['User removed with success !!!']);
     }
 
+    public function ReferenceDetail(){
+
+        echo 'Work in progress !!!';
+        //return view('admin.product-reference.detail');
+    }
+
     public function ProductsList(){
         $adminDetail=User::getAdminDetail();
         $traderProducts=Product::getAllTraderWithPrice();
