@@ -3,8 +3,6 @@
 <head>
     @include("includes.default-meta")
     @include('includes.default-style')
-
-
     {{--////////////// leaflet and mapbox API ressources /////////////--}}
     <link rel="stylesheet" href="{{ asset("assets/leaflet/dist/leaflet.css") }}">
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css">
