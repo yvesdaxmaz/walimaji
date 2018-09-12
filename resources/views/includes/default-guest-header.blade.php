@@ -7,8 +7,17 @@
                     <i class="fa fa-bars"></i>
                 </button>
             </div>
+
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                 <ul class="nav navbar-nav">
+                    <li class="active">
+                        <form class="navbar-form navbar-left" role="search" action="" method="GET">
+                            @csrf
+                            <div class="form-group">
+                                <input type="text" name="q" class="form-control" id="navbar-search-input" placeholder="Recherches...">
+                            </div>
+                        </form>
+                    </li>
                     <li class="active"><a href="{{ url('/') }}">Carte</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">S'indentifier <span class="caret"></span></a>
@@ -20,13 +29,7 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left" role="search" action="" method="GET">
-                    @csrf
 
-                    <div class="form-group">
-                        <input type="text" name="q" class="form-control" id="navbar-search-input" placeholder="Recherches...">
-                    </div>
-                </form>
             </div>
         </div>
     </nav>
