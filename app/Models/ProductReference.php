@@ -44,7 +44,7 @@ class ProductReference extends Model
             ->join('product_types','product_types.id','product_refs.type')
             ->select('product_refs.*','product_types.designation')
             ->where('product_refs.id','=',$id)
-            ->get();
+            ->get()->toArray();
     }
 
     public  static function getAllWithTypeDesigantion(){
@@ -53,7 +53,15 @@ class ProductReference extends Model
             ->select('product_refs.*','product_types.designation')
             ->get();
     }
-    public static  function getBiggerAndSmallerPrice($id){
-        //return DB::select("SELECT price.priceWithTax price.")
+
+    public static  function getAllSalers($idRef){
+        return DB::table('products')
+            ->join('users','users.id','=','products.idActor')
+            ->join('user_adresses','user_adresses.user_id','=','users.id')
+            ->select('users.*','products.quantity','user_adresses.*')
+            ->where('products.idRef','=',$idRef)
+            ->get();
+        //DB::select("SELECT * FROM users WHERE id IN (SELECT idActor FROM products WHERE idRef=".$idRef.")");
     }
+
 }
