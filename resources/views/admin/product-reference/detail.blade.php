@@ -5,20 +5,46 @@
         <div class="container">
             <section class="content">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="box box-primary">
                             <div class="box-body box-profile">
-                                <img class="profile-user-img img-responsive img-thumbnail" src="http://www.gstatic.com/webp/gallery/2.jpg" alt="User profile picture"
-                                     style="height: 95px">
+                                <img class="profile-user-img img-responsive  " src="http://www.gstatic.com/webp/gallery/2.jpg" style="height: 100px" alt="User profile picture">
 
-                                <h3 class="profile-username text-center">{{$details[0]->name}}</h3>
+                                <h3 class="profile-username text-center">{{$details[0]->designation}}</h3>
 
-                                <p class="text-muted text-center">{{$details[0]->designation}}</p>
+                                <p class="text-muted text-center">{{$details[0]->description}}</p>
                             </div>
-                            <!-- /.box-body -->
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Prix du produit sur le marche</h3>
+                            </div>
+                            <div class="box-body">
+                                <strong> Le Moins cher</strong><br>
+                                <span>Hors taxe :</span>
+                                <a class="pull-right">{{$smallerPrice[0]->priceWithoutTax}} FC</a><br>
+                                <span>Avec taxe :</span>
+                                <a class="pull-right">{{$smallerPrice[0]->priceWithTax}} Fc</a> <br>
+                                 <p class="text-muted">
+                                    <a href="{{route('Admin_userDetail',$smallerPrice[0]->id ) }}">
+                                         Chez {{$smallerPrice[0]->name}}
+                                    </a>
+                                </p>
+                                <hr>
+                                <strong>Le Plus cher</strong><br>
+                                <span>Hors taxe :</span>
+                                <a class="pull-right">{{$biggerPrice[0]->priceWithoutTax}} FC</a><br>
+                                <span>Avec taxe :</span>
+                                <a class="pull-right">{{$biggerPrice[0]->priceWithTax}} Fc</a> <br>
+                                <p class="text-muted">
+                                    <a href="{{route('Admin_userDetail',$biggerPrice[0]->id ) }}">
+                                        Chez {{$biggerPrice[0]->name}}
+                                    </a>
+                                </p>
+
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
+
+                    <div class="col-md-9">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
                                 <li class="active">
@@ -26,9 +52,6 @@
                                 </li>
                                 <li>
                                     <a href="#Carte" data-toggle="tab">Carte</a>
-                                </li>
-                                <li>
-                                    <a href="#Statistiques" data-toggle="tab">Statistiques</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -39,25 +62,22 @@
                                             <tr>
                                                 <th>Avatar</th>
                                                 <th>Nom</th>
-                                                <th>description</th>
-                                                <th>email</th>
+                                                <th>Description</th>
+                                                <th>Email</th>
                                                 <th>Phone</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($transformers as $transformer)
+                                            @foreach($sellers as $seller)
                                                 <tr>
                                                     <td><img src="http://www.gstatic.com/webp/gallery/2.jpg" class="" alt="User Image" style=" height: 45px"></td>
-                                                    <td>{{$transformer->name}}</td>
-                                                    <td> {{$transformer->description}}</td>
-                                                    <td>{{$transformer->email}}</td>
-                                                    <td>{{$transformer->phone}}</td>
+                                                    <td>{{$seller->name}}</td>
+                                                    <td> {{$seller->description}}</td>
+                                                    <td>{{$seller->email}}</td>
+                                                    <td>{{$seller->phone}}</td>
                                                     <td>
-                                                        <a href="{{route('Admin_removeUser',$transformer->id )}}">
-                                                            <button class="btn bg-red">Supprimer</button>
-                                                        </a>
-                                                        <a href="{{route('Admin_userDetail',$transformer->id ) }}">
+                                                        <a href="{{route('Admin_userDetail',$seller->id ) }}">
                                                             <button class="btn bg-blue">Detail</button>
                                                         </a>
                                                     </td>
@@ -68,8 +88,8 @@
                                             <tr>
                                                 <th>Avatar</th>
                                                 <th>Nom</th>
-                                                <th>description</th>
-                                                <th>email</th>
+                                                <th>Description</th>
+                                                <th>Email</th>
                                                 <th>Phone</th>
                                                 <th>Action</th>
                                             </tr>
@@ -77,42 +97,8 @@
                                         </table>
                                     </div>
                                 </div>
-                                {{--//////////// map container /////////////////////--}}
                                 <div class="tab-pane" id="Carte">
 
-                                </div>
-                                <div class="tab-pane" id="Statistiques">
-                                    <!-- solid sales graph -->
-                                    <div class="box box-solid bg-teal-gradient">
-                                        <div class="box-header">
-                                            <h3 class="box-title">Représentation du stock</h3>
-                                        </div>
-                                        <div class="box-body border-radius-none">
-                                            <div class="chart" id="line-chart" style="height: 250px;"></div>
-                                        </div>
-                                        <!-- /.box-body -->
-                                        <div class="box-footer no-border">
-                                            <div class="row">
-                                                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                                                    <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                                                    <div class="knob-label">Mail-Orders</div>
-                                                </div>
-                                                <!-- ./col -->
-                                                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                                                    <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                                                    <div class="knob-label">Online</div>
-                                                </div>
-                                                <!-- ./col -->
-                                                <div class="col-xs-4 text-center">
-                                                    <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                                                    <div class="knob-label">In-Store</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -121,4 +107,10 @@
             </section>
         </div>
     </div>
+    <script>
+        var tab = '{{ $tab }}';
+        var mapData = JSON.parse('{!! $data !!}');
+        console.log(mapData[0]['name']);
+    </script>
+    <script src="{{ asset("assets/js/map.js") }}"></script>
 @endsection
