@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
+use App\Models\ProductPrice;
+use App\Models\ProductReference;
 use App\Models\Subscription;
 use App\User;
 use Illuminate\Http\Request;
@@ -28,10 +30,11 @@ class AdminController extends Controller
 
         $products=Product::getWithReference($id);
 
-        $followers=Subscription::getFollowers($id);
+        $followers=Subscription::getFollowersCount($id);
 
-        $following= Subscription::getFollowing($id);
+        $following= Subscription::getFollowingCount($id);
 
+        //dd($adminDetail,$details,$products,$followers,$following);
         return view('admin.users.detail',compact('details','products','followers','following','adminDetail'));
     }
 
@@ -40,9 +43,15 @@ class AdminController extends Controller
         return redirect()->back()->with('success', ['User removed with success !!!']);
     }
 
-    public function ReferenceDetail(){
+    public function ReferenceDetail($idRef){
 
-        echo 'Work in progress !!!';
+        $adminDetail=User::getAdminDetail();
+        $biggerPrice=ProductPrice::getBiggerPriceOf($idRef);
+        $smallerPrice=ProductPrice::getSmallerPriceOf($idRef);
+        $sellers=ProductReference::getAllSalers($idRef);
+        $details=ProductReference::getWithTypeDesigantion($idRef);
+        //dd($biggerPrice,$smallerPrice,$details);
+        return view('admin.product-reference.detail', compact('adminDetail','biggerPrice','smallerPrice','sellers','details'));
         //return view('admin.product-reference.detail');
     }
 
