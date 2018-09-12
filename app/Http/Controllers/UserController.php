@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductPrice;
+use App\Models\ProductReference;
 use App\Models\Subscription;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -56,5 +58,51 @@ class UserController extends Controller
             'api_token' => $api_token
         ]);
 
+    }
+
+    public  function showFollowers(){
+        $followers=Subscription::getFollowers(Auth::id());
+        $userDetail=User::getAdminDetail();
+
+        return view('user.subscribers',compact('followers','userDetail'));
+
+    }
+
+    public function showFollowing(){
+        $followings=Subscription::getFollowing(Auth::id());
+        $userDetail=User::getAdminDetail();
+        return view('user.subscriptions',compact('followings','userDetail'));
+    }
+
+    public function ShowUserDetail($id){
+        $details=User::getWithAdressAndType($id,'');
+
+        $products=Product::getWithReference($id);
+
+        $followers=Subscription::getFollowersCount($id);
+
+        $following= Subscription::getFollowingCount($id);
+        $userDetail=User::getAdminDetail();
+        //dd($adminDetail,$details,$products,$followers,$following);
+        return view('user.detail',compact('details','products','followers','following','userDetail'));
+    }
+
+    public  function  showProfil(){
+        $userDetail=User::getAdminDetail();
+    }
+
+    public function ShowReferenceDetail($idRef){
+        $userDetail=User::getAdminDetail();
+        $biggerPrice=ProductPrice::getBiggerPriceOf($idRef);
+        $smallerPrice=ProductPrice::getSmallerPriceOf($idRef);
+        $sellers=ProductReference::getAllSalers($idRef);
+        $details=ProductReference::getWithTypeDesigantion($idRef);
+        //dd($biggerPrice,$smallerPrice,$details);
+        return view('user.product.detail', compact('userDetail','biggerPrice','smallerPrice','sellers','details'));
+
+    }
+
+    public function ShowProductsList(){
+        $userDetail=User::getAdminDetail();
     }
 }
