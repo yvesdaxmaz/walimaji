@@ -91,182 +91,124 @@
             <div class="row">
                 <div class="col-lg-12 box-primary  ">
                     <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#provider" data-toggle="tab">Provider</a>
-                            </li>
-                            <li>
-                                <a href="#producer" data-toggle="tab">Producer</a>
-                            </li>
-                            <li>
-                                <a href="#transformer" data-toggle="tab">Transformer</a>
-                            </li>
-                            <li>
-                                <a href="#trader" data-toggle="tab">Trader</a>
-                            </li>
-                        </ul>
+                        <div class="nav-tabs-custom map-nav-tabs">
+                            <ul class="nav nav-tabs ">
+                                @foreach($types as $type)
+                                    @if($tab == $type->designation)
+                                        <li class="active"><a href="{{ "?tab={$type->designation}" }}">{{ $type->designation }}</a></li>
+                                    @else
+                                        <li><a href="{{ "?tab={$type->designation}" }}">{{ $type->designation }}</a></li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
                         <div class="tab-content">
-                            <div class="active tab-pane" id="provider">
-                                <!-- Map box -->
-                                <div class="box box-solid bg-light-blue-gradient">
-                                    <div class="box-body">
-                                        <div id="world-map" style="height: 450px;"></div>
-                                    </div>
-                                    <!-- /.box-body-->
-                                </div>
-                                <!-- /.box -->
+                            <div class="map-container">
+                                <div class="map-container-content" id="map"></div>
                             </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="producer">
-                                <!-- Map box -->
-                                <div class="box box-solid bg-light-blue-gradient">
-                                    <div class="box-body">
-                                        <div id="world-map" style="height: 450px;"></div>
-                                    </div>
-                                    <!-- /.box-body-->
-                                </div>
-                                <!-- /.box -->
-                            </div>
-                            <!-- /.tab-pane -->
-
-                            <div class="tab-pane" id="transformer">
-                                <!-- Map box -->
-                                <div class="box box-solid bg-light-blue-gradient">
-                                    <div class="box-body">
-                                        <div id="world-map" style="height: 450px;"></div>
-                                    </div>
-                                    <!-- /.box-body-->
-                                </div>
-                                <!-- /.box -->
-                            </div>
-                            <!-- /.tab-pane -->
-
-                            <div class="tab-pane" id="trader">
-                                <!-- Map box -->
-                                <div class="box box-solid bg-light-blue-gradient">
-                                    <div class="box-body">
-                                        <div id="world-map" style="height: 450px;"></div>
-                                    </div>
-                                    <!-- /.box-body-->
-                                </div>
-                                <!-- /.box -->
-                            </div>
-                            <!-- /.tab-pane -->
                         </div>
                         <!-- /.tab-content -->
                     </div>
-                    <!-- /.nav-tabs-custom -->
-
-                    <!-- /.col -->
-
                 </div>
             </div>
             <div class="row">
-                <!-- Left col -->
-                <section class="col-lg-7 connectedSortable">
-                    <!-- Custom tabs (Charts with tabs)-->
-                    <div class="nav-tabs-custom">
-                        <!-- Tabs within a box -->
-                        <ul class="nav nav-tabs pull-right">
-                            <li class="active">
-                                <a href="#revenue-chart" data-toggle="tab">Area</a>
-                            </li>
-                            <li class="pull-left header">
-                                <i class="fa fa-inbox"></i> Sales</li>
-                        </ul>
-                        <div class="tab-content no-padding">
-                            <!-- Morris chart - Sales -->
-                            <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-                            <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
-                        </div>
-                    </div>
-                </section>
-                <!-- /.Left col -->
-                <section class="col-lg-5 connectedSortable">
-                    <!-- PRODUCT LIST -->
-                    <div class=" box box-primary ">
-                        <div class="box-header with-border ">
-                            <h3 class="box-title ">Recently Added Products</h3>
+                <!-- top 10 des produits recemment ajoutes -->
+                <section class="col-lg-6 connectedSortable">
+                         <!-- PRODUCT LIST -->
+                         <div class=" box box-primary ">
+                             <div class="box-header with-border ">
+                                 <h3 class="box-title ">Les 5 derniers produits</h3>
+                                 <div class="box-tools pull-right ">
+                                     <button type="button " class="btn btn-box-tool " data-widget="collapse ">
+                                         <i class="fa fa-minus "></i>
+                                     </button>
+                                     <button type="button " class="btn btn-box-tool " data-widget="remove ">
+                                         <i class="fa fa-times "></i>
+                                     </button>
+                                 </div>
+                             </div>
+                             <!-- /.box-header -->
+                             <div class="box-body ">
+                                 <ul class="products-list product-list-in-box ">
+                                     @foreach($recentsProducts as $product)
+                                         <li class="item ">
+                                             <div class="product-img ">
+                                                 <img src="http://www.gstatic.com/webp/gallery/2.jpg" style="height: 50px" alt="Product Image ">
+                                             </div>
+                                             <div class="product-info ">
+                                                 <a href="{{route('Admin_productsRefDetail',$product->idRef )}}" class="product-title ">{{$product->designation}}
+                                                     <span class="label label-info pull-right "> PAT: ${{$product->priceWithTax}}</span>
+                                                     <span class="label label-info pull-right ">PST: ${{$product->priceWithoutTax}}</span>
+                                                     <span class="label label-danger pull-right ">Stock: {{$product->quantity}}</span>
+                                                 </a>
+                                                 <a href="{{route('Admin_userDetail',$product->idActor)}}"><span class="product-description ">Par {{$product->name}} </span></a>
+                                                 <span class="product-description ">{{$product->description}} </span>
+                                             </div>
+                                         </li>
+                                         @endforeach
 
-                            <div class="box-tools pull-right ">
-                                <button type="button " class="btn btn-box-tool " data-widget="collapse ">
-                                    <i class="fa fa-minus "></i>
-                                </button>
-                                <button type="button " class="btn btn-box-tool " data-widget="remove ">
-                                    <i class="fa fa-times "></i>
-                                </button>
+                                     <!-- /.item -->
+                                 </ul>
+                             </div>
+                             <!-- /.box-body -->
+                             <div class="box-footer text-center">
+                                 <a href="{{route('Admin_Products')}}" class="uppercase">Voir tous les produits</a>
+                             </div>
+                             <!-- /.box-footer -->
+                         </div>
+                         <!-- /.box -->
+                     </section>
+
+                <section class="col-lg-6 connectedSortable">
+                        <!-- PRODUCT LIST -->
+                        <div class=" box box-primary ">
+                            <div class="box-header with-border ">
+                                <h3 class="box-title ">Les 5 derniers utilisateurs</h3>
+
+                                <div class="box-tools pull-right ">
+                                    <button type="button " class="btn btn-box-tool " data-widget="collapse ">
+                                        <i class="fa fa-minus "></i>
+                                    </button>
+                                    <button type="button " class="btn btn-box-tool " data-widget="remove ">
+                                        <i class="fa fa-times "></i>
+                                    </button>
+                                </div>
                             </div>
+                            <!-- /.box-header -->
+                            <div class="box-body ">
+                                <ul class="products-list product-list-in-box ">
+                                    @foreach($recentUsers  as $user)
+                                        <li class="item ">
+                                            <div class="product-img ">
+                                                <img src="http://www.gstatic.com/webp/gallery/2.jpg" style="height: 40px" alt="Product Image ">
+                                            </div>
+                                            <div class="product-info ">
+                                                <a href="{{route('Admin_userDetail',$user->id ) }}" class="product-title ">{{$user->name}}
+                                                    <span class="label label-default pull-right ">{{$user->designation}}</span>
+                                                </a>
+                                                <span class="product-description ">
+                                                {{$user->description}}</span>
+                                            </div>
+                                        </li>
+                                        @endforeach
+                                </ul>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer text-center">
+                                <a href="{{route('Admin_users')}}" class="uppercase">Voir tous les utilisateurs</a>
+                            </div>
+                            <!-- /.box-footer -->
                         </div>
-                        <!-- /.box-header -->
-                        <div class="box-body ">
-                            <ul class="products-list product-list-in-box ">
-                                <li class="item ">
-                                    <div class="product-img ">
-                                        <img src="../../dist/img/default-50x50.gif " alt="Product Image ">
-                                    </div>
-                                    <div class="product-info ">
-                                        <a href="javascript:void(0) " class="product-title ">Samsung TV
-                                            <span class="label label-warning pull-right ">$1800</span>
-                                        </a>
-                                        <span class="product-description ">
-                                                Samsung 32" 1080p 60Hz LED Smart HDTV. </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="../../dist/img/default-50x50.gif" alt="Product Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">Bicycle
-                                            <span class="label label-info pull-right">$700</span>
-                                        </a>
-                                        <span class="product-description">
-                                                26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                                            </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="../../dist/img/default-50x50.gif" alt="Product Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">Xbox One
-                                            <span class="label label-danger pull-right">$350</span>
-                                        </a>
-                                        <span class="product-description">
-                                                Xbox One Console Bundle with Halo Master Chief Collection.
-                                            </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="../../dist/img/default-50x50.gif" alt="Product Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">PlayStation 4
-                                            <span class="label label-success pull-right">$399</span>
-                                        </a>
-                                        <span class="product-description">
-                                                PlayStation 4 500GB Console (PS4)
-                                            </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                            </ul>
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer text-center">
-                            <a href="javascript:void(0)" class="uppercase">View All Products</a>
-                        </div>
-                        <!-- /.box-footer -->
-                    </div>
-                    <!-- /.box -->
-                </section>
+                        <!-- /.box -->
+                    </section>
             </div>
         </section>
         <!-- /.content -->
     </div>
+    <script>
+        var tab = '{{ $tab }}';
+        var mapData = JSON.parse('{!! $data !!}');
+        console.log(mapData[0]['name']);
+    </script>
+    <script src="{{ asset("assets/js/map.js") }}"></script>
 @endsection
