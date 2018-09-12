@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductReference;
 use App\Models\ProductType;
+use App\Models\Subscription;
 use App\Models\UserAdress;
 use App\Models\UserType;
 use App\User;
@@ -44,15 +45,23 @@ class HomeController extends Controller
             $tab = 'trader';
             $data = UserAdress::getWithUserType(1);
         }
-
+        $types = UserType::limit(4)->get();
         if (UserType::find(Auth::user()->type_id)->designation == 'admin'){
             $adminDetail=User::getAdminDetail();
             $productsCount=Product::count();
             $nombreUser=User::count();
             $nombreRef=ProductReference::count();
             $nombreTypeProd=ProductType::count();
-            return view('admin.home', compact('productsCount','adminDetail','nombreRef','nombreTypeProd','nombreUser'));
+            $recentsProducts=Product::getRecents(5);
+            $recentUsers=User::getRecents(5);
+
+            return view('admin.home', compact('data', 'tab', 'types','recentsProducts','recentUsers','productsCount','adminDetail','nombreRef','nombreTypeProd','nombreUser'));
         }
-        return view('user.home', compact('data', 'tab', 'types'));
+        $userDetail=User::getAdminDetail();
+        $followersCount=Subscription::getFollowersCount(Auth::id());
+        $followingCount=Subscription::getFollowingCount(Auth::id());
+        $userProductsCount=Product::countByUser();
+        $randomUsers=User::getRandomly();
+        return view('user.home', compact('userProductsCount','randomUsers','followingCount','followersCount','userDetail','data', 'tab', 'types'));
     }
 }
