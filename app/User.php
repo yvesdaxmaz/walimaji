@@ -100,6 +100,23 @@ class User extends Authenticatable
         return DB::table('users')
             ->join('user_types', 'users.type_id', 'user_types.id')
             ->where('users.id', '=', Auth::id())
-            ->select('users.name', 'user_types.designation')->get();
+            ->select('users.*', 'user_types.designation')->get();
     }
+
+    public static function getRecents($number){
+        return DB::table('users')
+            ->join('user_types', 'users.type_id', '=', 'user_types.id')
+            ->select('users.*','user_types.designation')
+            ->orderBy('users.id','Desc')
+            ->limit($number)
+            ->get();
+    }
+
+
+    public  static  function getRandomly(){
+        return DB::select("SELECT users.*, t.designation
+                            FROM users, (SELECT id AS sid  FROM users  ORDER BY RAND() LIMIT 7) tmp, user_types t
+                            WHERE users.id = tmp.sid and users.type_id=t.id");
+    }
+
 }
