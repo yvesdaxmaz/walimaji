@@ -58,7 +58,7 @@
                     </section>
 
                 </div>
-                <div class="map-banner-overlay"></div>
+
             </div>
         </div>
     </div>

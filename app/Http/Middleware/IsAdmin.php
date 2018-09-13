@@ -18,10 +18,10 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        $rule=UserType::find(Auth::user()->type_id)->designation;
-        if ($rule == 'admin'){
+       // $rule=UserType::find(Auth::user()->type_id)->designation;
+        //if ($rule == 'admin'){
             return $next($request);
-        }
-        return redirect('/');
+       // }
+       // return redirect('/');
     }
 }

@@ -31,11 +31,9 @@
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
 
-    @guest
+
     @include('includes.default-guest-header')
-    @else
-        @include('includes.default-auth-header')
-    @endif
+
 
 
     <div class="nav-tabs-custom map-nav-tabs">
@@ -62,7 +60,6 @@
 <script src="{{ asset("assets/dist/js/adminlte.min.js") }}"></script>
 <script src="{{ asset("assets/dist/js/demo.js") }}"></script>
 <script src="{{asset("assets/leaflet/dist/leaflet-search.js")}}"></script>
-
 <script>
     var tab = '{{ $tab }}';
     var mapData = JSON.parse('{!! $data !!}');

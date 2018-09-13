@@ -1,4 +1,4 @@
-@extends('layouts.app-admin')
+@extends('layouts.app')
 
 @section('content')
     <div class="content-wrapper">
@@ -107,10 +107,4 @@
             </section>
         </div>
     </div>
-    <script>
-        var tab = '{{ $tab }}';
-        var mapData = JSON.parse('{!! $data !!}');
-        console.log(mapData[0]['name']);
-    </script>
-    <script src="{{ asset("assets/js/map.js") }}"></script>
-@endsection
+    @endsection

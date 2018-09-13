@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Product extends Model
@@ -24,6 +25,13 @@ class Product extends Model
     public static function count(){
         return DB::table('products')
             ->select(DB::raw('count(id) as nombreProduit'))
+            ->get();
+    }
+
+    public static function countByUser(){
+        return DB::table('products')
+            ->select(DB::raw('count(id) as nombreProduit'))
+            ->where('idActor','=',Auth::id())
             ->get();
     }
 
@@ -50,6 +58,10 @@ class Product extends Model
 
     public static  function getAllTransformerWithPrice(){
         return DB::select("select p.*,prf.designation, pr.priceWithTax,u.name, pr.priceWithoutTax FROM products p, product_refs prf,users u, product_prices pr WHERE pr.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) AND p.idActor IN (SELECT users.id FROM users WHERE users.type_id=(SELECT id from user_types where designation='transformer')) AND prf.id=p.idRef And u.id=p.idActor");
+    }
+
+    public static  function getRecents($number){
+        return DB::select("select p.*,prf.designation, pr.priceWithTax,u.name, pr.priceWithoutTax FROM products p, product_refs prf,users u, product_prices pr WHERE pr.id = (SELECT id FROM product_prices WHERE idProduct = p.id ORDER BY id DESC LIMIT 1 ) AND prf.id=p.idRef And u.id=p.idActor ORDER BY p.id DESC LIMIT ".$number);
     }
 
 }

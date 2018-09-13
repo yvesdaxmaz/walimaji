@@ -8,74 +8,24 @@
             <div class="row">
                 <div class="col-lg-9 box-primary  ">
                     <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#provider" data-toggle="tab">Provider</a>
-                            </li>
-                            <li>
-                                <a href="#producer" data-toggle="tab">Producer</a>
-                            </li>
-                            <li>
-                                <a href="#transformer" data-toggle="tab">Transformer</a>
-                            </li>
-                            <li>
-                                <a href="#trader" data-toggle="tab">Trader</a>
-                            </li>
-                        </ul>
+                        <div class="nav-tabs-custom map-nav-tabs">
+                            <ul class="nav nav-tabs ">
+                                @foreach($types as $type)
+                                    @if($tab == $type->designation)
+                                        <li class="active"><a href="{{ "?tab={$type->designation}" }}">{{ $type->designation }}</a></li>
+                                    @else
+                                        <li><a href="{{ "?tab={$type->designation}" }}">{{ $type->designation }}</a></li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
                         <div class="tab-content">
-                            <div class="active tab-pane" id="provider">
-                                <!-- Map box -->
-                                <div class="box box-solid bg-light-blue-gradient">
-                                    <div class="box-body">
-                                        <div id="world-map" style="height: 450px;"></div>
-                                    </div>
-                                    <!-- /.box-body-->
-                                </div>
-                                <!-- /.box -->
+                            <div class="map-container">
+                                <div class="map-container-content" id="map"></div>
                             </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="producer">
-                                <!-- Map box -->
-                                <div class="box box-solid bg-light-blue-gradient">
-                                    <div class="box-body">
-                                        <div id="world-map" style="height: 450px;"></div>
-                                    </div>
-                                    <!-- /.box-body-->
-                                </div>
-                                <!-- /.box -->
-                            </div>
-                            <!-- /.tab-pane -->
-
-                            <div class="tab-pane" id="transformer">
-                                <!-- Map box -->
-                                <div class="box box-solid bg-light-blue-gradient">
-                                    <div class="box-body">
-                                        <div id="world-map" style="height: 450px;"></div>
-                                    </div>
-                                    <!-- /.box-body-->
-                                </div>
-                                <!-- /.box -->
-                            </div>
-                            <!-- /.tab-pane -->
-
-                            <div class="tab-pane" id="trader">
-                                <!-- Map box -->
-                                <div class="box box-solid bg-light-blue-gradient">
-                                    <div class="box-body">
-                                        <div id="world-map" style="height: 450px;"></div>
-                                    </div>
-                                    <!-- /.box-body-->
-                                </div>
-                                <!-- /.box -->
-                            </div>
-                            <!-- /.tab-pane -->
                         </div>
                         <!-- /.tab-content -->
                     </div>
-                    <!-- /.nav-tabs-custom -->
-
-                    <!-- /.col -->
-
                 </div>
                 <div class="col-lg-3 ">
                     <!-- PRODUCT LIST -->
