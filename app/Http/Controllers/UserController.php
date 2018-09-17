@@ -105,4 +105,8 @@ class UserController extends Controller
     public function ShowProductsList(){
         $userDetail=User::getAdminDetail();
     }
+
+    public function Follow($id){
+        
+    }
 }

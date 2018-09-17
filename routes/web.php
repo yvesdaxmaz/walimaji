@@ -21,6 +21,7 @@ Route::get('/user/userDetail/{id}','UserController@ShowUserDetail')->name('user/
 Route::get('/user/profil','UserController@showProfil')->name('user/profil');
 Route::get('/user/productsRefDetail/{id}','UserController@ShowReferenceDetail')->name('user/productsRefDetail');
 Route::get('/user/products','UserController@ShowProductsList')->name('user/products');
+Route::get('user');
 
 
 //Admin Routes

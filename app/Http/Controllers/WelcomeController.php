@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\UserAdress;
 use App\Models\UserType;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-=======
-use Illuminate\Support\Facades\DB;
->>>>>>> 0c47a72ae643ad1422243fd330d0fafc26ab313f
+// <<<<<<< HEAD
+// =======
+// use Illuminate\Support\Facades\DB;
+// >>>>>>> 0c47a72ae643ad1422243fd330d0fafc26ab313f
 
 class WelcomeController extends Controller
 {

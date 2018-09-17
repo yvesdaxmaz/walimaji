@@ -111,7 +111,7 @@
                                         <div class="product-info">
                                             <a href="{{route('user/userDetail',$user->id ) }}" class="product-title">{{$user->name}}
                                                 <div class="btn btn-xs btn-info pull-right">
-                                                    S'abonner
+                                                    Details
                                                 </div>
                                             </a>
                                             <span class="product-description">
