@@ -82,6 +82,9 @@
 .hero .hero-container {
   min-height: 65vh;
 }
+#mainnav {
+  background-color: green;
+}
 .nav-tabs-custom.map-nav-tabs {
   z-index: 300;
   margin-bottom: 0 !important;
