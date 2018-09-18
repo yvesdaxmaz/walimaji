@@ -23,7 +23,7 @@
                                         <a class="pull-right">{{$following[0]->following_count}}</a>
                                     </li>
                                 </ul>
-                                <a href="#" class="btn btn-primary btn-block">
+                                <a href="{{route('user/subscribe',$user->id ) }}" class="btn btn-primary btn-block">
                                     <b>S'abonner</b>
                                 </a>
                             </div>

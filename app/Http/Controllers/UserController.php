@@ -106,7 +106,10 @@ class UserController extends Controller
         $userDetail=User::getAdminDetail();
     }
 
-    public function Follow($id){
+    public function subscribe($id){
+        Subscription::store($id);   
         
     }
+
+
 }
