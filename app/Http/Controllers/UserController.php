@@ -102,7 +102,10 @@ class UserController extends Controller
 
     }
 
-    public function ShowProductsList(){
+    public function ShowProductsList($id){
         $userDetail=User::getAdminDetail();
+        $products = User::getAllProducts($id);
+
+        return view('user.product.list', compact('userDetail','products'));
     }
 }
