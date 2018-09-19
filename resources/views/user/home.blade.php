@@ -16,7 +16,7 @@
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="{{route('Admin_users')}}" class="small-box-footer">Voir tout
+                        <a href="{{route('user/productsList', Auth::id()) }}" class="small-box-footer">Voir tout
                             <i class="fa fa-arrow-circle-right"></i>
                         </a>
                     </div>
