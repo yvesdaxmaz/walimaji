@@ -40,10 +40,7 @@ class Subscription extends Model
         $subscription->idsubscriber=Auth::id();
         $subscription->idActor=Auth::id();
         $subscription->save();
-
+        
     }
-    
-    
-
 
 }

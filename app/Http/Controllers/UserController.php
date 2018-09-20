@@ -107,7 +107,7 @@ class UserController extends Controller
     }
 
     public function subscribe($id){
-        Subscription::store($id);   
+        Subscription::store($id); 
         
     }
 
