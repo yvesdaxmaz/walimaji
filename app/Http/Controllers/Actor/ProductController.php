@@ -99,18 +99,19 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::find($id)->delete();
+        return redirect()->back()->with('success', ['Product removed with success !!!']);
     }
 
     public function myValidation($request)
     {
-<<<<<<< HEAD:app/Http/Controllers/Admin/TransformerProductTypeController.php
-        $data=$this->validate($request, [
-            'designation'=>'bail|required|max:20',
-=======
-        $data=$this->validate($request,[
-            'quantity'=>'numeric'
->>>>>>> 2ab1671b474f67ab578c1a5583b143e5dd2905b0:app/Http/Controllers/Actor/ProductController.php
-        ]);
-        return $data;
+//<<<<<<< HEAD:app/Http/Controllers/Admin/TransformerProductTypeController.php
+//        $data=$this->validate($request, [
+//            'designation'=>'bail|required|max:20',
+//=======
+//        $data=$this->validate($request,[
+//            'quantity'=>'numeric'
+//>>>>>>> 2ab1671b474f67ab578c1a5583b143e5dd2905b0:app/Http/Controllers/Actor/ProductController.php
+//        ]);
+//        return $data;
     }
 }
