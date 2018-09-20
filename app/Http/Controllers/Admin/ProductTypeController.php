@@ -25,7 +25,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-
+        return view('admin.add');
     }
 
     /**
@@ -63,6 +63,7 @@ class ProductTypeController extends Controller
     public function edit($id)
     {
         $productType=ProductType::find($id);
+        return view('admin.product-type.edit');
     }
 
     /**
@@ -72,10 +73,10 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $data = $this->myValidation($request);
-        $type =ProductType::find($id);
+        $type =ProductType::find($request->id);
         $type->designation = $data['designation'];
         $type->idActor=$request->idActor;
         $type->save();
@@ -89,7 +90,7 @@ class ProductTypeController extends Controller
      */
     public function destroy($id)
     {
-        InputType::find($id)->delete();
+
     }
 
     public function myValidation($request)

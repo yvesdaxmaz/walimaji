@@ -5,10 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\UserAdress;
 use App\Models\UserType;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+// <<<<<<< HEAD
+// =======
+// use Illuminate\Support\Facades\DB;
+// >>>>>>> 0c47a72ae643ad1422243fd330d0fafc26ab313f
 
 class WelcomeController extends Controller
 {
+    /**
+     * WelcomeController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     /**
      * affiche sur une carte, les pins de traders par default,
      * et les autres types de users en fonction du type demandE.
@@ -16,10 +27,12 @@ class WelcomeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function index(Request $request)
     {
         if ($request->query('tab')) {
-            $types = ['trader' => 1, 'producer' => 2, 'transfomer' => 3, 'provider' => 4];
+            $types = ['trader' => 1, 'provider' => 2, 'producer' => 3, 'transformer' => 4];
             $tab = (array_key_exists($request->query('tab'), $types))?
                 htmlspecialchars($request->query('tab')) :
                 'trader';
@@ -31,8 +44,6 @@ class WelcomeController extends Controller
         }
 
         $types = UserType::limit(4)->get();
-        return view('home', compact('data', 'tab', 'types'));
+        return view('welcome', compact('data', 'tab', 'types'));
     }
-
-
 }

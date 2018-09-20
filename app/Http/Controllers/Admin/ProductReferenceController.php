@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\ProductReference;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +17,7 @@ class ProductReferenceController extends Controller
     public function index()
     {
         $productReferences=ProductReference::all()->toArray();
+        return view('admin.product-reference.list',compact('productReferences'));
     }
 
     /**
@@ -25,7 +27,7 @@ class ProductReferenceController extends Controller
      */
     public function create()
     {
-
+        return view('admin.product-reference.add');
     }
 
     /**
@@ -44,6 +46,7 @@ class ProductReferenceController extends Controller
         $ref->type =  $request->type;
         $ref->idActor =  $request->idActor;
         $ref->save();
+
     }
 
     /**
@@ -54,7 +57,8 @@ class ProductReferenceController extends Controller
      */
     public function show($id)
     {
-        $productReference=ProductReference::find($id);
+        $productReference=ProductReference::getWithTypeDesigantion($id);
+        return view('admin.product-reference.show',compact('productReference'));
     }
 
     /**
@@ -66,6 +70,8 @@ class ProductReferenceController extends Controller
     public function edit($id)
     {
         $productReference=ProductReference::find($id);
+        $types=ProductType::all()->toArray();
+        return view('admin.product-reference.edit',compact('productReference','types'));
     }
 
     /**
@@ -75,16 +81,17 @@ class ProductReferenceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $data=$this->myValidation($request);
-        $ref =ProductReference::find($id);
+        $ref =ProductReference::find($request->id);
         $ref->designation = $data['designation'];
         $ref->description = $data['description'];
         $ref->image =  file($data['image'])->store('images');
         $ref->type =  $request->type;
         $ref->idActor =  $request->idActor;
         $ref->save();
+
     }
 
     /**
@@ -95,7 +102,7 @@ class ProductReferenceController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
     public function myValidation($request)

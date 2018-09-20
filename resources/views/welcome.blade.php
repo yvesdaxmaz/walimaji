@@ -2,6 +2,7 @@
 
 
 @section('content')
+
     <div class="content-wrapper">
         <div class="map-container">
             <div class="map-container-content" id="map"></div>
@@ -12,7 +13,7 @@
                     <section class="features-icons text-center">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-3 col-md-6">
                                     <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                                         <div class="features-icons-icon d-flex">
                                             <i class="glyphicon glyphicon-user m-auto text-primary"></i>
@@ -22,7 +23,7 @@
                                             framework!</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-3 col-md-6">
                                     <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                                         <div class="features-icons-icon d-flex">
                                             <i class="glyphicon glyphicon-user m-auto text-primary"></i>
@@ -32,7 +33,7 @@
                                             framework!</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-3 col-md-6">
                                     <div class="features-icons-item mx-auto mb-0 mb-lg-3">
                                         <div class="features-icons-icon d-flex">
                                             <i class="glyphicon glyphicon-user m-auto text-primary"></i>
@@ -42,7 +43,7 @@
                                             files!</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-3 col-md-6">
                                     <div class="features-icons-item mx-auto mb-0 mb-lg-3">
                                         <div class="features-icons-icon d-flex">
                                             <i class="glyphicon glyphicon-user text-primary"></i>
@@ -57,7 +58,7 @@
                     </section>
 
                 </div>
-                <div class="map-banner-overlay"></div>
+
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserAdressesTableSeed extends Seeder
 {
@@ -14,7 +15,7 @@ class UserAdressesTableSeed extends Seeder
         $faker = \Faker\Factory::create('fr_FR');
         $users_id = DB::table('users')
             ->select('id')
-            ->get();
+            ->get()->toArray();
 
         $data = [];
 

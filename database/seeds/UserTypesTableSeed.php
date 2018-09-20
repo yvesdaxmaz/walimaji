@@ -15,18 +15,16 @@ class UserTypesTableSeed extends Seeder
 
         $data = [];
         $designation = [
-            'provider', 'producer', 'transfomer', 'trader'
+            'trader', 'provider', 'producer', 'transformer','admin',
         ];
 
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $data[] = [
-                'designation' => $designation[$i % 4],
+                'designation' => $designation[$i % 5],
                 'description' => $faker->text(50),
                 'icon' => 'images/images.jpg'
             ];
         }
-
-
         DB::table('user_types')->insert($data);
     }
 }

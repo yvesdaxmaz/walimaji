@@ -18,7 +18,7 @@
                 <select class="form-control" name="type">
                     <option disabled selected>Qui êtes vous ?</option>
                     @foreach($typeList as $typeListElement)
-                        <option value="{{$typeListElement['id']}}" data-icon="{{url('storage/public/'.$typeListElement['icon'])}}" >{{ $typeListElement['designation'] }}</option>
+                        <option value="{{$typeListElement->id}}" data-icon="{{url('storage/public/'.$typeListElement->icon)}}" >{{ $typeListElement->designation }}</option>
                     @endforeach
                 </select>
                 <span class="help-block">

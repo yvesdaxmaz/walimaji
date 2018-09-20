@@ -20,12 +20,10 @@ class UsersTableSeeder extends Seeder
             $data[] = [
                 'name' => $faker->name,
                 'email' => $faker->email,
-                'password' => mt_rand(100000, 600000),
+                'password' => Hash::make(mt_rand(100000, 600000)),
                 'type_id' => $types[$i % 4]
             ];
         }
-
-
         DB::table('users')->insert($data);
 
     }
