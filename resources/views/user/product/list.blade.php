@@ -55,9 +55,9 @@
                                                 <td>{{$product->priceWithoutTax}}</td>
                                                 <td>{{$product->priceWithTax}}</td>
                                                 <td>
-                                                    {{--<a href="{{route('Admin_removeUser',$product->id )}}">--}}
+                                                    <a href="{{route('User_removeProduct',$product->id )}}">
                                                         <button class="btn bg-red">Supprimer</button>
-                                                    {{--</a>--}}
+                                                    </a>
                                                     {{--<a href="{{route('Admin_userDetail',$product->id ) }}">--}}
                                                         <button class="btn bg-blue">Detail</button>
                                                     {{--</a>--}}
