@@ -108,4 +108,11 @@ class UserController extends Controller
 
         return view('user.product.list', compact('userDetail','products'));
     }
+
+    public function subscribe($id){
+        Subscription::store($id); 
+        
+    }
+
+
 }
