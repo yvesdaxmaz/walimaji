@@ -118,4 +118,16 @@ class User extends Authenticatable
                             FROM users, (SELECT id AS sid  FROM users  ORDER BY RAND() LIMIT 7) tmp, user_types t
                             WHERE users.id = tmp.sid and users.type_id=t.id AND users.id NOT IN (SELECT subscriptions.idActor FROM subscriptions WHERE subscriptions.idsubscriber =".Auth::id().')');
     }
+    public static function getAllProducts($id)
+    {
+        return DB::table('products')
+            ->join('product_refs', 'products.idRef', '=', 'product_refs.id')
+            ->join('product_prices', 'products.id', '=', 'product_prices.idProduct')
+            ->join('product_types', 'product_refs.type', '=', 'product_types.id')
+            ->join('users', 'products.idActor', '=', 'users.id')
+            ->select('product_types.*','product_refs.*','product_prices.*','products.*')
+            ->where('users.id', '=', $id)
+            ->get();
+    }
+
 }
