@@ -18,6 +18,7 @@ Route::get('/user/followers','UserController@showFollowers')->name('user/followe
 Route::get('/user/following','UserController@showFollowing')->name('user/following');
 Route::get('/user/providers','UserController@showFollowing')->name('user/providers');
 Route::get('/user/userDetail/{id}','UserController@ShowUserDetail')->name('user/userDetail');
+Route::get('/user/productsList/{id}','UserController@ShowProductsList')->name('user/productsList');
 Route::get('/user/profil','UserController@showProfil')->name('user/profil');
 Route::get('/user/productsRefDetail/{id}','UserController@ShowReferenceDetail')->name('user/productsRefDetail');
 Route::get('/user/products','UserController@ShowProductsList')->name('user/products');
