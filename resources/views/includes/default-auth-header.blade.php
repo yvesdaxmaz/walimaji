@@ -59,12 +59,6 @@
                 </a>
             </li>
             <li>
-                <a href="list_product_user.html" >
-                    <i class="fa fa-pie-chart"></i>
-                    <span>Mes fournisseurs</span>
-                </a>
-            </li>
-            <li>
                 <a href="/user/providers" >
                     <i class="fa fa-pie-chart"></i>
                     <span>Mes fournisseurs</span>
