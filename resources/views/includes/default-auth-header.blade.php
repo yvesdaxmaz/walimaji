@@ -38,12 +38,9 @@
                 </a>
             </li>
             <li>
-                <a href="/user/products">
+                <a href="<?php echo e(route('user/productsList', Auth::id())); ?>">
                     <i class="fa fa-files-o"></i>
                     <span>Mon stock</span>
-                    <span class="pull-right-container">
-                                <span class="label label-primary pull-right">4</span>
-                            </span>
                 </a>
             </li>
             <li>
