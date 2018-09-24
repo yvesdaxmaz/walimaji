@@ -116,7 +116,7 @@ class User extends Authenticatable
     public  static  function getRandomly(){
         return DB::select("SELECT users.*, t.designation
                             FROM users, (SELECT id AS sid  FROM users  ORDER BY RAND() LIMIT 7) tmp, user_types t
-                            WHERE users.id = tmp.sid and users.type_id=t.id AND users.id NOT IN (SELECT subscriptions.idActor FROM subscriptions WHERE subscriptions.idsubscriber =".Auth::id().')');
+                            WHERE users.id = tmp.sid and users.type_id=t.id");
     }
     public static function getAllProducts($id)
     {

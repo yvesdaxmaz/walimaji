@@ -111,9 +111,7 @@ class UserController extends Controller
 
     public function subscribe($id){
         Subscription::store($id); 
-        return redirect()->back()->with('success', ['Subscribed with success !!!']);
-        
+        return redirect()->back()->with('success', ['Subscribed with success !!!']); 
     }
-
-
+    
 }

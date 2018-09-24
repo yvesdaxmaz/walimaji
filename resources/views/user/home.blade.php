@@ -109,7 +109,8 @@
                                             <img src="http://www.gstatic.com/webp/gallery/2.jpg" alt="Product Image">
                                         </div>
                                         <div class="product-info">
-                                            <a href="{{route('user/subscribe',$user->id ) }}" class="product-title">{{$user->name}}
+                                            <a href="{{route('user/userDetail',$user->id ) }}" class="product-title">{{$user->name}}</a>
+                                             <a href="{{route('user/subscribe',$user->id ) }}">
                                                 <div class="btn btn-xs btn-info pull-right">
                                                     S'abonner
                                                 </div>
