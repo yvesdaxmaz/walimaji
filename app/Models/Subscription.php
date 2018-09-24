@@ -38,9 +38,9 @@ class Subscription extends Model
     public static function store($idActor){
         $subscription = new Subscription();
         $subscription->idsubscriber=Auth::id();
-        $subscription->idActor=Auth::id();
-        $subscription->save();
-        
+        $subscription->idActor=$idActor;
+        $subscription->save(); 
     }
+    
 
 }

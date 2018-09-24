@@ -1,6 +1,6 @@
 <header class="main-header">
     <nav class="navbar navbar-static-top">
-        <div class="container" id="mainnav">
+        <div class="container">
             <div class="navbar-header">
                 <a href="{{ url('/') }}" class="navbar-brand"><b>{{ config("APP_NAME", "Walimaji") }}</b></a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
