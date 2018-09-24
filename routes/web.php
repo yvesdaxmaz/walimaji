@@ -23,6 +23,7 @@ Route::get('/User_removeProduct/{id}','Actor\ProductController@destroy')->name('
 Route::get('/user/profil','UserController@showProfil')->name('user/profil');
 Route::get('/user/productsRefDetail/{id}','UserController@ShowReferenceDetail')->name('user/productsRefDetail');
 Route::get('/user/products','UserController@ShowProductsList')->name('user/products');
+Route::get('user/subscribe/{id}','UserController@subscribe')->name('user/subscribe');
 
 
 //Admin Routes
