@@ -50,7 +50,7 @@ class AdminController extends Controller
         $smallerPrice=ProductPrice::getSmallerPriceOf($idRef);
         $sellers=ProductReference::getAllSalers($idRef);
         $details=ProductReference::getWithTypeDesigantion($idRef);
-        //dd($biggerPrice,$smallerPrice,$details);
+
         return view('admin.product-reference.detail', compact('adminDetail','biggerPrice','smallerPrice','sellers','details'));
         //return view('admin.product-reference.detail');
     }
