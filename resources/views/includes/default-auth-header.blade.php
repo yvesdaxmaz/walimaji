@@ -66,7 +66,7 @@
                    onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
                     <i class="fa fa-pie-chart"></i>
-                    <span>{{ __('Deconnextion') }}</span>
+                    <span>{{ __('Deconnexion') }}</span>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf

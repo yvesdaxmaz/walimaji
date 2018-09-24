@@ -32,7 +32,7 @@
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="" class="small-box-footer">Voir tout
+                        <a href="/user/providers" class="small-box-footer">Voir tout
                             <i class="fa fa-arrow-circle-right"></i>
                         </a>
                     </div>
