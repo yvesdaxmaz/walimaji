@@ -35,12 +35,5 @@ class Subscription extends Model
                            AND users.id IN (SELECT idActor FROM subscriptions WHERE idsubscriber=".$id.")");
     }
 
-    public static function store($idActor){
-        $subscription = new Subscription();
-        $subscription->idsubscriber=Auth::id();
-        $subscription->idActor=Auth::id();
-        $subscription->save();
-        
-    }
 
 }
