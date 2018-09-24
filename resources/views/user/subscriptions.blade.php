@@ -34,7 +34,7 @@
                                     <td>{{$following->email}}</td>
                                     <td>{{$following->phone}}</td>
                                     <td>
-                                        <a href="{{route('user/userDetail',$follower->id ) }}">
+                                        <a href="{{route('user/userDetail',$following->id ) }}">
                                             <button class="btn bg-blue">Se desabonner</button>
                                         </a>
                                     </td>
