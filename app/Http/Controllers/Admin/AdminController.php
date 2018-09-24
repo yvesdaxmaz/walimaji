@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-
     public function usersList(){
         $tradres=User::getAllTraders();
         $providers=User::getAllProviders();
