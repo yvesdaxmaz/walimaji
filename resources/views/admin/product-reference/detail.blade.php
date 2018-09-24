@@ -107,10 +107,10 @@
             </section>
         </div>
     </div>
-    <script>
-        var tab = '{{ $tab }}';
-        var mapData = JSON.parse('{!! $data !!}');
-        console.log(mapData[0]['name']);
-    </script>
+    {{--<script>--}}
+        {{--var tab = '{{ $tab }}';--}}
+        {{--var mapData = JSON.parse('{!! $data !!}');--}}
+        {{--console.log(mapData[0]['name']);--}}
+    {{--</script>--}}
     <script src="{{ asset("assets/js/map.js") }}"></script>
 @endsection

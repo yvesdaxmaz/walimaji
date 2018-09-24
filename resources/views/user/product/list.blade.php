@@ -58,9 +58,9 @@
                                                     <a href="{{route('User_removeProduct',$product->id )}}">
                                                         <button class="btn bg-red">Supprimer</button>
                                                     </a>
-                                                    {{--<a href="{{route('Admin_userDetail',$product->id ) }}">--}}
+                                                    <a href="{{route('Admin_productsRefDetail',$product->id ) }}">
                                                         <button class="btn bg-blue">Detail</button>
-                                                    {{--</a>--}}
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
